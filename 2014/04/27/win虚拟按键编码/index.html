@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>win虚拟按键编码 | Jeremie&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;ms927178.aspx Virtual key codes   Symbolic constant Hexadecimal value Mouse or keyboard equivalent    VK_LBUTTON 01 Left mouse button   VK_RBUTTON 02 Right mous">
+<meta property="og:type" content="article">
+<meta property="og:title" content="win虚拟按键编码">
+<meta property="og:url" content="http://hexo.jeremie.moe/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/index.html">
+<meta property="og:site_name" content="Jeremie&#39;s Blog">
+<meta property="og:description" content="http:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;ms927178.aspx Virtual key codes   Symbolic constant Hexadecimal value Mouse or keyboard equivalent    VK_LBUTTON 01 Left mouse button   VK_RBUTTON 02 Right mous">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-04-27T00:12:02.000Z">
+<meta property="article:modified_time" content="2020-03-06T15:18:05.690Z">
+<meta property="article:author" content="Jeremie">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeremie&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/about-blog/">关于Blog</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.jeremie.moe"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-win虚拟按键编码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/" class="article-date">
+  <time datetime="2014-04-27T00:12:02.000Z" itemprop="datePublished">2014-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WinSDK/">WinSDK</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      win虚拟按键编码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://msdn.microsoft.com/en-us/library/ms927178.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/ms927178.aspx</a></p>
+<h2 id="Virtual-key-codes"><a href="#Virtual-key-codes" class="headerlink" title="Virtual key codes"></a>Virtual key codes</h2><table>
+<thead>
+<tr>
+<th>Symbolic constant</th>
+<th>Hexadecimal value</th>
+<th>Mouse or keyboard equivalent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VK_LBUTTON</td>
+<td>01</td>
+<td>Left mouse button</td>
+</tr>
+<tr>
+<td>VK_RBUTTON</td>
+<td>02</td>
+<td>Right mouse button</td>
+</tr>
+<tr>
+<td>VK_CANCEL</td>
+<td>03</td>
+<td>Control-break processing</td>
+</tr>
+<tr>
+<td>VK_MBUTTON</td>
+<td>04</td>
+<td>Middle mouse button on a three-button mouse</td>
+</tr>
+<tr>
+<td></td>
+<td>0507</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_BACK</td>
+<td>08</td>
+<td>BACKSPACE key</td>
+</tr>
+<tr>
+<td>VK_TAB</td>
+<td>09</td>
+<td>TAB key</td>
+</tr>
+<tr>
+<td></td>
+<td>0A0B</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_CLEAR</td>
+<td>0C</td>
+<td>CLEAR key</td>
+</tr>
+<tr>
+<td>VK_RETURN</td>
+<td>0D</td>
+<td>ENTER key</td>
+</tr>
+<tr>
+<td></td>
+<td>0E0F</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_SHIFT</td>
+<td>10</td>
+<td>SHIFT key</td>
+</tr>
+<tr>
+<td>VK_CONTROL</td>
+<td>11</td>
+<td>CTRL key</td>
+</tr>
+<tr>
+<td>VK_MENU</td>
+<td>12</td>
+<td>ALT key</td>
+</tr>
+<tr>
+<td>VK_PAUSE</td>
+<td>13</td>
+<td>PAUSE key</td>
+</tr>
+<tr>
+<td>VK_CAPITAL</td>
+<td>14</td>
+<td>CAPS LOCK key</td>
+</tr>
+<tr>
+<td></td>
+<td>1519</td>
+<td>Reserved for Kanji systems</td>
+</tr>
+<tr>
+<td></td>
+<td>1A</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_ESCAPE</td>
+<td>1B</td>
+<td>ESC key</td>
+</tr>
+<tr>
+<td></td>
+<td>1C1F</td>
+<td>Reserved for Kanji systems</td>
+</tr>
+<tr>
+<td>VK_SPACE</td>
+<td>20</td>
+<td>SPACEBAR</td>
+</tr>
+<tr>
+<td>VK_PRIOR</td>
+<td>21</td>
+<td>PAGE UP key</td>
+</tr>
+<tr>
+<td>VK_NEXT</td>
+<td>22</td>
+<td>PAGE DOWN key</td>
+</tr>
+<tr>
+<td>VK_END</td>
+<td>23</td>
+<td>END key</td>
+</tr>
+<tr>
+<td>VK_HOME</td>
+<td>24</td>
+<td>HOME key</td>
+</tr>
+<tr>
+<td>VK_LEFT</td>
+<td>25</td>
+<td>LEFT ARROW key</td>
+</tr>
+<tr>
+<td>VK_UP</td>
+<td>26</td>
+<td>UP ARROW key</td>
+</tr>
+<tr>
+<td>VK_RIGHT</td>
+<td>27</td>
+<td>RIGHT ARROW key</td>
+</tr>
+<tr>
+<td>VK_DOWN</td>
+<td>28</td>
+<td>DOWN ARROW key</td>
+</tr>
+<tr>
+<td>VK_SELECT</td>
+<td>29</td>
+<td>SELECT key</td>
+</tr>
+<tr>
+<td></td>
+<td>2A</td>
+<td>Specific to original equipment manufacturer</td>
+</tr>
+<tr>
+<td>VK_EXECUTE</td>
+<td>2B</td>
+<td>EXECUTE key</td>
+</tr>
+<tr>
+<td>VK_SNAPSHOT</td>
+<td>2C</td>
+<td>PRINT SCREEN key</td>
+</tr>
+<tr>
+<td>VK_INSERT</td>
+<td>2D</td>
+<td>INS key</td>
+</tr>
+<tr>
+<td>VK_DELETE</td>
+<td>2E</td>
+<td>DEL key</td>
+</tr>
+<tr>
+<td>VK_HELP</td>
+<td>2F</td>
+<td>HELP key</td>
+</tr>
+<tr>
+<td></td>
+<td>3A40</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_LWIN</td>
+<td>5B</td>
+<td>Left Windows key on a Microsoft Natural Keyboard</td>
+</tr>
+<tr>
+<td>VK_RWIN</td>
+<td>5C</td>
+<td>Right Windows key on a Microsoft Natural Keyboard</td>
+</tr>
+<tr>
+<td>VK_APPS</td>
+<td>5D</td>
+<td>Applications key on a Microsoft Natural Keyboard</td>
+</tr>
+<tr>
+<td></td>
+<td>5E5F</td>
+<td>Undefined</td>
+</tr>
+<tr>
+<td>VK_NUMPAD0</td>
+<td>60</td>
+<td>Numeric keypad 0 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD1</td>
+<td>61</td>
+<td>Numeric keypad 1 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD2</td>
+<td>62</td>
+<td>Numeric keypad 2 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD3</td>
+<td>63</td>
+<td>Numeric keypad 3 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD4</td>
+<td>64</td>
+<td>Numeric keypad 4 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD5</td>
+<td>65</td>
+<td>Numeric keypad 5 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD6</td>
+<td>66</td>
+<td>Numeric keypad 6 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD7</td>
+<td>67</td>
+<td>Numeric keypad 7 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD8</td>
+<td>68</td>
+<td>Numeric keypad 8 key</td>
+</tr>
+<tr>
+<td>VK_NUMPAD9</td>
+<td>69</td>
+<td>Numeric keypad 9 key</td>
+</tr>
+<tr>
+<td>VK_MULTIPLY</td>
+<td>6A</td>
+<td>Multiply key</td>
+</tr>
+<tr>
+<td>VK_ADD</td>
+<td>6B</td>
+<td>Add key</td>
+</tr>
+<tr>
+<td>VK_SEPARATOR</td>
+<td>6C</td>
+<td>Separator key</td>
+</tr>
+<tr>
+<td>VK_SUBTRACT</td>
+<td>6D</td>
+<td>Subtract key</td>
+</tr>
+<tr>
+<td>VK_DECIMAL</td>
+<td>6E</td>
+<td>Decimal key</td>
+</tr>
+<tr>
+<td>VK_DIVIDE</td>
+<td>6F</td>
+<td>Divide key</td>
+</tr>
+<tr>
+<td>VK_F1</td>
+<td>70</td>
+<td>F1 key</td>
+</tr>
+<tr>
+<td>VK_F2</td>
+<td>71</td>
+<td>F2 key</td>
+</tr>
+<tr>
+<td>VK_F3</td>
+<td>72</td>
+<td>F3 key</td>
+</tr>
+<tr>
+<td>VK_F4</td>
+<td>73</td>
+<td>F4 key</td>
+</tr>
+<tr>
+<td>VK_F5</td>
+<td>74</td>
+<td>F5 key</td>
+</tr>
+<tr>
+<td>VK_F6</td>
+<td>75</td>
+<td>F6 key</td>
+</tr>
+<tr>
+<td>VK_F7</td>
+<td>76</td>
+<td>F7 key</td>
+</tr>
+<tr>
+<td>VK_F8</td>
+<td>77</td>
+<td>F8 key</td>
+</tr>
+<tr>
+<td>VK_F9</td>
+<td>78</td>
+<td>F9 key</td>
+</tr>
+<tr>
+<td>VK_F10</td>
+<td>79</td>
+<td>F10 key</td>
+</tr>
+<tr>
+<td>VK_F11</td>
+<td>7A</td>
+<td>F11 key</td>
+</tr>
+<tr>
+<td>VK_F12</td>
+<td>7B</td>
+<td>F12 key</td>
+</tr>
+<tr>
+<td>VK_F13</td>
+<td>7C</td>
+<td>F13 key</td>
+</tr>
+<tr>
+<td>VK_F14</td>
+<td>7D</td>
+<td>F14 key</td>
+</tr>
+<tr>
+<td>VK_F15</td>
+<td>7E</td>
+<td>F15 key</td>
+</tr>
+<tr>
+<td>VK_F16</td>
+<td>7F</td>
+<td>F16 key</td>
+</tr>
+<tr>
+<td>VK_F17</td>
+<td>80H</td>
+<td>F17 key</td>
+</tr>
+<tr>
+<td>VK_F18</td>
+<td>81H</td>
+<td>F18 key</td>
+</tr>
+<tr>
+<td>VK_F19</td>
+<td>82H</td>
+<td>F19 key</td>
+</tr>
+<tr>
+<td>VK_F20</td>
+<td>83H</td>
+<td>F20 key</td>
+</tr>
+<tr>
+<td>VK_F21</td>
+<td>84H</td>
+<td>F21 key</td>
+</tr>
+<tr>
+<td>VK_F22</td>
+<td>85H</td>
+<td>F22 key(PPC only) Key used to lock device.</td>
+</tr>
+<tr>
+<td>VK_F23</td>
+<td>86H</td>
+<td>F23 key</td>
+</tr>
+<tr>
+<td>VK_F24</td>
+<td>87H</td>
+<td>F24 key</td>
+</tr>
+<tr>
+<td></td>
+<td>888F</td>
+<td>Unassigned</td>
+</tr>
+<tr>
+<td>VK_NUMLOCK</td>
+<td>90</td>
+<td>NUM LOCK key</td>
+</tr>
+<tr>
+<td>VK_SCROLL</td>
+<td>91</td>
+<td>SCROLL LOCK key</td>
+</tr>
+<tr>
+<td>VK_LSHIFT</td>
+<td>0xA0</td>
+<td>Left SHIFT</td>
+</tr>
+<tr>
+<td>VK_RSHIFT</td>
+<td>0xA1</td>
+<td>Right SHIFT</td>
+</tr>
+<tr>
+<td>VK_LCONTROL</td>
+<td>0xA2</td>
+<td>Left CTRL</td>
+</tr>
+<tr>
+<td>VK_RCONTROL</td>
+<td>0xA3</td>
+<td>Right CTRL</td>
+</tr>
+<tr>
+<td>VK_LMENU</td>
+<td>0xA4</td>
+<td>Left ALT</td>
+</tr>
+<tr>
+<td>VK_RMENU</td>
+<td>0xA5</td>
+<td>Right ALT</td>
+</tr>
+<tr>
+<td></td>
+<td>BA-C0</td>
+<td>Specific to original equipment manufacturer; reserved. See following tables.</td>
+</tr>
+<tr>
+<td></td>
+<td>C1-DA</td>
+<td>Unassigned</td>
+</tr>
+<tr>
+<td></td>
+<td>DB-E2</td>
+<td>Specific to original equipment manufacturer; reserved. See following tables.</td>
+</tr>
+<tr>
+<td></td>
+<td>E3 – E4</td>
+<td>Specific to original equipment manufacturer</td>
+</tr>
+<tr>
+<td></td>
+<td>E5</td>
+<td>Unassigned</td>
+</tr>
+<tr>
+<td></td>
+<td>E6</td>
+<td>Specific to original equipment manufacturer</td>
+</tr>
+<tr>
+<td>VK_PACKET</td>
+<td>E7</td>
+<td>Used to pass Unicode characters as if they were keystrokes. If VK_PACKET is used with SendInput, then the Unicode character to be delivered should be placed into the lower 16 bits of the scan code. If a keyboard message is removed from the message queue and the virtual key is VK_PACKET, then the Unicode character will be the upper 16 bits of the lparam.</td>
+</tr>
+<tr>
+<td></td>
+<td>E8</td>
+<td>Unassigned</td>
+</tr>
+<tr>
+<td></td>
+<td>E9-F5</td>
+<td>Specific to original equipment manufacturer</td>
+</tr>
+<tr>
+<td>VK_ATTN</td>
+<td>F6</td>
+<td>ATTN key</td>
+</tr>
+<tr>
+<td>VK_CRSEL</td>
+<td>F7</td>
+<td>CRSEL key</td>
+</tr>
+<tr>
+<td>VK_EXSEL</td>
+<td>F8</td>
+<td>EXSEL key</td>
+</tr>
+<tr>
+<td>VK_EREOF</td>
+<td>F9</td>
+<td>Erase EOF key</td>
+</tr>
+<tr>
+<td>VK_PLAY</td>
+<td>FA</td>
+<td>PLAY key</td>
+</tr>
+<tr>
+<td>VK_ZOOM</td>
+<td>FB</td>
+<td>ZOOM key</td>
+</tr>
+<tr>
+<td>VK_NONAME</td>
+<td>FC</td>
+<td>Reserved for future use</td>
+</tr>
+<tr>
+<td>VK_PA1</td>
+<td>FD</td>
+<td>PA1 key</td>
+</tr>
+<tr>
+<td>VK_OEM_CLEAR</td>
+<td>FE</td>
+<td>CLEAR key</td>
+</tr>
+<tr>
+<td>VK_KEYLOCK</td>
+<td>F22</td>
+<td>Key used to lock device</td>
+</tr>
+</tbody></table>
+<p>Original equipment manufacturers should make special note of the VK key ranges reserved for specific original equipment manufacturer use: 2A, DBE4, E6, and E9F5.</p>
+<p>In addition to the VK key assignments in the previous table, Microsoft has assigned the following specific original equipment manufacturer VK keys.</p>
+<table>
+<thead>
+<tr>
+<th>Symbolic constant</th>
+<th>Hexadecimal value</th>
+<th>Mouse or keyboard equivalent</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VK_OEM_SCROLL</td>
+<td>0x91</td>
+<td>None</td>
+</tr>
+<tr>
+<td>VK_OEM_1</td>
+<td>0xBA</td>
+<td>“;:” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_PLUS</td>
+<td>0xBB</td>
+<td>“+” any country/region</td>
+</tr>
+<tr>
+<td>VK_OEM_COMMA</td>
+<td>0xBC</td>
+<td>“,” any country/region</td>
+</tr>
+<tr>
+<td>VK_OEM_MINUS</td>
+<td>0xBD</td>
+<td>“-” any country/region</td>
+</tr>
+<tr>
+<td>VK_OEM_PERIOD</td>
+<td>0xBE</td>
+<td>“.” any country/region</td>
+</tr>
+<tr>
+<td>VK_OEM_2</td>
+<td>0xBF</td>
+<td>“/?” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_3</td>
+<td>0xC0</td>
+<td>“`~” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_4</td>
+<td>0xDB</td>
+<td>“[{” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_5</td>
+<td>0xDC</td>
+<td>“|” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_6</td>
+<td>0xDD</td>
+<td>“]}” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_7</td>
+<td>0xDE</td>
+<td>“‘”” for US</td>
+</tr>
+<tr>
+<td>VK_OEM_8</td>
+<td>0xDF</td>
+<td>None</td>
+</tr>
+<tr>
+<td>VK_OEM_AX</td>
+<td>0xE1</td>
+<td>AX key on Japanese AX keyboard</td>
+</tr>
+<tr>
+<td>VK_OEM_102</td>
+<td>0xE2</td>
+<td>“&lt;&gt;” or “|” on RT 102-key keyboard</td>
+</tr>
+</tbody></table>
+<p>For East Asian Input Method Editors (IMEs) the following additional virtual keyboard definitions must be observed.</p>
+<table>
+<thead>
+<tr>
+<th>Symbolic constant</th>
+<th>Hexadecimal value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>VK_DBE_ALPHANUMERIC</td>
+<td>0x0f0</td>
+<td>Changes the mode to alphanumeric.</td>
+</tr>
+<tr>
+<td>VK_DBE_KATAKANA</td>
+<td>0x0f1</td>
+<td>Changes the mode to Katakana.</td>
+</tr>
+<tr>
+<td>VK_DBE_HIRAGANA</td>
+<td>0x0f2</td>
+<td>Changes the mode to Hiragana.</td>
+</tr>
+<tr>
+<td>VK_DBE_SBCSCHAR</td>
+<td>0x0f3</td>
+<td>Changes the mode to single-byte characters.</td>
+</tr>
+<tr>
+<td>VK_DBE_DBCSCHAR</td>
+<td>0x0f4</td>
+<td>Changes the mode to double-byte characters.</td>
+</tr>
+<tr>
+<td>VK_DBE_ROMAN</td>
+<td>0x0f5</td>
+<td>Changes the mode to Roman characters.</td>
+</tr>
+<tr>
+<td>VK_DBE_NOROMAN</td>
+<td>0x0f6</td>
+<td>Changes the mode to non-Roman characters.</td>
+</tr>
+<tr>
+<td>VK_DBE_ENTERWORDREGISTERMODE</td>
+<td>0x0f7</td>
+<td>Activates the word registration dialog box.</td>
+</tr>
+<tr>
+<td>VK_DBE_ENTERIMECONFIGMODE</td>
+<td>0x0f8</td>
+<td>Activates a dialog box for setting up an IME environment.</td>
+</tr>
+<tr>
+<td>VK_DBE_FLUSHSTRING</td>
+<td>0x0f9</td>
+<td>Deletes the undetermined string without determining it.</td>
+</tr>
+<tr>
+<td>VK_DBE_CODEINPUT</td>
+<td>0x0fa</td>
+<td>Changes the mode to code input.</td>
+</tr>
+<tr>
+<td>VK_DBE_NOCODEINPUT</td>
+<td>0x0fb</td>
+<td>Changes the mode to no-code input.</td>
+</tr>
+</tbody></table>
+<p>Original equipment manufacturers should not use the unassigned portions of the VK mapping tables. Microsoft will assign these values in the future. If manufacturers require additional VK mappings, they should reuse some of the current manufacturer-specific and vendor-specific assignments.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/" data-id="ck89r8wxp001v2k26c09n3ndx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          文件夹遍历
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/04/19/%E6%9B%B4%E6%8D%A2%E9%A2%98%E5%A4%B4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">更换题头</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ePost/" style="font-size: 10px;">ePost</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/24/error-means-for-programmer/">error means for programmer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/OpenWRT%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E5%99%A8opkg%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/">OpenWRT软件包安装器opkg配置使用代理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/12/notes/184/">184</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/08/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0Hexo/">博客迁移到Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jeremie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/about-blog/" class="mobile-nav-link">关于Blog</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>文件夹遍历 | Jeremie&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="http:&#x2F;&#x2F;www.cppblog.com&#x2F;shongbee2&#x2F;archive&#x2F;2009&#x2F;03&#x2F;30&#x2F;78366.aspxhttp:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;windows&#x2F;desktop&#x2F;aa364418%28v&#x3D;vs.85%29.aspxhttp:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;windows&#x2F;desktop&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件夹遍历">
+<meta property="og:url" content="http://hexo.jeremie.moe/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/index.html">
+<meta property="og:site_name" content="Jeremie&#39;s Blog">
+<meta property="og:description" content="http:&#x2F;&#x2F;www.cppblog.com&#x2F;shongbee2&#x2F;archive&#x2F;2009&#x2F;03&#x2F;30&#x2F;78366.aspxhttp:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;windows&#x2F;desktop&#x2F;aa364418%28v&#x3D;vs.85%29.aspxhttp:&#x2F;&#x2F;msdn.microsoft.com&#x2F;en-us&#x2F;library&#x2F;windows&#x2F;desktop&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2014-04-27T00:24:13.000Z">
+<meta property="article:modified_time" content="2020-03-24T12:08:47.705Z">
+<meta property="article:author" content="Jeremie">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeremie&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/about-blog/">关于Blog</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.jeremie.moe"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-文件夹遍历" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/" class="article-date">
+  <time datetime="2014-04-27T00:24:13.000Z" itemprop="datePublished">2014-04-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/WinSDK/">WinSDK</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      文件夹遍历
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.cppblog.com/shongbee2/archive/2009/03/30/78366.aspx" target="_blank" rel="noopener">http://www.cppblog.com/shongbee2/archive/2009/03/30/78366.aspx</a><br><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa364418%28v=vs.85%29.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/windows/desktop/aa364418%28v=vs.85%29.aspx</a><br><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa364428%28v=vs.85%29.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/windows/desktop/aa364428%28v=vs.85%29.aspx</a></p>
+<p>用windows的API实现文件夹的遍历扫描的程序<br>使用到的API：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FindFirstFile</span><br><span class="line">FindNextFile</span><br><span class="line">FindClose</span><br></pre></td></tr></table></figure>
+<p>主要用到的结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WIN32_FIND_DATA</span><br></pre></td></tr></table></figure>
+<p>在msdn都有详细的说明。这里也简要说明一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HANDLE WINAPI FindFirstFile(</span><br><span class="line">__in          LPCTSTR lpFileName,                   &#x2F;&#x2F;要查找的文件路径</span><br><span class="line">__out         LPWIN32_FIND_DATA lpFindFileData      &#x2F;&#x2F;保存文件结构的指针</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>查找对应的路径，如果查找返回查找的句柄，然后我们可以通过该句柄去查找下一个和关闭这个句柄。<br>如果查找失败，则返回<code>（INVALED_HANDLE_VALUE）(-1)</code>，可以通过<code>GetLastError();</code>来得到他的错误类型。<br>注意：查找第一个的时候，他不仅返回了查找的句柄，他也把第一个的文件信息保存在<code>lpFindFileData</code>里面了。所以这个也是要处理的。</p>
+<hr>
+<p>例程：<br>头文件包含：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">#include &lt;winbase.h&gt;    &#x2F;&#x2F; 在这里定义</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">#include &lt;winbase.h&gt; &#x2F;&#x2F; 在这里</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; HANDLE WINAPI FindFirstFile(</span><br><span class="line">    &#x2F;&#x2F;      _In_   LPCTSTR lpFileName,                    &#x2F;&#x2F; C风格字符串 名</span><br><span class="line">    &#x2F;&#x2F;      _Out_  LPWIN32_FIND_DATA lpFindFileData       &#x2F;&#x2F; 指向接收信息的结构体的指针</span><br><span class="line">    &#x2F;&#x2F;      );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 关于返回值</span><br><span class="line">    &#x2F;&#x2F; 成功， 则返回用来继续查找或者关闭用的句柄</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; 失败，则返回 INVALID_HANDLE_VALUE 并且结构体内容是不确定的</span><br><span class="line">    &#x2F;&#x2F; 获取更多信息在 GetLastError 函数</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; 如果没有找到文件 GetLastError 函数会返回 ERROR_FILE_NOT_FOUND</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 关于第一个参数</span><br><span class="line">    &#x2F;&#x2F; The directory or path, and the file name, which can include wildcard characters,</span><br><span class="line">    &#x2F;&#x2F; for example, an asterisk (*) or a question mark (?).</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; This parameter should not be NULL, an invalid string</span><br><span class="line">    &#x2F;&#x2F; (for example, an empty string or a string that is missing the terminating null character),</span><br><span class="line">    &#x2F;&#x2F; or end in a trailing backslash ().</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; If the string ends with a wildcard, period (.),</span><br><span class="line">    &#x2F;&#x2F; or directory name,</span><br><span class="line">    &#x2F;&#x2F; the user must have access permissions to the root and all subdirectories on the path.</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; In the ANSI version of this function, the name is limited to MAX_PATH characters.</span><br><span class="line">    &#x2F;&#x2F; To extend this limit to 32,767 wide characters,</span><br><span class="line">    &#x2F;&#x2F; call the Unicode version of the function and prepend &quot;\?&quot; to the path.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; BOOL WINAPI FindNextFile(</span><br><span class="line">    &#x2F;&#x2F;     _In_   HANDLE hFindFile,            &#x2F;&#x2F; 上一个函数的返回句柄</span><br><span class="line">    &#x2F;&#x2F;     _Out_  LPWIN32_FIND_DATA lpFindFileData</span><br><span class="line">    &#x2F;&#x2F; );</span><br><span class="line">    &#x2F;&#x2F; 失败返回false【没有下一个??】    并且结构体返回内容不确定</span><br><span class="line">    &#x2F;&#x2F; 具体失败信息查看 GetLastError</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; BOOL WINAPI FindClose(</span><br><span class="line">    &#x2F;&#x2F;     _Inout_  HANDLE hFindFile     &#x2F;&#x2F;  关闭句柄</span><br><span class="line">    &#x2F;&#x2F; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 结构体内容</span><br><span class="line">    &#x2F;&#x2F; typedef struct _WIN32_FIND_DATA &#123;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwFileAttributes;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftCreationTime;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftLastAccessTime;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftLastWriteTime;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    nFileSizeHigh;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    nFileSizeLow;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwReserved0;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwReserved1;</span><br><span class="line">    &#x2F;&#x2F;     CHAR    cFileName[MAX_PATH];</span><br><span class="line">    &#x2F;&#x2F;     CHAR    cAlternateFileName[14];</span><br><span class="line">    &#x2F;&#x2F;      &#125; WIN32_FIND_DATA, *PWIN32_FIND_DATA, *LPWIN32_FIND_DATA;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; DWORD WINAPI GetLastError(void);</span><br><span class="line">    &#x2F;&#x2F; 返回上一个错误代码</span><br><span class="line"></span><br><span class="line">    WIN32_FIND_DATA FindFileData;</span><br><span class="line">    LPWIN32_FIND_DATA lpFindFileData &#x3D; &amp;FindFileData;</span><br><span class="line"></span><br><span class="line">    string path &#x3D; &quot;.\png\*.png&quot;;</span><br><span class="line"></span><br><span class="line">    HANDLE handle &#x3D; FindFirstFile( path.c_str(), lpFindFileData );</span><br><span class="line"></span><br><span class="line">    if ( INVALID_HANDLE_VALUE &#x3D;&#x3D; handle )</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; &quot;INVALID_HANDLE_VALUE&quot; &lt;&lt; endl;</span><br><span class="line">        cin.get();</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    do&#123;</span><br><span class="line">        if (  !( lpFindFileData-&gt;dwFileAttributes &amp; FILE_ATTRIBUTE_DIRECTORY)  )</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; lpFindFileData-&gt;cFileName &lt; &lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        int t &#x3D; GetLastError();</span><br><span class="line">&#x2F;&#x2F;        cout &lt;&lt; &quot;GetLastError &quot; &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">        if ( ERROR_FILE_NOT_FOUND &#x3D;&#x3D; t )</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; &quot;ERROR_FILE_NOT_FOUND&quot; &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;while ( FindNextFile( handle, lpFindFileData ) );</span><br><span class="line"></span><br><span class="line">    if ( !FindClose(handle) )</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; &quot;CloseFail&quot; &lt;&lt; endl;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cin.get();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/" data-id="ck89r8wy000302k26hu3bhvoz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/04/27/%E5%8C%85%E8%A3%85cout%E7%AD%89ostream%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          包装cout等ostream对象的方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">win虚拟按键编码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ePost/" style="font-size: 10px;">ePost</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/03/24/error-means-for-programmer/">error means for programmer</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/OpenWRT%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E5%99%A8opkg%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/">OpenWRT软件包安装器opkg配置使用代理</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/12/notes/184/">184</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/08/%E5%8D%9A%E5%AE%A2%E8%BF%81%E7%A7%BB%E5%88%B0Hexo/">博客迁移到Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jeremie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/about-blog/" class="mobile-nav-link">关于Blog</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
