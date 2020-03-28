@@ -5,17 +5,17 @@
   
 
   
-  <title>使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间额冲突 | Jeremie&#39;s Blog</title>
+  <title>使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突 | Jeremie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="神秘代码： 1mount -o bind,ro,username&#x3D;nginx &#x2F;home&#x2F;jeremie&#x2F;WingImaging&#x2F;WebFront&#x2F;dist&#x2F; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;webfront&#x2F;  fstab： 1234567891011## &#x2F;etc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间额冲突">
-<meta property="og:url" content="http://hexo.jeremie.moe/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E9%A2%9D%E5%86%B2%E7%AA%81/index.html">
+<meta property="og:title" content="使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突">
+<meta property="og:url" content="http://hexo.jeremie.moe/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/index.html">
 <meta property="og:site_name" content="Jeremie&#39;s Blog">
 <meta property="og:description" content="神秘代码： 1mount -o bind,ro,username&#x3D;nginx &#x2F;home&#x2F;jeremie&#x2F;WingImaging&#x2F;WebFront&#x2F;dist&#x2F; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;webfront&#x2F;  fstab： 1234567891011## &#x2F;etc">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-05T10:49:48.000Z">
-<meta property="article:modified_time" content="2020-03-05T10:57:42.135Z">
+<meta property="article:modified_time" content="2020-03-28T02:44:21.440Z">
 <meta property="article:author" content="Jeremie">
 <meta name="twitter:card" content="summary">
   
@@ -72,9 +72,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间额冲突" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E9%A2%9D%E5%86%B2%E7%AA%81/" class="article-date">
+    <a href="/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/" class="article-date">
   <time datetime="2020-03-05T10:49:48.000Z" itemprop="datePublished">2020-03-05</time>
 </a>
     
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间额冲突
+      使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突
     </h1>
   
 
@@ -111,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E9%A2%9D%E5%86%B2%E7%AA%81/" data-id="ck89r8wxt00292k26ef2walj4" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/" data-id="ck8b0i9h4001yrg2621v4alho" class="article-share-link">Share</a>
       
       
     </footer>
