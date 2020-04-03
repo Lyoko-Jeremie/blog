@@ -70,6 +70,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-有关Erlang分布式节点长名试验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" class="article-date">
+  <time datetime="2015-06-29T06:24:19.000Z" itemprop="datePublished">2015-06-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/">有关Erlang分布式节点长名试验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>节点名分长名与短名两种<br>节点名由前缀与后缀组成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本机唯一节点名（前缀）@本机地址（后缀）</span><br></pre></td></tr></table></figure>
+
+<p>对于cookie<br>两个几点连接时cookie必须一致 否则连接请求会被阻止</p>
+<p>对于长名<br>节点名前缀在同一个机器上必须要唯一 即使同一机器上的多个节点后缀可以不同<br>节点长名后缀可使用可由DNS解析的域名或者直接为IP地址<br>当连接使用域名的节点会访问由DNS服务器解析的对应IP</p>
+<p>当使用IP作为后缀时<br>使用<code>net_adm:ping(‘长节点名’).</code>建立连接时会连接到到对应的IP地址处<br>若目标节点后缀与目标IP不同时无法建立连接 即使是ping通后的自动建立全连通网络时也无法建立到错误的节点处<br>若使用127.0.0.1作为后缀 则只有本机节点能够连接到以127.0.0.1作为后缀的节点<br>若使用错误的IP地址 则无法接受ping 但其可以ping其他正确的节点 但在全连通过程中无法连接到其他设备的节点</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ck8jppwqe003fvk26gdegf5cb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-有关ICS服务与Pcap_DNSProxy共存的解决方案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
@@ -105,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ck8b1z3e1003er426340r2xlt" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ck8jppwqe003hvk26fqgx5drp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ck8b1z3de0022r4263k9p7t0h" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ck8jppwpx001uvk26h4tf9fxm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ck8b1z3do002rr4261wvyf8nx" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ck8jppwq7002qvk263vnvfff3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -388,7 +434,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ck8b1z3ec0040r4268e8rbzsv" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ck8jppwqm0046vk26c2zp4fca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -430,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ck8b1z3dp002tr426ds9161an" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ck8jppwq8002svk26es8463bd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -471,7 +517,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ck8b1z3cx0017r4269xsc091i" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ck8jppwpp001avk26fmjw5w9i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -511,7 +557,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" data-id="ck8b1z3eb003xr426ho2t9vem" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" data-id="ck8jppwqi003uvk265nuj6c7r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -594,7 +640,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/03/%E5%AF%B9%E7%89%88%E6%9D%83%E7%9A%84%E8%AF%AF%E8%A7%A3%E2%80%94%E4%B8%80%E7%B3%BB%E5%88%97%E7%9A%84%E9%94%99%E8%AF%AF/" data-id="ck8b1z3dm002mr426an0y34te" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/03/%E5%AF%B9%E7%89%88%E6%9D%83%E7%9A%84%E8%AF%AF%E8%A7%A3%E2%80%94%E4%B8%80%E7%B3%BB%E5%88%97%E7%9A%84%E9%94%99%E8%AF%AF/" data-id="ck8jppwqa0032vk269iie312w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -636,54 +682,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/01/vector%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" data-id="ck8b1z3da001ur426hhanbz65" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-WP-Syntax代码高亮" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/WP-Syntax%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" class="article-date">
-  <time datetime="2014-04-27T00:56:51.000Z" itemprop="datePublished">2014-04-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Code/">Code</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/WP-Syntax%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/">WP-Syntax代码高亮</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://www.wpdaxue.com/wp-syntax.html" target="_blank" rel="noopener">www.wpdaxue.com/wp-syntax.html</a></p>
-<p>WP-Syntax 代码书写格式</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span> <span class="attr">lang</span>=<span class="string">"html"</span> <span class="attr">line</span>=<span class="string">"1"</span> <span class="attr">escaped</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">//这里添加代码……</span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>其中，lang=”html”表示代码语言为html，请根据自己需要修改；<br>line=”1” 表示显示行号，如果不需要，去掉即可；<br>escaped=”true” 是为了防止代码转义，如果不需要，去掉即可。<br>注意：在wordpress后台使用 WP-Syntax 等代码高亮插件，需要在html模式下添加代码，不要随意切换到可视化模式，否则代码就容易转义！！</p>
-<p>WP-Syntax 插件支持的高亮语言</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&#39;actionscript&#39; &#x3D;&gt; array(&#39;as&#39;),</span><br><span class="line">&#39;ada&#39; &#x3D;&gt; array(&#39;a&#39;, &#39;ada&#39;, &#39;adb&#39;, &#39;ads&#39;),</span><br><span class="line">&#39;apache&#39; &#x3D;&gt; array(&#39;conf&#39;),</span><br><span class="line">&#39;asm&#39; &#x3D;&gt; array(&#39;ash&#39;, &#39;asm&#39;, &#39;inc&#39;),</span><br><span class="line">&#39;asp&#39; &#x3D;&gt; array(&#39;asp&#39;),</span><br><span class="line">&#39;bash&#39; &#x3D;&gt; array(&#39;sh&#39;),</span><br><span class="line">&#39;bf&#39; &#x3D;&gt; array(&#39;bf&#39;),</span><br><span class="line">&#39;c&#39; &#x3D;&gt; array(&#39;c&#39;, &#39;h&#39;),</span><br><span class="line">&#39;c_mac&#39; &#x3D;&gt; array(&#39;c&#39;, &#39;h&#39;),</span><br><span class="line">&#39;caddcl&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;cadlisp&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;cdfg&#39; &#x3D;&gt; array(&#39;cdfg&#39;),</span><br><span class="line">&#39;cobol&#39; &#x3D;&gt; array(&#39;cbl&#39;),</span><br><span class="line">&#39;cpp&#39; &#x3D;&gt; array(&#39;cpp&#39;, &#39;hpp&#39;, &#39;C&#39;, &#39;H&#39;, &#39;CPP&#39;, &#39;HPP&#39;),</span><br><span class="line">&#39;csharp&#39; &#x3D;&gt; array(&#39;cs&#39;),</span><br><span class="line">&#39;css&#39; &#x3D;&gt; array(&#39;css&#39;),</span><br><span class="line">&#39;d&#39; &#x3D;&gt; array(&#39;d&#39;),</span><br><span class="line">&#39;delphi&#39; &#x3D;&gt; array(&#39;dpk&#39;, &#39;dpr&#39;, &#39;pp&#39;, &#39;pas&#39;),</span><br><span class="line">&#39;diff&#39; &#x3D;&gt; array(&#39;diff&#39;, &#39;patch&#39;),</span><br><span class="line">&#39;dos&#39; &#x3D;&gt; array(&#39;bat&#39;, &#39;cmd&#39;),</span><br><span class="line">&#39;gettext&#39; &#x3D;&gt; array(&#39;po&#39;, &#39;pot&#39;),</span><br><span class="line">&#39;gml&#39; &#x3D;&gt; array(&#39;gml&#39;),</span><br><span class="line">&#39;gnuplot&#39; &#x3D;&gt; array(&#39;plt&#39;),</span><br><span class="line">&#39;groovy&#39; &#x3D;&gt; array(&#39;groovy&#39;),</span><br><span class="line">&#39;haskell&#39; &#x3D;&gt; array(&#39;hs&#39;),</span><br><span class="line">&#39;html4strict&#39; &#x3D;&gt; array(&#39;html&#39;, &#39;htm&#39;),</span><br><span class="line">&#39;ini&#39; &#x3D;&gt; array(&#39;ini&#39;, &#39;desktop&#39;),</span><br><span class="line">&#39;java&#39; &#x3D;&gt; array(&#39;java&#39;),</span><br><span class="line">&#39;javascript&#39; &#x3D;&gt; array(&#39;js&#39;),</span><br><span class="line">&#39;klonec&#39; &#x3D;&gt; array(&#39;kl1&#39;),</span><br><span class="line">&#39;klonecpp&#39; &#x3D;&gt; array(&#39;klx&#39;),</span><br><span class="line">&#39;latex&#39; &#x3D;&gt; array(&#39;tex&#39;),</span><br><span class="line">&#39;lisp&#39; &#x3D;&gt; array(&#39;lisp&#39;),</span><br><span class="line">&#39;lua&#39; &#x3D;&gt; array(&#39;lua&#39;),</span><br><span class="line">&#39;matlab&#39; &#x3D;&gt; array(&#39;m&#39;),</span><br><span class="line">&#39;mpasm&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;mysql&#39; &#x3D;&gt; array(&#39;sql&#39;),</span><br><span class="line">&#39;nsis&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;objc&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;oobas&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;oracle8&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;oracle10&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;pascal&#39; &#x3D;&gt; array(&#39;pas&#39;),</span><br><span class="line">&#39;perl&#39; &#x3D;&gt; array(&#39;pl&#39;, &#39;pm&#39;),</span><br><span class="line">&#39;php&#39; &#x3D;&gt; array(&#39;php&#39;, &#39;php5&#39;, &#39;phtml&#39;, &#39;phps&#39;),</span><br><span class="line">&#39;povray&#39; &#x3D;&gt; array(&#39;pov&#39;),</span><br><span class="line">&#39;providex&#39; &#x3D;&gt; array(&#39;pvc&#39;, &#39;pvx&#39;),</span><br><span class="line">&#39;prolog&#39; &#x3D;&gt; array(&#39;pl&#39;),</span><br><span class="line">&#39;python&#39; &#x3D;&gt; array(&#39;py&#39;),</span><br><span class="line">&#39;qbasic&#39; &#x3D;&gt; array(&#39;bi&#39;),</span><br><span class="line">&#39;reg&#39; &#x3D;&gt; array(&#39;reg&#39;),</span><br><span class="line">&#39;ruby&#39; &#x3D;&gt; array(&#39;rb&#39;),</span><br><span class="line">&#39;sas&#39; &#x3D;&gt; array(&#39;sas&#39;),</span><br><span class="line">&#39;scala&#39; &#x3D;&gt; array(&#39;scala&#39;),</span><br><span class="line">&#39;scheme&#39; &#x3D;&gt; array(&#39;scm&#39;),</span><br><span class="line">&#39;scilab&#39; &#x3D;&gt; array(&#39;sci&#39;),</span><br><span class="line">&#39;smalltalk&#39; &#x3D;&gt; array(&#39;st&#39;),</span><br><span class="line">&#39;smarty&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;tcl&#39; &#x3D;&gt; array(&#39;tcl&#39;),</span><br><span class="line">&#39;vb&#39; &#x3D;&gt; array(&#39;bas&#39;),</span><br><span class="line">&#39;vbnet&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;visualfoxpro&#39; &#x3D;&gt; array(),</span><br><span class="line">&#39;whitespace&#39; &#x3D;&gt; array(&#39;ws&#39;),</span><br><span class="line">&#39;xml&#39; &#x3D;&gt; array(&#39;xml&#39;, &#39;svg&#39;),</span><br><span class="line">&#39;z80&#39; &#x3D;&gt; array(&#39;z80&#39;, &#39;asm&#39;, &#39;inc&#39;)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/04/27/WP-Syntax%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" data-id="ck8b1z3cp000rr426clliaa5l" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/01/vector%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" data-id="ck8jppwpw001svk26835j22dj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -737,7 +736,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -748,6 +747,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/">Linux OpenCV开发环境快速初始化步骤</a>
+          </li>
         
           <li>
             <a href="/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/">部署Hexo博客到GithubPages</a>
@@ -763,10 +766,6 @@
         
           <li>
             <a href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/12/notes/184/">184</a>
           </li>
         
       </ul>

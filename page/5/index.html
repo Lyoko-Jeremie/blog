@@ -70,6 +70,75 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-搭建git服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2015-10-14T08:08:20.000Z" itemprop="datePublished">2015-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/">搭建git服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参照：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000</a></p>
+<p>安装git</p>
+<p>创建git用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser -m git</span><br></pre></td></tr></table></figure>
+
+<p>将用户公钥放入<code>/home/git/.ssh/authorized_keys</code>文件中一行一个<br>之后用户即可使用密钥方式登录git仓库<br>这时可以初始化git仓库</p>
+<p>先选定一个目录作为Git仓库，假定是<code>/srv/sample.git</code>，在<code>/srv</code>目录下输入命令初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare sample.git</span><br></pre></td></tr></table></figure>
+
+<p>然后设置文件夹用户为git【注意这里设置git用户的shell为git-shell有可能无法使用】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R git:git sample.git</span><br></pre></td></tr></table></figure>
+
+<p>之后如使用smartGit可以用下面的路径添加远程库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh:&#x2F;&#x2F;git@服务器地址:服务器端口&#x2F;srv&#x2F;sample.git</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<p>ssh key 生成方法：</p>
+<p>在git shell中执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>按说明创建即可</p>
+<p>手动添加key到本地使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~&#x2F;.ssh&#x2F;私钥文件.ppk</span><br></pre></td></tr></table></figure>
+
+<p>若提示<code>Could not open a connection to your authentication agent.</code>则使用以下命令启动ssh-agent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &#96;ssh-agent -s&#96;</span><br></pre></td></tr></table></figure>
+
+<p>若本地多key共存，可以在文件中如下指定key对应的服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host 服务器地址</span><br><span class="line"> port 服务器端口</span><br><span class="line"> HostName 服务器地址</span><br><span class="line"> PreferredAuthentications publickey</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;私钥文件.ppk</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck8jppwqb0034vk26eugw378u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-恋爱家庭教师露露美★Coordinate!游戏原声文件.NWA读取办法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" class="article-date">
@@ -109,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ck8b1z3dq002vr426dim02wbs" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ck8jppwq9002zvk260lrchypp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ck8b1z3dg0027r426da8oa916" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ck8jppwq20025vk26gt3xex2k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck8b1z3dk002hr426e6k60ft3" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck8jppwq4002dvk265bi9c3rg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ck8b1z3ck000mr4268hcv7cx8" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ck8jppwpg000ovk267qfabksq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ck8b1z3g2006hr4266ycgdtr4" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ck8jppwrw006qvk26cru8aejp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +453,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ck8b1z3d4001hr4266x7060gp" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ck8jppwps001ivk26dhzmgv2p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -444,7 +513,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ck8b1z3fw005xr42656x3hmso" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ck8jppwrr0064vk266qty0vr8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -490,7 +559,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ck8b1z3cu0012r4260v3m8omz" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ck8jppwpm0015vk26c7l91iso" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,76 +607,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="ck8b1z3e3003jr4264wc76z64" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/archlinux安装VNC服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
-  <time datetime="2015-08-03T13:50:17.000Z" itemprop="datePublished">2015-08-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/">archlinux安装VNC服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>完全参照：<a href="https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
-<h4 id="安装tigervnc"><a href="#安装tigervnc" class="headerlink" title="安装tigervnc"></a>安装tigervnc</h4><p>这是一个TightVNC的linux实现<br>以你需要的用户身份执行vncserver第一次启动、设置密码并测试服务器<br>默认的是第一个桌面:1<br>实际端口是5900+1</p>
-<p>如下指令可以关闭某个桌面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
-
-<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">xinitrc</a>来编辑</p>
-<blockquote>
-<p>hit： 简单的编辑方法是<br>  注掉所有exec开头的行<br>  并且注掉末尾最后一个exec行前面的连续几行（这几行末尾有&amp;，是和exec同时执行的内容）<br>  可添加如下指令在文件末尾启动桌面环境<br>  exec startxfce4</p>
-</blockquote>
-<p>windows下使用TightVNC连接即可</p>
-<p>设置开关机行为<br>示例文件在 <code>/usr/lib/systemd/system/vncserver.service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;vncserver.service &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:1.service</span><br></pre></td></tr></table></figure>
-
-<p>然后编辑<code>/etc/systemd/system/vncserver@:1.service</code><br>可以看到其中有使用说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x&#x3D;2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User&#x3D; </span><br><span class="line"># (&quot;User&#x3D;foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;&#x2F;usr&#x2F;bin&#x2F;vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \&#96;systemctl --system daemon-reload\&#96; </span><br><span class="line"># 5. Run \&#96;systemctl enable vncserver@:&lt;display&gt;.service\&#96; </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Vncserver</span><br></pre></td></tr></table></figure>
-
-<p>其实我们只需要在User=后面添加我们的用户名即可<br>如果有需要的话可以修改ExecStart这一项添加启动参数的方式改变行为<br>之后重载systemctl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
-
-<p>再启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
-<p>即可使用</p>
-<p>在使用时可以发现VNC不会自动根据客户机改变桌面分辨率<br>所以我们可以在启动参数中设置一个分辨率</p>
-<p>比如wiki上的示例</p>
-<blockquote>
-<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
-</blockquote>
-<p>如需要完整的选项表，向 vncserver 传递 -help 开关。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck8b1z3fz006br4261peveqnp" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="ck8jppwqg003pvk26b0rp6o1e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -661,7 +661,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -672,6 +672,10 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/">Linux OpenCV开发环境快速初始化步骤</a>
+          </li>
         
           <li>
             <a href="/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/">部署Hexo博客到GithubPages</a>
@@ -687,10 +691,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
         
           <li>
             <a href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/12/notes/184/">184</a>
           </li>
         
       </ul>
