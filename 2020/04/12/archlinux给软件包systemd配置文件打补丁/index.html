@@ -5,19 +5,18 @@
   
 
   
-  <title>130 | Jeremie&#39;s Blog</title>
+  <title>archlinux给软件包systemd配置文件打补丁 | Jeremie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里看起来好像有些东西, 需要输入密码才能查看.">
+  <meta name="description" content="ref : https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BF%AE%E6%94%B9%E7%8E%B0%E5%AD%98%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6 用 systemctl edit &lt;unit&gt; 编辑单元(会自">
 <meta property="og:type" content="article">
-<meta property="og:title" content="130">
-<meta property="og:url" content="http://hexo.jeremie.moe/2013/04/30/notes/130/index.html">
+<meta property="og:title" content="archlinux给软件包systemd配置文件打补丁">
+<meta property="og:url" content="http://hexo.jeremie.moe/2020/04/12/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/index.html">
 <meta property="og:site_name" content="Jeremie&#39;s Blog">
-<meta property="og:description" content="这里看起来好像有些东西, 需要输入密码才能查看.">
+<meta property="og:description" content="ref : https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BF%AE%E6%94%B9%E7%8E%B0%E5%AD%98%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6 用 systemctl edit &lt;unit&gt; 编辑单元(会自">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2013-04-30T05:34:46.000Z">
-<meta property="article:modified_time" content="2020-03-03T15:23:32.318Z">
+<meta property="article:published_time" content="2020-04-12T13:18:36.000Z">
+<meta property="article:modified_time" content="2020-04-12T14:42:05.656Z">
 <meta property="article:author" content="Jeremie">
-<meta property="article:tag" content="ePost">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
@@ -73,14 +72,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-notes/130" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-archlinux给软件包systemd配置文件打补丁" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2013/04/30/notes/130/" class="article-date">
-  <time datetime="2013-04-30T05:34:46.000Z" itemprop="datePublished">2013-04-30</time>
+    <a href="/2020/04/12/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/" class="article-date">
+  <time datetime="2020-04-12T13:18:36.000Z" itemprop="datePublished">2020-04-12</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a>
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
   </div>
 
   </div>
@@ -91,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      130
+      archlinux给软件包systemd配置文件打补丁
     </h1>
   
 
@@ -99,34 +98,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div id="hexo-blog-encrypt" data-wpm="┗|｀O′|┛ 嗷~~, 这个密码看着不太对." data-whm="啊哦~, 这个文章看起来被破坏了, 解密之后变成了这么一滩奇怪的东西."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="Hey, 进去需要密码." /><label>Hey, 进去需要密码.</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="8546bdf98ac8df69070fdfeb7845f83467961559a6a6756df06a0ece35be44b3">c2122dd5376fa052224f5890e4ba895af2cc8e5d433fae764c43156e652ee0881ba6eb08ac31b91188fb28f9042f6ad30e090aced7efb1fe4599bf7d9c5058bf1c4786e06ec0eb5bd166d33b6d03729ea4a2e581fb2e42ce134cfcb69e66f063e6d644f2d0a7d66bb0dcc9a1165e6de4d884f7d0b27bf877a863f1d14b816877a4b923aa99641c2bb58344de6be78dccb114041d24242e1446d6918583a2874b7f3ba802747a6c31caa735a7c9f3333355101a564299baf71caba45c4c5b40d05277cc5a1a6e1c4c90b3414cc0ed605793681f98497146120b13af7decd574f02baf8b281c3b6e2e349e8b02428e5f3ee8ad759fa513969ee3d70b7f287b3e8a100fdec0489182a7487e283da96299ca28e0a9fa665590ff59b905c68cb04c08acfe6f010263ea90c136f72f92645907</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
+        <p>ref : <a href="https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BF%AE%E6%94%B9%E7%8E%B0%E5%AD%98%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E4%BF%AE%E6%94%B9%E7%8E%B0%E5%AD%98%E5%8D%95%E5%85%83%E6%96%87%E4%BB%B6</a></p>
+<p>用 <code>systemctl edit &lt;unit&gt;</code> 编辑单元(会自动重载单元)<br>这将会在编辑器中打开文件 <code>/etc/systemd/system/&lt;unit&gt;.d/override.conf</code>，编辑完成之后自动加载。 </p>
+<p>重置到软件包版本, 要回退单元的变更 <code>systemctl revert unit</code></p>
+<p>通过 <code>systemctl daemon-reload</code> 命令重新加载单元 </p>
+<figure class="highlight plain"><figcaption><span>命令用来查看哪些单元文件被覆盖、哪些被修改。系统维护的时候需要及时了解哪些单元已经有了更新。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用 &#96;&#96;&#96;systemctl cat &lt;unit&gt;&#96;&#96;&#96; 可以查看单元的内容和所有相关的片段.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">实例：</span><br><span class="line"></span><br><span class="line">给 qbittorrent 程序设置Restart</span><br></pre></td></tr></table></figure>
+<p>systemctl edit qbittorrent-nox@jeremie</p>
+<p>[Service]<br>Restart=always</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">给 trojan 程序设置Restart</span><br></pre></td></tr></table></figure>
+
+<p>systemctl edit trojan</p>
+<p>[Service]<br>User=trojan</p>
+<pre><code>
+
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2013/04/30/notes/130/" data-id="ck8x5qcxw0080t0261ka8fox7" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/04/12/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/" data-id="ck8x5qcv0000rt026fogv0txa" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2013/04/30/notes/132/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          132
-        
-      </div>
-    </a>
   
-  
-    <a href="/2013/04/30/notes/128/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">128</div>
+      <div class="article-nav-title">Linux OpenCV开发环境快速初始化步骤</div>
     </a>
   
 </nav>
