@@ -70,6 +70,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-官方JNI规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/" class="article-date">
+  <time datetime="2015-11-23T12:36:33.000Z" itemprop="datePublished">2015-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/">官方JNI规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://linlinjava.org/2015/04/01/learning-jni.html" target="_blank" rel="noopener">http://linlinjava.org/2015/04/01/learning-jni.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/" data-id="cka22mmgd002t20264vkchb9y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Erlang启动脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" class="article-date">
+  <time datetime="2015-11-09T02:32:32.000Z" itemprop="datePublished">2015-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/">Erlang启动脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Erlang可以直接使用一个beam文件作为启动脚本<br>参见：<a href="https://stackoverflow.com/questions/1865997/erlang-startup-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/1865997/erlang-startup-script</a></p>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -boot start_sasl -s XYZ_app start</span><br></pre></td></tr></table></figure>
+
+<p>即可在启动时启动sasl并执行XYZ_app的start函数<br>在start函数中执行一些无法在erl参数中执行的指令即可<br>比如ping指令、先行库启动指令，等等<br>而可以放在erl参数中的有detached、setcookie、name/sname、pa/pz、daemon、boot</p>
+<p>注意：escript不能作为先行启动脚本使用，因为escript执行完后会直接退出虚拟机而不会等待程序继续执行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" data-id="cka22mmfl000j20263g4j0u53" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-树莓派archlinux移动硬盘搭建网络存储" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" class="article-date">
@@ -107,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ck9ck8nim003nyw261v0mf8ih" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="cka22mmgm003k20266ci68jl3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ck9ck8nih0034yw26bqs66q3k" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cka22mmgh0038202695tdbdfr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ck9ck8nif002xyw26dbnu2zpv" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="cka22mmgf00302026asf4dt5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ck9ck8ni90028yw26b5og9rdo" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="cka22mmg9002c20264rzlb7ft" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ck9ck8nic002lyw26bzkw5845" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="cka22mmga002j2026doebgq5r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ck9ck8nhq000ryw268zpfb3gd" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="cka22mmfo000r20260wya7oi4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ck9ck8njt006kyw26aib4an12" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="cka22mmhy006n2026ckc1fnbq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,113 +587,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ck9ck8ni2001nyw26237bdmed" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/Archlinux更新时导入Key出错解决方案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
-  <time datetime="2015-08-30T16:21:09.000Z" itemprop="datePublished">2015-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Archlinux更新时导入Key出错解决方案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>pacman -Syu 系统更新时，在下载完新的包之后出现如下错误</p>
-<blockquote>
-<pre><code>(20/20) checking keys in keyring                   [----------------------] 100%
-downloading required keys...
-error: key &quot;A6234074498E9CEE&quot; could not be looked up remotely
-error: required key missing from keyring
-error: failed to commit transaction (unexpected error)
-Errors occurred, no packages were upgraded.</code></pre></blockquote>
-<p>显示为无法导入Key</p>
-<p>wiki中的说明如下 <a href="https://wiki.archlinux.org/index.php/Pacman-key#Cannot_import_keys" target="_blank" rel="noopener">链接</a></p>
-<blockquote>
-<pre><code>Outdated archlinux-keyring package.
-Incorrect date.
-Your ISP blocked the port used to import PGP keys.
-Your pacman cache contains copy of unsigned packages from previous attempts.</code></pre></blockquote>
-<p>其实首先尝试手动更新key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
-
-<p>异常基本可以解决</p>
-<p>否则就是服务器无法访问或者keyring包版本太老需要更新</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ck9ck8njm005ryw265vsl9i1n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-erlang在OTP框架下的代码热更新" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" class="article-date">
-  <time datetime="2015-08-21T07:07:59.000Z" itemprop="datePublished">2015-08-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/">Erlang在OTP框架下的代码热更新</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网上有许多说原理的，但是却找不到一个完整的在OTP框架下的有关code_change函数用法的热更新</p>
-<p>内容参考自以下网站与OTP文档<br><a href="http://www.jiancool.com/article/61163151807/" target="_blank" rel="noopener">http://www.jiancool.com/article/61163151807/</a></p>
-<p>实践了一下，关键的更新代码是这样</p>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">update</span><span class="params">()</span> -&gt;</span></span><br><span class="line">    sys:suspend(?SERVER),</span><br><span class="line">    code:purge(?MODULE),</span><br><span class="line">    code:load_file(?MODULE),</span><br><span class="line">    sys:change_code(?SERVER, ?MODULE, undefined, extraData),</span><br><span class="line">    sys:resume(?SERVER).</span><br></pre></td></tr></table></figure>
-
-<p>首先suspend暂停线程（change_code必须在暂停状态下使用。并且，暂停状态下线程不会响应call与cast，只会响应带外消息【所以主动模式TCP/UDP通信模块没法直接更新？】）<br>purge清除旧的模块代码（可选，但是如果不清除旧代码，在第二次更新是会出现not_purged错误并且更新失败）（其实是清除上一次更新后遗留下来的代码）（也可使用soft_purge进行软清除）<br>load_file加载新的代码文件<br>change_code调用对应进程的对应旧模块的新版本code_change回调函数来做一些转换操作（这里一般进行state状态量从旧版本到新版本的转换操作）（P:调用的是新代码的code_change函数，所以只要每次更新时在新代码中放置从旧代码到新代码的对state变量的转换函数即可）（网上就没有说清楚这个地方的）<br>最后调用resume恢复进程运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ck9ck8nhv0015yw26dp1b5wqu" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="cka22mmfz001k202637373myz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -620,7 +601,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -631,7 +612,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
     </div>
   </div>
 
@@ -660,7 +641,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -673,6 +654,14 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       <ul>
         
           <li>
+            <a href="/2020/05/11/memo/2020-05-11/">时代变啦</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/">DOS批处理高级教程</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/12/archlinux/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/">archlinux给软件包systemd配置文件打补丁</a>
           </li>
         
@@ -682,14 +671,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
         
           <li>
             <a href="/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/">部署Hexo博客到GithubPages</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/24/error-means-for-programmer/">error means for programmer</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/15/OpenWRT%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E5%99%A8opkg%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/">OpenWRT软件包安装器opkg配置使用代理</a>
           </li>
         
       </ul>
