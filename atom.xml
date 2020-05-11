@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hexo.jeremie.moe/"/>
-  <updated>2020-05-11T05:52:12.176Z</updated>
+  <updated>2020-05-11T05:56:11.461Z</updated>
   <id>http://hexo.jeremie.moe/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://hexo.jeremie.moe/2020/05/11/memo/2020-05-11/"/>
     <id>http://hexo.jeremie.moe/2020/05/11/memo/2020-05-11/</id>
     <published>2020-05-11T05:45:00.000Z</published>
-    <updated>2020-05-11T05:52:12.176Z</updated>
+    <updated>2020-05-11T05:56:11.461Z</updated>
     
-    <content type="html"><![CDATA[<p>时代变啦</p><hr><p>前有“DOS批处理高级教程”<br>现有“The Missing Semester of Your CS Education”</p><p>时代在变化…</p><p>过去的困难的事情 都随着时间的不断前进 不断地被新出现的工具 所简化。</p>]]></content>
+    <content type="html"><![CDATA[<p>时代变啦</p><hr><p>前有<a href="http://blog.jeremie.moe/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" target="_blank" rel="noopener">“DOS批处理高级教程”</a><br>现有<a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">“The Missing Semester of Your CS Education”</a></p><p>时代在变化…</p><p>过去的困难的事情 都随着时间的不断前进 不断地被新出现的工具 所简化。</p>]]></content>
     
     <summary type="html">
     
@@ -31,9 +31,7 @@
       
         &lt;p&gt;时代变啦&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;前有“DOS批处理高级教程”&lt;br&gt;现有“The Missing Semester of Your CS Education”&lt;/p&gt;
-&lt;p&gt;时代在变化…&lt;/p&gt;
-&lt;p&gt;过去的困难的事情 都随着时间的不断前进 不断地被新出现的工具 所简化。
+&lt;p&gt;前有&lt;a href=&quot;http://blog.jeremie.moe/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/&quot; targe
       
     
     </summary>
