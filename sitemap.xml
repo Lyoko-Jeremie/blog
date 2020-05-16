@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://hexo.jeremie.moe/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/</loc>
+    
+    <lastmod>2020-05-16T07:34:10.490Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://hexo.jeremie.moe/2020/05/11/memo/2020-05-11/</loc>
     
     <lastmod>2020-05-11T05:56:11.461Z</lastmod>
@@ -842,6 +849,13 @@
   </url>
   
   <url>
+    <loc>http://hexo.jeremie.moe/2013/05/04/ai/166/</loc>
+    
+    <lastmod>2020-03-03T02:57:50.707Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://hexo.jeremie.moe/2013/05/04/ai/163/</loc>
     
     <lastmod>2020-03-03T02:57:50.707Z</lastmod>
@@ -850,13 +864,6 @@
   
   <url>
     <loc>http://hexo.jeremie.moe/2013/05/11/ai/168/</loc>
-    
-    <lastmod>2020-03-03T02:57:50.707Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hexo.jeremie.moe/2013/05/04/ai/166/</loc>
     
     <lastmod>2020-03-03T02:57:50.707Z</lastmod>
     

@@ -70,6 +70,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux使指定程序在任意用户执行时均拥有root权限" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" class="article-date">
+  <time datetime="2015-09-06T16:47:15.000Z" itemprop="datePublished">2015-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/">linux使指定程序在任意用户执行时均拥有root权限</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在编程使用raspberry的GPIO口时 要想操作GPIO、I2C必须要拥有root权限 但是在多应用程序通信联合运行时就出现一个大问题 非root应用程序不能启动一个访问gpio口的应用程序 想到的解决方法一个就是以root启动调用者 但是这样就失去了安全性 第二个就是使得被调用程序始终以root权限执行 操作方法如下 1、将可执行文件的所有者设置为root 2、设置所有人可读可执行此文件（这两步直接在root下gcc编译即可实现）3、使用“chmod u+s xxx”将xxx文件设置为s权限 这样这个程序在使用ls -all查看时便是如此权限“-rwsr-xr-x” 然后就可以让任意用户使用普通的调用方法却能让程序运行在root权限下   参考：<a href="http://jazka.blog.51cto.com/809003/240549" target="_blank" rel="noopener">http://jazka.blog.51cto.com/809003/240549</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="cka9bfloj001lrg26fatc675p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-archlinux/Archlinux更新时导入Key出错解决方案" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
@@ -120,7 +161,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="cka22pib30063gk26dcx1h00n" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="cka9bflqv005yrg26eu4t6v9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +207,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="cka22pi910013gk265527ejsh" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="cka9bfloa0010rg266wo2hfte" class="article-share-link">Share</a>
       
       
     </footer>
@@ -214,7 +255,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="cka22pi9s003lgk263beoesq1" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="cka9bflp9003trg26g6xqa73a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -283,7 +324,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cka22pib5006dgk26h5pagy16" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cka9bflr4006lrg26fn1hdudw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +379,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="cka22pib5006bgk26gw747dav" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="cka9bflr2006frg266p83br04" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +463,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="cka22pi8q000ggk2649qzer9t" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="cka9bflo2000crg26dzd1f59z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -467,7 +508,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="cka22pi8w000sgk2625t885zc" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="cka9bflo7000rrg26hn3c4bub" class="article-share-link">Share</a>
       
       
     </footer>
@@ -526,7 +567,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cka22pib7006lgk269rbnh357" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cka9bflr6006prg265qv03m9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -609,60 +650,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="cka22pib6006hgk268fpg2pbw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-raspberry pi 2 安装archlinux arm 版" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" class="article-date">
-  <time datetime="2015-07-23T16:04:54.000Z" itemprop="datePublished">2015-07-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/">raspberry pi 2 安装archlinux arm 版</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先：第一点：很重要所以放在第一：</p>
-<blockquote>
-<p><strong>树莓派也是标准的计算机，也要按照正常的操作流程来开关机，否则会出现各种稀奇古怪匪夷所思的问题 树莓派的小黄灯在闪或者亮的时候代表在进行磁盘操作</strong></p>
-</blockquote>
-<p>很重要所以放在第一 然后安装教程：<a href="http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2" target="_blank" rel="noopener">http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2</a> 说说其中的重点 不要指望能在windows下进行这个操作 mkfs.vfat指令不能用就去安装dosfstools<code>这个包</code></p>
-<blockquote>
-<p><strong><em>pacman -S dosfstools</em></strong></p>
-</blockquote>
-<p>笔记本自带的读卡器不能被VM虚拟机正确识别，所以需要使用USB读卡器 解压文件时要使用root权限解压出来的文件的权限才够高，sudo并做不到</p>
-<blockquote>
-<p><strong><em>sudo su</em></strong></p>
-</blockquote>
-<p>另外在这里吐槽一下某些教程动不动就说要打开root用户啦 用root用户才方便啦 sudo好麻烦啦 不知道是些什么心态 另：原版arch的操作在arm上并没有什么不一样 该怎么做就可以怎么做</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="cka22pi9a001sgk266l7mdeoz" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="cka9bflr4006jrg26095w07xv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -729,6 +717,10 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       <ul>
         
           <li>
+            <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/11/memo/2020-05-11/">时代变啦</a>
           </li>
         
@@ -742,10 +734,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
         
           <li>
             <a href="/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/">Linux OpenCV开发环境快速初始化步骤</a>
-          </li>
-        
-          <li>
-            <a href="/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/">部署Hexo博客到GithubPages</a>
           </li>
         
       </ul>
