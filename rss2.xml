@@ -9,8 +9,29 @@
     <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description></description>
-    <pubDate>Tue, 19 May 2020 07:24:29 GMT</pubDate>
+    <pubDate>Thu, 25 Jun 2020 16:41:41 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>长寿个人网站构建思路</title>
+      <link>http://hexo.jeremie.moe/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/</link>
+      <guid>http://hexo.jeremie.moe/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/</guid>
+      <pubDate>Thu, 25 Jun 2020 16:40:52 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;&lt;a href=&quot;http://www.yini.org/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.yini.org/&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+      </description>
+      
+      
+      <content:encoded><![CDATA[<p><a href="http://www.yini.org/" target="_blank" rel="noopener">http://www.yini.org/</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个比QQ空间还古老的网站 是多少女孩的精神家园？</span><br><span class="line">https:&#x2F;&#x2F;www.cnbeta.com&#x2F;articles&#x2F;tech&#x2F;994799.htm</span><br><span class="line">这个太活化石了，古老到我都不认识……</span><br><span class="line">https:&#x2F;&#x2F;t.me&#x2F;CE_Observe&#x2F;13699</span><br></pre></td></tr></table></figure><p>长时间的，缓慢的，逐步的，构建网站<br>逐个页面逐个页面地添加到网站上去，不需要考虑页面风格兼容问题<br>尽量不要使用某些工业化框架或商业服务，转而使用语言基本特性，考虑基础结构的可迁移性和可持续性，以尽可能延长网站的寿命</p>]]></content:encoded>
+      
+      <comments>http://hexo.jeremie.moe/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>netdata汇聚多个节点的监测数据到一个中心节点</title>

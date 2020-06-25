@@ -70,6 +70,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-archlinux/archlinux安装Yaourt" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" class="article-date">
+  <time datetime="2015-07-24T03:58:00.000Z" itemprop="datePublished">2015-07-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/">archlinux安装Yaourt</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参照：<a href="https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a><br>首先，使用添加源的方法已经无法安装yaourt了<br>所以使用第二个方法</p>
+<p>首先安装 base-devel包（<strong>needed</strong> 前面是两个英文短横线，WP会自动转义）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br></pre></td></tr></table></figure>
+
+<p>全部安装完成后检查fakeroot 和 sudo是否安装好<br>可以直接再安装一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fakeroot</span><br><span class="line">pacman -S sudo</span><br></pre></td></tr></table></figure>
+
+<p>有关sudo的相关配置参见我的linux安装文档 <a href="http://jeremie.moe/wordpress/%e5%ae%89%e8%a3%85archlinux/" target="_blank" rel="noopener">点这里</a></p>
+<blockquote>
+<p><em>Note：必须在非root用户下才能使用makepkg 指令</em></p>
+</blockquote>
+<p>之后使用你喜欢的下载器或者安装wget来执行wiki中的步骤（其中<strong>wget</strong> 可能要安装才能用）</p>
+<p>安装 package-query：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;pa&#x2F;package-query&#x2F;package-query.tar.gz</span><br><span class="line">tar zxvf package-query.tar.gz</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+<p>安装 yaourt：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;ya&#x2F;yaourt&#x2F;yaourt.tar.gz</span><br><span class="line">tar zxvf yaourt.tar.gz</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后记得使用以下指令更新数据库（<strong>devel</strong> 和<strong>aur</strong>前面是两个英文短横线）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Sy --devel --aur</span><br></pre></td></tr></table></figure>
+
+<p>也可以直接如下更新整个系统<br>同步数据库，升级软件包，搜索 AUR 和 devel (all packages based on cvs, svn, git, bzr(…)-version) 升级：（<strong>devel</strong> 和<strong>aur</strong>前面是两个英文短横线）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syu --devel --aur</span><br></pre></td></tr></table></figure>
+
+<p>下面这条命令将会检查升级包括AUR软件包在内的所有系统软件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syua</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以愉快地像使用pacman一样使用yaourt了</p>
+<p>另外：可以使用如下指令合并.pacman/pacnew</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -C</span><br></pre></td></tr></table></figure>
+
+
+<p>Editer时可以对新旧文件进行对比<br>但是需要调用vimdiff<br>所以需要安装vim</p>
+<hr>
+<p>另，yaourt的快捷合并pacnew额功能不能完全替代手工管理<br>所以对于危险的配置文件更新<br>比如sudo的配置文件就需要手动更新替换（sudo配置文件需要专用的visudo进行编辑并进行语法检查后保存，否证配置文件失效会导致无法进root，系统报销）</p>
+<hr>
+<p>上面的方法的下载地址貌似改了路径<br>已经404了</p>
+<p>安装部分改为以下方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;package-query.git</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;yaourt.git</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+
+<p>因此安装依赖包也改变为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br><span class="line">pacman -S git wget</span><br></pre></td></tr></table></figure>
+
+<p>参照：<a href="https://archlinux.fr/yaourt-en" target="_blank" rel="noopener">https://archlinux.fr/yaourt-en</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckbv0l6k5006ie826ev6d5brf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-raspberry pi 2 安装archlinux arm 版" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" class="article-date">
@@ -113,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckadlega1001qig26f6c0393i" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckbv0l6hj0021e826g6olbwn2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -157,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckadlegbo005yig261yh61xlw" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckbv0l6jz0062e826ewnpgqg4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -220,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckadlegbw006lig267r1x7kyo" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckbv0l6k8006ye826cpcy1r2e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckadlegbr006big26c7ki7rsg" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckbv0l6k2006ce8261pro4arp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckadlegai003fig265vrjdics" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckbv0l6i6003fe82613yc5tlb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -352,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckadlegal003rig265pcz5747" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckbv0l6i5003de8267rj13twf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -401,7 +484,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckadlega4001zig262vhneold" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckbv0l6ho002fe826hoqj2216" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +676,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckadlegab002sig269toweioz" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckbv0l6hx002ue826gkrbddm0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,49 +718,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckadlegas0048ig2639a747xz" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-我Jeremie又回来啦" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" class="article-date">
-  <time datetime="2015-06-14T03:30:16.000Z" itemprop="datePublished">2015-06-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/">我Jeremie又回来啦～～|∀ﾟ</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这次花大价钱买了一个收费网站空间. 我相信再也不会坑了.<br>说好的5月恢复.现在6月了才有资金.| ω・´) 正在逐渐恢复站点中……….</p>
-<p>很遗憾..只能恢复到2014-05了……….</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ckadlegae0030ig26ccxw489x" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckbv0l6ii0044e826ft4d56f7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -731,7 +772,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -742,6 +783,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/">长寿个人网站构建思路</a>
+          </li>
         
           <li>
             <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
@@ -757,10 +802,6 @@
         
           <li>
             <a href="/2020/04/12/archlinux/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/">archlinux给软件包systemd配置文件打补丁</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/">Linux OpenCV开发环境快速初始化步骤</a>
           </li>
         
       </ul>
