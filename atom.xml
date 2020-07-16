@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hexo.jeremie.moe/"/>
-  <updated>2020-06-25T16:41:41.426Z</updated>
+  <updated>2020-07-16T16:38:49.161Z</updated>
   <id>http://hexo.jeremie.moe/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Archlinux 磁盘空间清理 free disk space</title>
+    <link href="http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/"/>
+    <id>http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/</id>
+    <published>2020-07-16T16:37:53.000Z</published>
+    <updated>2020-07-16T16:38:49.161Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Archlinux 磁盘空间清理 free disk space</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># show all disk space</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># list dir space size</span><br><span class="line"># https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224</span><br><span class="line">du -md1 &#x2F; | sort -n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean pacman cache</span><br><span class="line"># &#x2F;var&#x2F;cache&#x2F;pacman</span><br><span class="line">pacman -Scc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean journal cache</span><br><span class="line"># &#x2F;var&#x2F;cache&#x2F;journal</span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&#x2F;Journal_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</span><br><span class="line">journalctl --disk-usage</span><br><span class="line">journalctl --verify</span><br><span class="line"></span><br><span class="line">journalctl --vacuum-time&#x3D;2weeks</span><br><span class="line">journalctl --vacuum-time&#x3D;2d</span><br><span class="line">journalctl --vacuum-size&#x3D;100M</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>长寿个人网站构建思路</title>
