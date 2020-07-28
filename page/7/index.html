@@ -70,6 +70,135 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Erlang分布式环境下注册名与调用方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2015-07-31T12:27:33.000Z" itemprop="datePublished">2015-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/">Erlang分布式环境下注册名与调用方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在分布式环境下进行远程调用</p>
+<p>标准的OTP模型是使用global参数注册server名，使用global参数进行调用<br>global注册时会将信息注册到kernel.global模块中.global模块会在分布式系统运行时运行</p>
+<p>参见</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kernel-3.2&#x2F;doc&#x2F;html&#x2F;global.htmlstdlib-2.4&#x2F;doc&#x2F;html&#x2F;gen_server.html#start\_link-3 stdlib-2.4&#x2F;doc&#x2F;html&#x2F;gen_server.html#cast-2</span><br></pre></td></tr></table></figure>
+
+<p>同样的，在gen_server文档中的一个细节是<br>如果start_link注册是使用的是global模式，在cast、call等调用时也要使用该模式才能正确调用<br>另：在不同节点上的代码要直接访问的部分一定要在调用节点本地有代码被加载，否则无法正确调用运行</p>
+<p>下面的内容来自：<a href="https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt" target="_blank" rel="noopener">https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt</a></p>
+<hr>
+<p>重点介绍erlang的global模块.</p>
+<ol>
+<li>介绍:<br>这个全局服务是通过一个global_name_server的process来提供的，这个进程存在于每一个erlang node, 这个全局名字服务在每个节点启动的时候自动启动.</li>
+</ol>
+<p>这个模块在所有的链接的erlang节点的集群中实现了register_name/2和whereis_name/1的功能.一个注册名是一个pid的别名，<br>这个名字服务进程管理这些注册的pid,如果一个process终止，名字将自动被注销unregistered.</p>
+<p>这些注册名储存在name table中，这个name table在每一个节点上都存在，因此名字服务的调用是快速的，当一个操作改变了name table, 所有的节点的name table都会自动被更新.</p>
+<ol start="2">
+<li>单个节点的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">1</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(?MODULE, handle_msg, [Name]),</span><br><span class="line">    register(Name, Pid).          <span class="comment">%% 在本地node注册process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    Name ! &#123;Msg, self()&#125;,         <span class="comment">%% 向本地node的process发消息</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">            Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>测试:<br>启动一个本地的process, 并注册一个名字pid1, 调用whereis/1测试,返回Pid,<br>测试通过名字pid1对进程发消息,<br>之后停止process, 再次调用whereis/1测试，返回undefined</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; test:start(pid1).</span><br><span class="line">true</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">&lt;0.64.0&gt;</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 1”).</span><br><span class="line">“received your msg: test – 1”</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 2”).</span><br><span class="line">“received your msg: test – 2”</span><br><span class="line">&gt; test:rpc_call(pid1, stop).</span><br><span class="line">stop</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Erlang Nodes集群的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">2</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name, Node)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(Node, ?MODULE, handle_msg, [Name]),</span><br><span class="line">    global:register_name(Name, Pid).    <span class="comment">%% 注册global的process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    global:send(Name, &#123;Msg, self()&#125;),   <span class="comment">%% 向global的name消息发送方式</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">        Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>测试:<br>在同一台机器上启动三个节点的erlang集群:</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">erl -sname node1 -setcookie testcookie</span><br><span class="line">erl -sname node2 -setcookie testcookie</span><br><span class="line">erl -sname node3 -setcookie testcookie</span><br></pre></td></tr></table></figure>
+<p>在node1上启动服务:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(node1@dev-pc)&gt; test:start(pid1, node()).</span><br><span class="line">yes</span><br><span class="line">(node1@dev-pc)&gt; test:rpc_call(pid1, “msg – 1”).</span><br><span class="line">“received your msg: msg – 1”</span><br><span class="line">在node2和node3上测试效果:</span><br><span class="line">(node3@dev-pc)&gt; test:rpc_call(pid1, “msg – 3”).</span><br><span class="line">“received your msg: msg – 3”</span><br><span class="line"></span><br><span class="line">(node2@dev-pc)&gt; test:rpc_call(pid1, “msg – 2”).</span><br><span class="line">“received your msg: msg – 2”</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>分布式的知识补充:<br>&lt;1&gt; 如何在调用远程node上的方法?<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpc:call(Node, Mod, Func, [Arg1, … ArgN]).</span><br></pre></td></tr></table></figure>
+会在Node上进行一次Mod:Func(Arg1, … ArgN)调用.</li>
+</ol>
+<p>节点名的形式是: NodeName@Host, NodeName和Host都是atom(), 其实整个节点名就是一个atom().</p>
+<p>&lt;2&gt; 在不需要DNS的情况下使用<code>erl -sname node1</code>, 需要DNS的情况下使用<code>erl -name node2</code></p>
+<p>&lt;3&gt; 设置cookie:</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -setcookie testcookie</span><br></pre></td></tr></table></figure>
+<p>或者erlang:set_cookie(Node, testcookie)</p>
+<p>&lt;4&gt; 如何保持两个node上的代码版本一致?<br>可以使用nl(Mod), 这个操作会使所有互联的节点上加载Mod.</p>
+<p>&lt;5&gt; 判断节点的连通性: net_adm:ping(Node)</p>
+<p>&lt;6&gt; <code>node() -&gt; Node</code> 返回本地节点的名字<br><code>nodes() -&gt; [Node]</code> 返回网络上与当前节点连接的所有其它节点列表</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckd5pztkg000e7k2690qk4437" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SS客户端支持负载均衡与服务器优选" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" class="article-date">
+  <time datetime="2015-07-31T12:19:26.000Z" itemprop="datePublished">2015-07-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Code/">Code</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/">SS客户端支持负载均衡与服务器优选</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最新版Shadowsocks-win-2.5.1已经支持多服务器负载均衡与优选功能了<br>在选择服务器的菜单中已经有了“负载均衡”和“高可用”的选项了<br>再也不会因为视频大流量导致TCP链接被临时阻断了<br>看视频时使用负载均衡能够使得YTB视频加载更快<br>浏览网页时使用高可用提高网页加载速度..</p>
+<p>看了一下Git上该项目的说明，可以自己实现IStrategy类改进负载均衡的算法。<br>而看了一下当前默认的负载均衡算法，TCP部分使用的是随机分配算法，UDP部分使用的是标准的求余分布. 下面是负载均衡部分的服务器分布代码<br><a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio管理员.png" target="_blank" rel="noopener"></a><a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio管理员.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio%E7%AE%A1%E7%90%86%E5%91%98.png" alt="2015-07-31 20_12_32-shadowsocks-csharp - Microsoft Visual Studio(管理员)"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public Server GetAServer(IStrategyCallerType type, IPEndPoint localIPEndPoint)</span><br><span class="line">&#123;</span><br><span class="line">    var configs &#x3D; _controller.GetCurrentConfiguration().configs;</span><br><span class="line">    int index;</span><br><span class="line">    if (type &#x3D;&#x3D; IStrategyCallerType.TCP)</span><br><span class="line">    &#123;</span><br><span class="line">        index &#x3D; _random.Next();</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        index &#x3D; localIPEndPoint.GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line">    return configs[index % configs.Count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我感觉负载均衡算法如果能够再加入可用性测试的部分就更好.<br>像我这种有五六个服务器的使用这个样的会更好….</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckd5pztkl000p7k262r6dbutl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-archlinux/archlinux安装bftpd服务器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
@@ -119,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckcp0qdz4006ovs2644mp4da6" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckd5pztmx006q7k262et3bhl1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckcp0qdz3006kvs262sgx6czm" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckd5pztmy006u7k26fmti7cw2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckcp0qdx3001tvs26gfpndosa" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckd5pztkz001s7k260ieig23l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -299,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckcp0qdyy005zvs269hlz0usq" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckd5pztmr00637k267tcyg3ui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckcp0qdz6006uvs264rjb9yb4" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckd5pztmy006w7k26ao9g3d6w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckcp0qdz1006evs260nzoe8am" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckd5pztmv006i7k26bn1q52fz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -449,7 +578,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckcp0qdxg0035vs269y8t73b6" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckd5pztlf003f7k2660xzehhd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,248 +623,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckcp0qdxh003avs2670i54a3c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-“erlang-rfc4627”ErlangJson库windows7x64+msys2环境下构建与使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="article-date">
-  <time datetime="2015-06-24T13:08:03.000Z" itemprop="datePublished">2015-06-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/">“erlang-rfc4627”ErlangJson库windows7x64+msys2环境下构建与使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://erlang-rfc4627" target="_blank" rel="noopener">erlang-rfc4627库GitHub链接</a><br>构建环境： windows7 x64 msys2 64bit已预先在msys2中使用pacman装好GNU</p>
-<p>AutoMake msys2启动脚本如下</p>
-<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SET PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\bin;d:\\Code\\Erlang\\erl6.4\\bin;D:\\Code\\Perl64\\site\\bin;D:\\Code\\Perl64\\bin</span><br><span class="line">@SET CPLUS\_INCLUDE\_PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt;d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt\\include</span><br><span class="line">cd /d d:\</span><br><span class="line">cd d:\\Code\\msys64\</span><br><span class="line">msys2_shell.bat</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-
-<p>启动脚本中已配置好环境变量<br>包含常用的mingw-w64、shell脚本用perl、添加的erlang执行文件bin路径、mingw相关头文件搜索路径<br>设置好了msys2初始目录后<br>启动原生的msys2_shell启动脚本</p>
-<p>附msys2中切换到D盘方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;D&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>其余操作与linux下一致<br>切换到rfc4627项目所在目录后<br>执行make指令<br>自动根据Makefile文件构建项目<br>使用<code>make dist</code>可构建文档<br>在erlang控制台（werl）使用<code>cd(&quot;路径&quot;).</code>切换工作路径到项目ebin文件夹<br>执行指令<code>application:start(rfc4627_jsonrpc).</code>启动jsonrpc应用程序<br>执行<code>l(rfc4627).</code>指令单独加载rfc4627解析模块</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckcp0qdx4001yvs266hicgwwp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-安装ArchLinux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" class="article-date">
-  <time datetime="2015-06-19T14:03:34.000Z" itemprop="datePublished">2015-06-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/">安装ArchLinux</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考： <a href="http://www.cnblogs.com/mad/p/3280041.html" target="_blank" rel="noopener">http://www.cnblogs.com/mad/p/3280041.html</a> <a href="https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a href="https://wiki.archlinux.org/index.php/Installation_guide" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation_guide</a> <em>Note；使用iso引导进入系统后，当前目录下可用ls命令看到一个名叫install.txt的文件，可使用nano install.txt查看，其中有所使用iso镜像对应的官方的安装向导信息</em> 1、分区</p>
-<blockquote>
-<p><strong>cfdisk</strong></p>
-</blockquote>
-<p><em>Note：新版cfdisk会要求选择引导类型 如果使用grub作为引导程序则必须分区为dos(MBR)</em> grub+gpt则必须要留出一个BIOS Boot分区</p>
-<blockquote>
-<p><em>Note: For GRUB to boot from a GPT partitioned disk on a BIOS based system, one has to create a BIOS boot partition. Please note this partition is unrelated to the /boot mountpoint, and will be used by GRUB directly. Do not create a filesystem on it, and do not mount it.</em></p>
-</blockquote>
-<p>参见：<a href="https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR</a> ·注意【Bootable】，/ 分区一定要Bootable，如果你单独划分了/boot，那这个bootable。 2、格式化</p>
-<blockquote>
-<p><strong>fdisk /dev/sda</strong></p>
-</blockquote>
-<p>Command（m or help）：p（这里输入p，查看你现在的分区和名字） q退出fdisk 然后输入下面的命令格式化：</p>
-<blockquote>
-<p><strong>mkfs.ext4 /dev/sda1</strong></p>
-</blockquote>
-<p>如果你还分了/home，就继续 mkfs.ext4 /dev/sdaX x是你的home的分区名。 3、挂载分区</p>
-<blockquote>
-<p><strong>mount /dev/sda1 /mnt</strong></p>
-</blockquote>
-<p>如果你还有/home</p>
-<blockquote>
-<p><strong>mkdir /mnt/home</strong> <strong>mount /dev/sda2 /mnt/hom</strong></p>
-</blockquote>
-<p><em>Note:Linux中，设备均在/dev/目录下，磁盘设备名格式一般为/sda/、/sdb/、/sdc/，磁盘上的卷名格式一般为/sda1/、/sda2/以此类推</em> 4、选择镜像站点</p>
-<blockquote>
-<p><strong>nano /etc/pacman.d/mirrorlist</strong></p>
-</blockquote>
-<p>找带China的放到最前面。 nano使用方法：PageDown PageUp 滚屏，Ctrl+V 向下翻页，Ctrl+Y 向上翻页， Alt+6 复制当前行，Ctrl+u 粘贴，Ctrl+6标记开始点，标记开始点后移动光标选择文本，Alt+6复制开始点到当前点之间选白的内容，按Ctrl+w写入修改，Ctrl+x 退出。 5、安装系统</p>
-<blockquote>
-<p><strong>pacstrap /mnt base</strong></p>
-</blockquote>
-<p>当pacstrap后没有-i参数时会全自动下载安装，可以去干别的事情了，中间会出现卡屏，大概是因为休眠之类的原因吧，按上下箭头就会激活且不影响下载进程。 6、生成fstab</p>
-<blockquote>
-<p><strong>genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</strong> <strong>cat /mnt/etc/fstab</strong></p>
-</blockquote>
-<p>第一条是生成，第二条是查看生成的内容，没问题就Ctrl+x退出即可。 7、配置系统 先要chroot切换到新系统，命令如下：</p>
-<blockquote>
-<p>*<em>arch-chroot /mnt *</em></p>
-</blockquote>
-<p>a、配置locale，语言 编辑/etc/locale.gen，这个文件所有的内容都是注释的，所以在最上面添加en_US.UTF-8 UTF-8即可。 <em>Note：我一般是直接解除下面的所需的注释即可</em></p>
-<blockquote>
-<p><strong>nano /etc/locale.gen</strong> <strong>en_US.UTF-8 UTF-8</strong></p>
-</blockquote>
-<p>然后执行locale-gen自动配置</p>
-<blockquote>
-<p><strong>locale-gen</strong></p>
-</blockquote>
-<p>接着配置locale.conf <em>Note：locale.conf 在 /etc/locale.conf ，在其中添加一行 LANG=语言 即可，一般是LANG=en_US.UTF-8，或者按照上一步的设置</em> b、给计算机起名</p>
-<blockquote>
-<p><strong>echo myhostname &gt; /etc/hostname</strong></p>
-</blockquote>
-<p>c、配置网络 将网络设置成自动获取（启动DHCP服务）</p>
-<blockquote>
-<p><strong>systemctl enable dhcpcd.service</strong></p>
-</blockquote>
-<p>d、设置root密码</p>
-<blockquote>
-<p><strong>passwd</strong></p>
-</blockquote>
-<p>e、安装GRUB</p>
-<blockquote>
-<p><strong>pacman -S grub</strong></p>
-<p><strong>grub-install –target=i386-pc –recheck /dev/sda</strong></p>
-</blockquote>
-<p><em>Note：嫌命令长可以直接省去中间的–target=i386-pc，grub一般会自动识别到平台</em> <em>Note 2：这一步很重要，很重要，很重要所以说三次。正常应该会显示“Installation finished. No error reported.”。如果显示其他内容或者有带Waring或者Error的信息出现就表示出了错误。前面有两次要么就是mount /mnt的时候错误地挂载了/dev/sda（整个磁盘），要么是cfdisk创建分区表的时候选择了gpt导致这里出现警告和错误。</em> 然后配置grub</p>
-<blockquote>
-<p><strong>grub-mkconfig -o /boot/grub/grub.cfg</strong></p>
-</blockquote>
-<p>8、卸载mnt，重启 退出chroot</p>
-<blockquote>
-<p><strong>exit</strong></p>
-</blockquote>
-<p>卸载mnt</p>
-<blockquote>
-<p><strong>umount /mnt</strong></p>
-</blockquote>
-<p><em>Note：如果前面挂载的时候错挂载了整个磁盘或者是grub-install的步骤出了问题，这一步解挂载的时候会显示忙碌，然后一直卸载不了/mnt挂载点</em> 重启</p>
-<blockquote>
-<p><strong>reboot</strong></p>
-</blockquote>
-<p>9、安装桌面环境 <em>Note：这里说一下pacman基本用法</em> <em>第一个参数最常用的是-Ss（查询远程数据库），-S（安装指定名称的包），-Syu（同步远程数据库在本地的元信息）</em> <em>参见：<a href="https://wiki.archlinux.org/index.php/Pacman\_tips\" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman\_tips\</a></em>(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)_ <em>一般我的步骤是先-Ss查询软件包，找到全名，再-S全名 安装</em> a、安装xorg-server</p>
-<blockquote>
-<p><strong>pacman -S xorg-server xorg-server-utils xorg-xinit</strong></p>
-</blockquote>
-<p><em>Note：上面这一步安装了三个包xorg-server、xorg-server-utils、xorg-xinit</em> <em>缺少xorg-server会导致测试Xorg或者启动xfec4时出现/usr/bin/X找不到的错误</em> b、安装显卡驱动 如果你不知道自己是什么显卡，就用下面的命令查看下：</p>
-<blockquote>
-<p><strong>lspci | grep VGA</strong></p>
-</blockquote>
-<p>然后执行下面的命令搜索下匹配你显卡的驱动</p>
-<blockquote>
-<p><strong>pacman -Ss xf86-video | less</strong></p>
-</blockquote>
-<p>VMware虚拟机安装xf86-video-vmware这一个 其他的型号都可以在pacman使用-Ss指令搜索时多个关键字之间使用空格分隔开 例如“xf86-video intel” 、“xf86-video nvidia” 或者使用“貌似是万能”的“xf86-video vesa” 作为搜索关键字 笔记本还可以装触摸板驱动</p>
-<blockquote>
-<p><strong>pacman -S xf86-input-synaptics</strong></p>
-</blockquote>
-<p>如果想要测试X环境是否安装好了，可以执行下面的命令。</p>
-<blockquote>
-<p><strong>pacman -S xorg-twm xorg-xclock xterm</strong> <strong>startx</strong> <strong>exit</strong> <strong>pkill X</strong></p>
-</blockquote>
-<p>c、安装xfce4桌面环境</p>
-<blockquote>
-<p><strong>pacman -S slim</strong></p>
-</blockquote>
-<p>先安装slim，这是一个图像、登录管理器，可用于xfce4的自启动。</p>
-<blockquote>
-<p><strong>pacman -S xfce4</strong></p>
-</blockquote>
-<p>现在，大功告成！！启动！！！</p>
-<blockquote>
-<p><strong>startxfce4</strong></p>
-</blockquote>
-<p><em>Note：如果这里启动不了，显示/usr/bin/X没有这个文件或者目录就表示上面x环境没装全</em> d、安装字体</p>
-<blockquote>
-<p><strong>pacman -S wqy-microhei wqy-zenhei wqy-bitmapfont</strong></p>
-</blockquote>
-<p>至于美化，都是通过界面操作的，system-setting可以设置字体，另外terminal的preference可以设置它用的字体。 <em>Note：可以不安</em> 9、添加一个用户 总不能用root工作，所以我们要添加一个普通账户。</p>
-<blockquote>
-<p><strong>pacman -S sudo</strong> <strong>useradd -m yourname</strong> <strong>passwd yourname</strong></p>
-</blockquote>
-<p>然后把该用户添加到一些组：　audio disk locate network optical power storage video wheel systemd-journal</p>
-<blockquote>
-<p><strong>gpasswd -a yourname wheel</strong></p>
-</blockquote>
-<p>我是添加了power storage network wheel systemd-journal 因为虚拟机，基本只是用terminal学习一些其他的语言，其他不干。（嗯.这里需要一个个添加） 给予这个新用户sudo权限 参照：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> 启动编辑sudoers文件专用的编辑器</p>
-<blockquote>
-<p>sudo的配置文件是<code>/etc/sudoers</code>。<code>visudo</code>会锁住<code>sudoers</code>文件，保存修改到临时文件，然后检查文件格式，确保正确后才会覆盖<code>sudoers</code>文件。必须保证<code>sudoers</code>格式正确，否则sudo将无法运行。</p>
-<p><strong>警告:</strong> <code>/etc/sudoers</code>格式错误会导致sudo不可用。<strong>必须</strong>使用<code>visudo</code>编辑该文件防止出错。</p>
-<p><strong>visudo</strong></p>
-</blockquote>
-<p>添加一行</p>
-<blockquote>
-<p><strong>用户名   ALL=(ALL) ALL</strong> </p>
-</blockquote>
-<p>比如说</p>
-<blockquote>
-<p><strong>yourname   ALL=(ALL) ALL</strong></p>
-</blockquote>
-<p>:x保存并退出 10、设置xfce4自启动 安装搞vim，方便编辑文件。</p>
-<blockquote>
-<p><strong>pacman -S vim</strong></p>
-</blockquote>
-<p>注销或重启，然后用普通用户登录。</p>
-<blockquote>
-<p><strong>vim .xinitrc</strong></p>
-</blockquote>
-<p>删掉exe startxfce4前面的#，然后执行命令：</p>
-<blockquote>
-<p><strong>systemctl enable slim.service</strong></p>
-</blockquote>
-<p>这样下次启动，就自动启动xfce4了。       Other Note： 可以安装sudo简化root权限使用 增强安全性 参见：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckcp0qdxe002yvs263nq4ae2s" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckd5pztlg003l7k26d4ru1x6d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -760,7 +648,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
     </div>
   </div>
 
@@ -802,6 +690,14 @@
       <ul>
         
           <li>
+            <a href="/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
           </li>
         
@@ -811,14 +707,6 @@
         
           <li>
             <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/11/memo/2020-05-11/">时代变啦</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/">DOS批处理高级教程</a>
           </li>
         
       </ul>

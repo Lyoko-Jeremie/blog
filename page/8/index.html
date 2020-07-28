@@ -70,6 +70,247 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-“erlang-rfc4627”ErlangJson库windows7x64+msys2环境下构建与使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2015-06-24T13:08:03.000Z" itemprop="datePublished">2015-06-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/">“erlang-rfc4627”ErlangJson库windows7x64+msys2环境下构建与使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://erlang-rfc4627" target="_blank" rel="noopener">erlang-rfc4627库GitHub链接</a><br>构建环境： windows7 x64 msys2 64bit已预先在msys2中使用pacman装好GNU</p>
+<p>AutoMake msys2启动脚本如下</p>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SET PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\bin;d:\\Code\\Erlang\\erl6.4\\bin;D:\\Code\\Perl64\\site\\bin;D:\\Code\\Perl64\\bin</span><br><span class="line">@SET CPLUS\_INCLUDE\_PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt;d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt\\include</span><br><span class="line">cd /d d:\</span><br><span class="line">cd d:\\Code\\msys64\</span><br><span class="line">msys2_shell.bat</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>启动脚本中已配置好环境变量<br>包含常用的mingw-w64、shell脚本用perl、添加的erlang执行文件bin路径、mingw相关头文件搜索路径<br>设置好了msys2初始目录后<br>启动原生的msys2_shell启动脚本</p>
+<p>附msys2中切换到D盘方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;D&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>其余操作与linux下一致<br>切换到rfc4627项目所在目录后<br>执行make指令<br>自动根据Makefile文件构建项目<br>使用<code>make dist</code>可构建文档<br>在erlang控制台（werl）使用<code>cd(&quot;路径&quot;).</code>切换工作路径到项目ebin文件夹<br>执行指令<code>application:start(rfc4627_jsonrpc).</code>启动jsonrpc应用程序<br>执行<code>l(rfc4627).</code>指令单独加载rfc4627解析模块</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckd5pztl300257k261gtp437c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-安装ArchLinux" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" class="article-date">
+  <time datetime="2015-06-19T14:03:34.000Z" itemprop="datePublished">2015-06-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/">安装ArchLinux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考： <a href="http://www.cnblogs.com/mad/p/3280041.html" target="_blank" rel="noopener">http://www.cnblogs.com/mad/p/3280041.html</a> <a href="https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a href="https://wiki.archlinux.org/index.php/Installation_guide" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation_guide</a> <em>Note；使用iso引导进入系统后，当前目录下可用ls命令看到一个名叫install.txt的文件，可使用nano install.txt查看，其中有所使用iso镜像对应的官方的安装向导信息</em> 1、分区</p>
+<blockquote>
+<p><strong>cfdisk</strong></p>
+</blockquote>
+<p><em>Note：新版cfdisk会要求选择引导类型 如果使用grub作为引导程序则必须分区为dos(MBR)</em> grub+gpt则必须要留出一个BIOS Boot分区</p>
+<blockquote>
+<p><em>Note: For GRUB to boot from a GPT partitioned disk on a BIOS based system, one has to create a BIOS boot partition. Please note this partition is unrelated to the /boot mountpoint, and will be used by GRUB directly. Do not create a filesystem on it, and do not mount it.</em></p>
+</blockquote>
+<p>参见：<a href="https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR</a> ·注意【Bootable】，/ 分区一定要Bootable，如果你单独划分了/boot，那这个bootable。 2、格式化</p>
+<blockquote>
+<p><strong>fdisk /dev/sda</strong></p>
+</blockquote>
+<p>Command（m or help）：p（这里输入p，查看你现在的分区和名字） q退出fdisk 然后输入下面的命令格式化：</p>
+<blockquote>
+<p><strong>mkfs.ext4 /dev/sda1</strong></p>
+</blockquote>
+<p>如果你还分了/home，就继续 mkfs.ext4 /dev/sdaX x是你的home的分区名。 3、挂载分区</p>
+<blockquote>
+<p><strong>mount /dev/sda1 /mnt</strong></p>
+</blockquote>
+<p>如果你还有/home</p>
+<blockquote>
+<p><strong>mkdir /mnt/home</strong> <strong>mount /dev/sda2 /mnt/hom</strong></p>
+</blockquote>
+<p><em>Note:Linux中，设备均在/dev/目录下，磁盘设备名格式一般为/sda/、/sdb/、/sdc/，磁盘上的卷名格式一般为/sda1/、/sda2/以此类推</em> 4、选择镜像站点</p>
+<blockquote>
+<p><strong>nano /etc/pacman.d/mirrorlist</strong></p>
+</blockquote>
+<p>找带China的放到最前面。 nano使用方法：PageDown PageUp 滚屏，Ctrl+V 向下翻页，Ctrl+Y 向上翻页， Alt+6 复制当前行，Ctrl+u 粘贴，Ctrl+6标记开始点，标记开始点后移动光标选择文本，Alt+6复制开始点到当前点之间选白的内容，按Ctrl+w写入修改，Ctrl+x 退出。 5、安装系统</p>
+<blockquote>
+<p><strong>pacstrap /mnt base</strong></p>
+</blockquote>
+<p>当pacstrap后没有-i参数时会全自动下载安装，可以去干别的事情了，中间会出现卡屏，大概是因为休眠之类的原因吧，按上下箭头就会激活且不影响下载进程。 6、生成fstab</p>
+<blockquote>
+<p><strong>genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</strong> <strong>cat /mnt/etc/fstab</strong></p>
+</blockquote>
+<p>第一条是生成，第二条是查看生成的内容，没问题就Ctrl+x退出即可。 7、配置系统 先要chroot切换到新系统，命令如下：</p>
+<blockquote>
+<p>*<em>arch-chroot /mnt *</em></p>
+</blockquote>
+<p>a、配置locale，语言 编辑/etc/locale.gen，这个文件所有的内容都是注释的，所以在最上面添加en_US.UTF-8 UTF-8即可。 <em>Note：我一般是直接解除下面的所需的注释即可</em></p>
+<blockquote>
+<p><strong>nano /etc/locale.gen</strong> <strong>en_US.UTF-8 UTF-8</strong></p>
+</blockquote>
+<p>然后执行locale-gen自动配置</p>
+<blockquote>
+<p><strong>locale-gen</strong></p>
+</blockquote>
+<p>接着配置locale.conf <em>Note：locale.conf 在 /etc/locale.conf ，在其中添加一行 LANG=语言 即可，一般是LANG=en_US.UTF-8，或者按照上一步的设置</em> b、给计算机起名</p>
+<blockquote>
+<p><strong>echo myhostname &gt; /etc/hostname</strong></p>
+</blockquote>
+<p>c、配置网络 将网络设置成自动获取（启动DHCP服务）</p>
+<blockquote>
+<p><strong>systemctl enable dhcpcd.service</strong></p>
+</blockquote>
+<p>d、设置root密码</p>
+<blockquote>
+<p><strong>passwd</strong></p>
+</blockquote>
+<p>e、安装GRUB</p>
+<blockquote>
+<p><strong>pacman -S grub</strong></p>
+<p><strong>grub-install –target=i386-pc –recheck /dev/sda</strong></p>
+</blockquote>
+<p><em>Note：嫌命令长可以直接省去中间的–target=i386-pc，grub一般会自动识别到平台</em> <em>Note 2：这一步很重要，很重要，很重要所以说三次。正常应该会显示“Installation finished. No error reported.”。如果显示其他内容或者有带Waring或者Error的信息出现就表示出了错误。前面有两次要么就是mount /mnt的时候错误地挂载了/dev/sda（整个磁盘），要么是cfdisk创建分区表的时候选择了gpt导致这里出现警告和错误。</em> 然后配置grub</p>
+<blockquote>
+<p><strong>grub-mkconfig -o /boot/grub/grub.cfg</strong></p>
+</blockquote>
+<p>8、卸载mnt，重启 退出chroot</p>
+<blockquote>
+<p><strong>exit</strong></p>
+</blockquote>
+<p>卸载mnt</p>
+<blockquote>
+<p><strong>umount /mnt</strong></p>
+</blockquote>
+<p><em>Note：如果前面挂载的时候错挂载了整个磁盘或者是grub-install的步骤出了问题，这一步解挂载的时候会显示忙碌，然后一直卸载不了/mnt挂载点</em> 重启</p>
+<blockquote>
+<p><strong>reboot</strong></p>
+</blockquote>
+<p>9、安装桌面环境 <em>Note：这里说一下pacman基本用法</em> <em>第一个参数最常用的是-Ss（查询远程数据库），-S（安装指定名称的包），-Syu（同步远程数据库在本地的元信息）</em> <em>参见：<a href="https://wiki.archlinux.org/index.php/Pacman\_tips\" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman\_tips\</a></em>(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)_ <em>一般我的步骤是先-Ss查询软件包，找到全名，再-S全名 安装</em> a、安装xorg-server</p>
+<blockquote>
+<p><strong>pacman -S xorg-server xorg-server-utils xorg-xinit</strong></p>
+</blockquote>
+<p><em>Note：上面这一步安装了三个包xorg-server、xorg-server-utils、xorg-xinit</em> <em>缺少xorg-server会导致测试Xorg或者启动xfec4时出现/usr/bin/X找不到的错误</em> b、安装显卡驱动 如果你不知道自己是什么显卡，就用下面的命令查看下：</p>
+<blockquote>
+<p><strong>lspci | grep VGA</strong></p>
+</blockquote>
+<p>然后执行下面的命令搜索下匹配你显卡的驱动</p>
+<blockquote>
+<p><strong>pacman -Ss xf86-video | less</strong></p>
+</blockquote>
+<p>VMware虚拟机安装xf86-video-vmware这一个 其他的型号都可以在pacman使用-Ss指令搜索时多个关键字之间使用空格分隔开 例如“xf86-video intel” 、“xf86-video nvidia” 或者使用“貌似是万能”的“xf86-video vesa” 作为搜索关键字 笔记本还可以装触摸板驱动</p>
+<blockquote>
+<p><strong>pacman -S xf86-input-synaptics</strong></p>
+</blockquote>
+<p>如果想要测试X环境是否安装好了，可以执行下面的命令。</p>
+<blockquote>
+<p><strong>pacman -S xorg-twm xorg-xclock xterm</strong> <strong>startx</strong> <strong>exit</strong> <strong>pkill X</strong></p>
+</blockquote>
+<p>c、安装xfce4桌面环境</p>
+<blockquote>
+<p><strong>pacman -S slim</strong></p>
+</blockquote>
+<p>先安装slim，这是一个图像、登录管理器，可用于xfce4的自启动。</p>
+<blockquote>
+<p><strong>pacman -S xfce4</strong></p>
+</blockquote>
+<p>现在，大功告成！！启动！！！</p>
+<blockquote>
+<p><strong>startxfce4</strong></p>
+</blockquote>
+<p><em>Note：如果这里启动不了，显示/usr/bin/X没有这个文件或者目录就表示上面x环境没装全</em> d、安装字体</p>
+<blockquote>
+<p><strong>pacman -S wqy-microhei wqy-zenhei wqy-bitmapfont</strong></p>
+</blockquote>
+<p>至于美化，都是通过界面操作的，system-setting可以设置字体，另外terminal的preference可以设置它用的字体。 <em>Note：可以不安</em> 9、添加一个用户 总不能用root工作，所以我们要添加一个普通账户。</p>
+<blockquote>
+<p><strong>pacman -S sudo</strong> <strong>useradd -m yourname</strong> <strong>passwd yourname</strong></p>
+</blockquote>
+<p>然后把该用户添加到一些组：　audio disk locate network optical power storage video wheel systemd-journal</p>
+<blockquote>
+<p><strong>gpasswd -a yourname wheel</strong></p>
+</blockquote>
+<p>我是添加了power storage network wheel systemd-journal 因为虚拟机，基本只是用terminal学习一些其他的语言，其他不干。（嗯.这里需要一个个添加） 给予这个新用户sudo权限 参照：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> 启动编辑sudoers文件专用的编辑器</p>
+<blockquote>
+<p>sudo的配置文件是<code>/etc/sudoers</code>。<code>visudo</code>会锁住<code>sudoers</code>文件，保存修改到临时文件，然后检查文件格式，确保正确后才会覆盖<code>sudoers</code>文件。必须保证<code>sudoers</code>格式正确，否则sudo将无法运行。</p>
+<p><strong>警告:</strong> <code>/etc/sudoers</code>格式错误会导致sudo不可用。<strong>必须</strong>使用<code>visudo</code>编辑该文件防止出错。</p>
+<p><strong>visudo</strong></p>
+</blockquote>
+<p>添加一行</p>
+<blockquote>
+<p><strong>用户名   ALL=(ALL) ALL</strong> </p>
+</blockquote>
+<p>比如说</p>
+<blockquote>
+<p><strong>yourname   ALL=(ALL) ALL</strong></p>
+</blockquote>
+<p>:x保存并退出 10、设置xfce4自启动 安装搞vim，方便编辑文件。</p>
+<blockquote>
+<p><strong>pacman -S vim</strong></p>
+</blockquote>
+<p>注销或重启，然后用普通用户登录。</p>
+<blockquote>
+<p><strong>vim .xinitrc</strong></p>
+</blockquote>
+<p>删掉exe startxfce4前面的#，然后执行命令：</p>
+<blockquote>
+<p><strong>systemctl enable slim.service</strong></p>
+</blockquote>
+<p>这样下次启动，就自动启动xfce4了。       Other Note： 可以安装sudo简化root权限使用 增强安全性 参见：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckd5pztl9002v7k26dhcudp1e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-花右京女仆队hanaukyo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" class="article-date">
@@ -102,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckcp0qdxx0044vs26e7z1581d" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckd5pztlp004a7k26hxym0a33" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ckcp0qdxd002tvs262k72gr6n" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ckd5pztlb00307k26dwwh3g38" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ckcp0qdwy001bvs26bmpfgte6" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ckd5pztks00187k265ve58b18" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" data-id="ckcp0qdy00046vs26fgo2bo76" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" data-id="ckd5pztln00427k2697cf7kal" class="article-share-link">Share</a>
       
       
     </footer>
@@ -308,7 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/03/%E5%AF%B9%E7%89%88%E6%9D%83%E7%9A%84%E8%AF%AF%E8%A7%A3%E2%80%94%E4%B8%80%E7%B3%BB%E5%88%97%E7%9A%84%E9%94%99%E8%AF%AF/" data-id="ckcp0qdxd002vvs265rvv9uzl" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/03/%E5%AF%B9%E7%89%88%E6%9D%83%E7%9A%84%E8%AF%AF%E8%A7%A3%E2%80%94%E4%B8%80%E7%B3%BB%E5%88%97%E7%9A%84%E9%94%99%E8%AF%AF/" data-id="ckd5pztle003d7k26djck3ops" class="article-share-link">Share</a>
       
       
     </footer>
@@ -350,7 +591,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/01/vector%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" data-id="ckcp0qdx2001ovs26dxux15xs" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/05/01/vector%E5%AE%B9%E5%99%A8%E6%95%B0%E6%8D%AE%E5%90%88%E5%B9%B6%E6%96%B9%E6%B3%95/" data-id="ckd5pztl0001v7k268r67b3cu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -397,7 +638,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/04/27/WP-Syntax%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" data-id="ckcp0qdwp000ovs2612jg2zmb" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/04/27/WP-Syntax%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" data-id="ckd5pztkm000u7k26aow118t7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -440,813 +681,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/04/27/%E5%8C%85%E8%A3%85cout%E7%AD%89ostream%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckcp0qdx8002cvs26dcf32yzl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-文件夹遍历" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/" class="article-date">
-  <time datetime="2014-04-27T00:24:13.000Z" itemprop="datePublished">2014-04-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/WinSDK/">WinSDK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/">文件夹遍历</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://www.cppblog.com/shongbee2/archive/2009/03/30/78366.aspx" target="_blank" rel="noopener">http://www.cppblog.com/shongbee2/archive/2009/03/30/78366.aspx</a><br><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa364418%28v=vs.85%29.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/windows/desktop/aa364418%28v=vs.85%29.aspx</a><br><a href="http://msdn.microsoft.com/en-us/library/windows/desktop/aa364428%28v=vs.85%29.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/windows/desktop/aa364428%28v=vs.85%29.aspx</a></p>
-<p>用windows的API实现文件夹的遍历扫描的程序<br>使用到的API：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FindFirstFile</span><br><span class="line">FindNextFile</span><br><span class="line">FindClose</span><br></pre></td></tr></table></figure>
-<p>主要用到的结构：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WIN32_FIND_DATA</span><br></pre></td></tr></table></figure>
-<p>在msdn都有详细的说明。这里也简要说明一下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HANDLE WINAPI FindFirstFile(</span><br><span class="line">__in          LPCTSTR lpFileName,                   &#x2F;&#x2F;要查找的文件路径</span><br><span class="line">__out         LPWIN32_FIND_DATA lpFindFileData      &#x2F;&#x2F;保存文件结构的指针</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p>查找对应的路径，如果查找返回查找的句柄，然后我们可以通过该句柄去查找下一个和关闭这个句柄。<br>如果查找失败，则返回<code>（INVALED_HANDLE_VALUE）(-1)</code>，可以通过<code>GetLastError();</code>来得到他的错误类型。<br>注意：查找第一个的时候，他不仅返回了查找的句柄，他也把第一个的文件信息保存在<code>lpFindFileData</code>里面了。所以这个也是要处理的。</p>
-<hr>
-<p>例程：<br>头文件包含：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">#include &lt;winbase.h&gt;    &#x2F;&#x2F; 在这里定义</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">#include &lt;windows.h&gt;</span><br><span class="line">#include &lt;winbase.h&gt; &#x2F;&#x2F; 在这里</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; HANDLE WINAPI FindFirstFile(</span><br><span class="line">    &#x2F;&#x2F;      _In_   LPCTSTR lpFileName,                    &#x2F;&#x2F; C风格字符串 名</span><br><span class="line">    &#x2F;&#x2F;      _Out_  LPWIN32_FIND_DATA lpFindFileData       &#x2F;&#x2F; 指向接收信息的结构体的指针</span><br><span class="line">    &#x2F;&#x2F;      );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 关于返回值</span><br><span class="line">    &#x2F;&#x2F; 成功， 则返回用来继续查找或者关闭用的句柄</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; 失败，则返回 INVALID_HANDLE_VALUE 并且结构体内容是不确定的</span><br><span class="line">    &#x2F;&#x2F; 获取更多信息在 GetLastError 函数</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; 如果没有找到文件 GetLastError 函数会返回 ERROR_FILE_NOT_FOUND</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 关于第一个参数</span><br><span class="line">    &#x2F;&#x2F; The directory or path, and the file name, which can include wildcard characters,</span><br><span class="line">    &#x2F;&#x2F; for example, an asterisk (*) or a question mark (?).</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; This parameter should not be NULL, an invalid string</span><br><span class="line">    &#x2F;&#x2F; (for example, an empty string or a string that is missing the terminating null character),</span><br><span class="line">    &#x2F;&#x2F; or end in a trailing backslash ().</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; If the string ends with a wildcard, period (.),</span><br><span class="line">    &#x2F;&#x2F; or directory name,</span><br><span class="line">    &#x2F;&#x2F; the user must have access permissions to the root and all subdirectories on the path.</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    &#x2F;&#x2F; In the ANSI version of this function, the name is limited to MAX_PATH characters.</span><br><span class="line">    &#x2F;&#x2F; To extend this limit to 32,767 wide characters,</span><br><span class="line">    &#x2F;&#x2F; call the Unicode version of the function and prepend &quot;\?&quot; to the path.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; BOOL WINAPI FindNextFile(</span><br><span class="line">    &#x2F;&#x2F;     _In_   HANDLE hFindFile,            &#x2F;&#x2F; 上一个函数的返回句柄</span><br><span class="line">    &#x2F;&#x2F;     _Out_  LPWIN32_FIND_DATA lpFindFileData</span><br><span class="line">    &#x2F;&#x2F; );</span><br><span class="line">    &#x2F;&#x2F; 失败返回false【没有下一个??】    并且结构体返回内容不确定</span><br><span class="line">    &#x2F;&#x2F; 具体失败信息查看 GetLastError</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; BOOL WINAPI FindClose(</span><br><span class="line">    &#x2F;&#x2F;     _Inout_  HANDLE hFindFile     &#x2F;&#x2F;  关闭句柄</span><br><span class="line">    &#x2F;&#x2F; );</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 结构体内容</span><br><span class="line">    &#x2F;&#x2F; typedef struct _WIN32_FIND_DATA &#123;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwFileAttributes;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftCreationTime;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftLastAccessTime;</span><br><span class="line">    &#x2F;&#x2F;     FILETIME ftLastWriteTime;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    nFileSizeHigh;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    nFileSizeLow;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwReserved0;</span><br><span class="line">    &#x2F;&#x2F;     DWORD    dwReserved1;</span><br><span class="line">    &#x2F;&#x2F;     CHAR    cFileName[MAX_PATH];</span><br><span class="line">    &#x2F;&#x2F;     CHAR    cAlternateFileName[14];</span><br><span class="line">    &#x2F;&#x2F;      &#125; WIN32_FIND_DATA, *PWIN32_FIND_DATA, *LPWIN32_FIND_DATA;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; DWORD WINAPI GetLastError(void);</span><br><span class="line">    &#x2F;&#x2F; 返回上一个错误代码</span><br><span class="line"></span><br><span class="line">    WIN32_FIND_DATA FindFileData;</span><br><span class="line">    LPWIN32_FIND_DATA lpFindFileData &#x3D; &amp;FindFileData;</span><br><span class="line"></span><br><span class="line">    string path &#x3D; &quot;.\png\*.png&quot;;</span><br><span class="line"></span><br><span class="line">    HANDLE handle &#x3D; FindFirstFile( path.c_str(), lpFindFileData );</span><br><span class="line"></span><br><span class="line">    if ( INVALID_HANDLE_VALUE &#x3D;&#x3D; handle )</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; &quot;INVALID_HANDLE_VALUE&quot; &lt;&lt; endl;</span><br><span class="line">        cin.get();</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    do&#123;</span><br><span class="line">        if (  !( lpFindFileData-&gt;dwFileAttributes &amp; FILE_ATTRIBUTE_DIRECTORY)  )</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; lpFindFileData-&gt;cFileName &lt; &lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        int t &#x3D; GetLastError();</span><br><span class="line">&#x2F;&#x2F;        cout &lt;&lt; &quot;GetLastError &quot; &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">        if ( ERROR_FILE_NOT_FOUND &#x3D;&#x3D; t )</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; &quot;ERROR_FILE_NOT_FOUND&quot; &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;while ( FindNextFile( handle, lpFindFileData ) );</span><br><span class="line"></span><br><span class="line">    if ( !FindClose(handle) )</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; &quot;CloseFail&quot; &lt;&lt; endl;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cin.get();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/04/27/%E6%96%87%E4%BB%B6%E5%A4%B9%E9%81%8D%E5%8E%86/" data-id="ckcp0qdxf0033vs267cecdw7z" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-win虚拟按键编码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/" class="article-date">
-  <time datetime="2014-04-27T00:12:02.000Z" itemprop="datePublished">2014-04-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/WinSDK/">WinSDK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/">win虚拟按键编码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://msdn.microsoft.com/en-us/library/ms927178.aspx" target="_blank" rel="noopener">http://msdn.microsoft.com/en-us/library/ms927178.aspx</a></p>
-<h2 id="Virtual-key-codes"><a href="#Virtual-key-codes" class="headerlink" title="Virtual key codes"></a>Virtual key codes</h2><table>
-<thead>
-<tr>
-<th>Symbolic constant</th>
-<th>Hexadecimal value</th>
-<th>Mouse or keyboard equivalent</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VK_LBUTTON</td>
-<td>01</td>
-<td>Left mouse button</td>
-</tr>
-<tr>
-<td>VK_RBUTTON</td>
-<td>02</td>
-<td>Right mouse button</td>
-</tr>
-<tr>
-<td>VK_CANCEL</td>
-<td>03</td>
-<td>Control-break processing</td>
-</tr>
-<tr>
-<td>VK_MBUTTON</td>
-<td>04</td>
-<td>Middle mouse button on a three-button mouse</td>
-</tr>
-<tr>
-<td></td>
-<td>0507</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_BACK</td>
-<td>08</td>
-<td>BACKSPACE key</td>
-</tr>
-<tr>
-<td>VK_TAB</td>
-<td>09</td>
-<td>TAB key</td>
-</tr>
-<tr>
-<td></td>
-<td>0A0B</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_CLEAR</td>
-<td>0C</td>
-<td>CLEAR key</td>
-</tr>
-<tr>
-<td>VK_RETURN</td>
-<td>0D</td>
-<td>ENTER key</td>
-</tr>
-<tr>
-<td></td>
-<td>0E0F</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_SHIFT</td>
-<td>10</td>
-<td>SHIFT key</td>
-</tr>
-<tr>
-<td>VK_CONTROL</td>
-<td>11</td>
-<td>CTRL key</td>
-</tr>
-<tr>
-<td>VK_MENU</td>
-<td>12</td>
-<td>ALT key</td>
-</tr>
-<tr>
-<td>VK_PAUSE</td>
-<td>13</td>
-<td>PAUSE key</td>
-</tr>
-<tr>
-<td>VK_CAPITAL</td>
-<td>14</td>
-<td>CAPS LOCK key</td>
-</tr>
-<tr>
-<td></td>
-<td>1519</td>
-<td>Reserved for Kanji systems</td>
-</tr>
-<tr>
-<td></td>
-<td>1A</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_ESCAPE</td>
-<td>1B</td>
-<td>ESC key</td>
-</tr>
-<tr>
-<td></td>
-<td>1C1F</td>
-<td>Reserved for Kanji systems</td>
-</tr>
-<tr>
-<td>VK_SPACE</td>
-<td>20</td>
-<td>SPACEBAR</td>
-</tr>
-<tr>
-<td>VK_PRIOR</td>
-<td>21</td>
-<td>PAGE UP key</td>
-</tr>
-<tr>
-<td>VK_NEXT</td>
-<td>22</td>
-<td>PAGE DOWN key</td>
-</tr>
-<tr>
-<td>VK_END</td>
-<td>23</td>
-<td>END key</td>
-</tr>
-<tr>
-<td>VK_HOME</td>
-<td>24</td>
-<td>HOME key</td>
-</tr>
-<tr>
-<td>VK_LEFT</td>
-<td>25</td>
-<td>LEFT ARROW key</td>
-</tr>
-<tr>
-<td>VK_UP</td>
-<td>26</td>
-<td>UP ARROW key</td>
-</tr>
-<tr>
-<td>VK_RIGHT</td>
-<td>27</td>
-<td>RIGHT ARROW key</td>
-</tr>
-<tr>
-<td>VK_DOWN</td>
-<td>28</td>
-<td>DOWN ARROW key</td>
-</tr>
-<tr>
-<td>VK_SELECT</td>
-<td>29</td>
-<td>SELECT key</td>
-</tr>
-<tr>
-<td></td>
-<td>2A</td>
-<td>Specific to original equipment manufacturer</td>
-</tr>
-<tr>
-<td>VK_EXECUTE</td>
-<td>2B</td>
-<td>EXECUTE key</td>
-</tr>
-<tr>
-<td>VK_SNAPSHOT</td>
-<td>2C</td>
-<td>PRINT SCREEN key</td>
-</tr>
-<tr>
-<td>VK_INSERT</td>
-<td>2D</td>
-<td>INS key</td>
-</tr>
-<tr>
-<td>VK_DELETE</td>
-<td>2E</td>
-<td>DEL key</td>
-</tr>
-<tr>
-<td>VK_HELP</td>
-<td>2F</td>
-<td>HELP key</td>
-</tr>
-<tr>
-<td></td>
-<td>3A40</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_LWIN</td>
-<td>5B</td>
-<td>Left Windows key on a Microsoft Natural Keyboard</td>
-</tr>
-<tr>
-<td>VK_RWIN</td>
-<td>5C</td>
-<td>Right Windows key on a Microsoft Natural Keyboard</td>
-</tr>
-<tr>
-<td>VK_APPS</td>
-<td>5D</td>
-<td>Applications key on a Microsoft Natural Keyboard</td>
-</tr>
-<tr>
-<td></td>
-<td>5E5F</td>
-<td>Undefined</td>
-</tr>
-<tr>
-<td>VK_NUMPAD0</td>
-<td>60</td>
-<td>Numeric keypad 0 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD1</td>
-<td>61</td>
-<td>Numeric keypad 1 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD2</td>
-<td>62</td>
-<td>Numeric keypad 2 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD3</td>
-<td>63</td>
-<td>Numeric keypad 3 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD4</td>
-<td>64</td>
-<td>Numeric keypad 4 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD5</td>
-<td>65</td>
-<td>Numeric keypad 5 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD6</td>
-<td>66</td>
-<td>Numeric keypad 6 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD7</td>
-<td>67</td>
-<td>Numeric keypad 7 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD8</td>
-<td>68</td>
-<td>Numeric keypad 8 key</td>
-</tr>
-<tr>
-<td>VK_NUMPAD9</td>
-<td>69</td>
-<td>Numeric keypad 9 key</td>
-</tr>
-<tr>
-<td>VK_MULTIPLY</td>
-<td>6A</td>
-<td>Multiply key</td>
-</tr>
-<tr>
-<td>VK_ADD</td>
-<td>6B</td>
-<td>Add key</td>
-</tr>
-<tr>
-<td>VK_SEPARATOR</td>
-<td>6C</td>
-<td>Separator key</td>
-</tr>
-<tr>
-<td>VK_SUBTRACT</td>
-<td>6D</td>
-<td>Subtract key</td>
-</tr>
-<tr>
-<td>VK_DECIMAL</td>
-<td>6E</td>
-<td>Decimal key</td>
-</tr>
-<tr>
-<td>VK_DIVIDE</td>
-<td>6F</td>
-<td>Divide key</td>
-</tr>
-<tr>
-<td>VK_F1</td>
-<td>70</td>
-<td>F1 key</td>
-</tr>
-<tr>
-<td>VK_F2</td>
-<td>71</td>
-<td>F2 key</td>
-</tr>
-<tr>
-<td>VK_F3</td>
-<td>72</td>
-<td>F3 key</td>
-</tr>
-<tr>
-<td>VK_F4</td>
-<td>73</td>
-<td>F4 key</td>
-</tr>
-<tr>
-<td>VK_F5</td>
-<td>74</td>
-<td>F5 key</td>
-</tr>
-<tr>
-<td>VK_F6</td>
-<td>75</td>
-<td>F6 key</td>
-</tr>
-<tr>
-<td>VK_F7</td>
-<td>76</td>
-<td>F7 key</td>
-</tr>
-<tr>
-<td>VK_F8</td>
-<td>77</td>
-<td>F8 key</td>
-</tr>
-<tr>
-<td>VK_F9</td>
-<td>78</td>
-<td>F9 key</td>
-</tr>
-<tr>
-<td>VK_F10</td>
-<td>79</td>
-<td>F10 key</td>
-</tr>
-<tr>
-<td>VK_F11</td>
-<td>7A</td>
-<td>F11 key</td>
-</tr>
-<tr>
-<td>VK_F12</td>
-<td>7B</td>
-<td>F12 key</td>
-</tr>
-<tr>
-<td>VK_F13</td>
-<td>7C</td>
-<td>F13 key</td>
-</tr>
-<tr>
-<td>VK_F14</td>
-<td>7D</td>
-<td>F14 key</td>
-</tr>
-<tr>
-<td>VK_F15</td>
-<td>7E</td>
-<td>F15 key</td>
-</tr>
-<tr>
-<td>VK_F16</td>
-<td>7F</td>
-<td>F16 key</td>
-</tr>
-<tr>
-<td>VK_F17</td>
-<td>80H</td>
-<td>F17 key</td>
-</tr>
-<tr>
-<td>VK_F18</td>
-<td>81H</td>
-<td>F18 key</td>
-</tr>
-<tr>
-<td>VK_F19</td>
-<td>82H</td>
-<td>F19 key</td>
-</tr>
-<tr>
-<td>VK_F20</td>
-<td>83H</td>
-<td>F20 key</td>
-</tr>
-<tr>
-<td>VK_F21</td>
-<td>84H</td>
-<td>F21 key</td>
-</tr>
-<tr>
-<td>VK_F22</td>
-<td>85H</td>
-<td>F22 key(PPC only) Key used to lock device.</td>
-</tr>
-<tr>
-<td>VK_F23</td>
-<td>86H</td>
-<td>F23 key</td>
-</tr>
-<tr>
-<td>VK_F24</td>
-<td>87H</td>
-<td>F24 key</td>
-</tr>
-<tr>
-<td></td>
-<td>888F</td>
-<td>Unassigned</td>
-</tr>
-<tr>
-<td>VK_NUMLOCK</td>
-<td>90</td>
-<td>NUM LOCK key</td>
-</tr>
-<tr>
-<td>VK_SCROLL</td>
-<td>91</td>
-<td>SCROLL LOCK key</td>
-</tr>
-<tr>
-<td>VK_LSHIFT</td>
-<td>0xA0</td>
-<td>Left SHIFT</td>
-</tr>
-<tr>
-<td>VK_RSHIFT</td>
-<td>0xA1</td>
-<td>Right SHIFT</td>
-</tr>
-<tr>
-<td>VK_LCONTROL</td>
-<td>0xA2</td>
-<td>Left CTRL</td>
-</tr>
-<tr>
-<td>VK_RCONTROL</td>
-<td>0xA3</td>
-<td>Right CTRL</td>
-</tr>
-<tr>
-<td>VK_LMENU</td>
-<td>0xA4</td>
-<td>Left ALT</td>
-</tr>
-<tr>
-<td>VK_RMENU</td>
-<td>0xA5</td>
-<td>Right ALT</td>
-</tr>
-<tr>
-<td></td>
-<td>BA-C0</td>
-<td>Specific to original equipment manufacturer; reserved. See following tables.</td>
-</tr>
-<tr>
-<td></td>
-<td>C1-DA</td>
-<td>Unassigned</td>
-</tr>
-<tr>
-<td></td>
-<td>DB-E2</td>
-<td>Specific to original equipment manufacturer; reserved. See following tables.</td>
-</tr>
-<tr>
-<td></td>
-<td>E3 – E4</td>
-<td>Specific to original equipment manufacturer</td>
-</tr>
-<tr>
-<td></td>
-<td>E5</td>
-<td>Unassigned</td>
-</tr>
-<tr>
-<td></td>
-<td>E6</td>
-<td>Specific to original equipment manufacturer</td>
-</tr>
-<tr>
-<td>VK_PACKET</td>
-<td>E7</td>
-<td>Used to pass Unicode characters as if they were keystrokes. If VK_PACKET is used with SendInput, then the Unicode character to be delivered should be placed into the lower 16 bits of the scan code. If a keyboard message is removed from the message queue and the virtual key is VK_PACKET, then the Unicode character will be the upper 16 bits of the lparam.</td>
-</tr>
-<tr>
-<td></td>
-<td>E8</td>
-<td>Unassigned</td>
-</tr>
-<tr>
-<td></td>
-<td>E9-F5</td>
-<td>Specific to original equipment manufacturer</td>
-</tr>
-<tr>
-<td>VK_ATTN</td>
-<td>F6</td>
-<td>ATTN key</td>
-</tr>
-<tr>
-<td>VK_CRSEL</td>
-<td>F7</td>
-<td>CRSEL key</td>
-</tr>
-<tr>
-<td>VK_EXSEL</td>
-<td>F8</td>
-<td>EXSEL key</td>
-</tr>
-<tr>
-<td>VK_EREOF</td>
-<td>F9</td>
-<td>Erase EOF key</td>
-</tr>
-<tr>
-<td>VK_PLAY</td>
-<td>FA</td>
-<td>PLAY key</td>
-</tr>
-<tr>
-<td>VK_ZOOM</td>
-<td>FB</td>
-<td>ZOOM key</td>
-</tr>
-<tr>
-<td>VK_NONAME</td>
-<td>FC</td>
-<td>Reserved for future use</td>
-</tr>
-<tr>
-<td>VK_PA1</td>
-<td>FD</td>
-<td>PA1 key</td>
-</tr>
-<tr>
-<td>VK_OEM_CLEAR</td>
-<td>FE</td>
-<td>CLEAR key</td>
-</tr>
-<tr>
-<td>VK_KEYLOCK</td>
-<td>F22</td>
-<td>Key used to lock device</td>
-</tr>
-</tbody></table>
-<p>Original equipment manufacturers should make special note of the VK key ranges reserved for specific original equipment manufacturer use: 2A, DBE4, E6, and E9F5.</p>
-<p>In addition to the VK key assignments in the previous table, Microsoft has assigned the following specific original equipment manufacturer VK keys.</p>
-<table>
-<thead>
-<tr>
-<th>Symbolic constant</th>
-<th>Hexadecimal value</th>
-<th>Mouse or keyboard equivalent</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VK_OEM_SCROLL</td>
-<td>0x91</td>
-<td>None</td>
-</tr>
-<tr>
-<td>VK_OEM_1</td>
-<td>0xBA</td>
-<td>“;:” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_PLUS</td>
-<td>0xBB</td>
-<td>“+” any country/region</td>
-</tr>
-<tr>
-<td>VK_OEM_COMMA</td>
-<td>0xBC</td>
-<td>“,” any country/region</td>
-</tr>
-<tr>
-<td>VK_OEM_MINUS</td>
-<td>0xBD</td>
-<td>“-” any country/region</td>
-</tr>
-<tr>
-<td>VK_OEM_PERIOD</td>
-<td>0xBE</td>
-<td>“.” any country/region</td>
-</tr>
-<tr>
-<td>VK_OEM_2</td>
-<td>0xBF</td>
-<td>“/?” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_3</td>
-<td>0xC0</td>
-<td>“`~” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_4</td>
-<td>0xDB</td>
-<td>“[{” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_5</td>
-<td>0xDC</td>
-<td>“|” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_6</td>
-<td>0xDD</td>
-<td>“]}” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_7</td>
-<td>0xDE</td>
-<td>“‘”” for US</td>
-</tr>
-<tr>
-<td>VK_OEM_8</td>
-<td>0xDF</td>
-<td>None</td>
-</tr>
-<tr>
-<td>VK_OEM_AX</td>
-<td>0xE1</td>
-<td>AX key on Japanese AX keyboard</td>
-</tr>
-<tr>
-<td>VK_OEM_102</td>
-<td>0xE2</td>
-<td>“&lt;&gt;” or “|” on RT 102-key keyboard</td>
-</tr>
-</tbody></table>
-<p>For East Asian Input Method Editors (IMEs) the following additional virtual keyboard definitions must be observed.</p>
-<table>
-<thead>
-<tr>
-<th>Symbolic constant</th>
-<th>Hexadecimal value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>VK_DBE_ALPHANUMERIC</td>
-<td>0x0f0</td>
-<td>Changes the mode to alphanumeric.</td>
-</tr>
-<tr>
-<td>VK_DBE_KATAKANA</td>
-<td>0x0f1</td>
-<td>Changes the mode to Katakana.</td>
-</tr>
-<tr>
-<td>VK_DBE_HIRAGANA</td>
-<td>0x0f2</td>
-<td>Changes the mode to Hiragana.</td>
-</tr>
-<tr>
-<td>VK_DBE_SBCSCHAR</td>
-<td>0x0f3</td>
-<td>Changes the mode to single-byte characters.</td>
-</tr>
-<tr>
-<td>VK_DBE_DBCSCHAR</td>
-<td>0x0f4</td>
-<td>Changes the mode to double-byte characters.</td>
-</tr>
-<tr>
-<td>VK_DBE_ROMAN</td>
-<td>0x0f5</td>
-<td>Changes the mode to Roman characters.</td>
-</tr>
-<tr>
-<td>VK_DBE_NOROMAN</td>
-<td>0x0f6</td>
-<td>Changes the mode to non-Roman characters.</td>
-</tr>
-<tr>
-<td>VK_DBE_ENTERWORDREGISTERMODE</td>
-<td>0x0f7</td>
-<td>Activates the word registration dialog box.</td>
-</tr>
-<tr>
-<td>VK_DBE_ENTERIMECONFIGMODE</td>
-<td>0x0f8</td>
-<td>Activates a dialog box for setting up an IME environment.</td>
-</tr>
-<tr>
-<td>VK_DBE_FLUSHSTRING</td>
-<td>0x0f9</td>
-<td>Deletes the undetermined string without determining it.</td>
-</tr>
-<tr>
-<td>VK_DBE_CODEINPUT</td>
-<td>0x0fa</td>
-<td>Changes the mode to code input.</td>
-</tr>
-<tr>
-<td>VK_DBE_NOCODEINPUT</td>
-<td>0x0fb</td>
-<td>Changes the mode to no-code input.</td>
-</tr>
-</tbody></table>
-<p>Original equipment manufacturers should not use the unassigned portions of the VK mapping tables. Microsoft will assign these values in the future. If manufacturers require additional VK mappings, they should reuse some of the current manufacturer-specific and vendor-specific assignments.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/04/27/win%E8%99%9A%E6%8B%9F%E6%8C%89%E9%94%AE%E7%BC%96%E7%A0%81/" data-id="ckcp0qdx80029vs264kqdgujt" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2014/04/27/%E5%8C%85%E8%A3%85cout%E7%AD%89ostream%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckd5pztl6002j7k26fe25b8jo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -1271,7 +706,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
     </div>
   </div>
 
@@ -1313,6 +748,14 @@
       <ul>
         
           <li>
+            <a href="/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
           </li>
         
@@ -1322,14 +765,6 @@
         
           <li>
             <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/11/memo/2020-05-11/">时代变啦</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/">DOS批处理高级教程</a>
           </li>
         
       </ul>

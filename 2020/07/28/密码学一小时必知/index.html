@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>密码学一小时必知[2010] | Jeremie&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文翻译了Colin Percival 于2010年在bsdcan的演讲ppt 原文标题：Everything you need to know about cryptography in 1 hour 演讲时间：May 13, 2010 原文在 https:&#x2F;&#x2F;www.bsdcan.org&#x2F;2010&#x2F;schedule&#x2F;attachments&#x2F;135_crypto1hr.pdf 演讲视频在 htt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学一小时必知[2010]">
+<meta property="og:url" content="http://hexo.jeremie.moe/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/index.html">
+<meta property="og:site_name" content="Jeremie&#39;s Blog">
+<meta property="og:description" content="本文翻译了Colin Percival 于2010年在bsdcan的演讲ppt 原文标题：Everything you need to know about cryptography in 1 hour 演讲时间：May 13, 2010 原文在 https:&#x2F;&#x2F;www.bsdcan.org&#x2F;2010&#x2F;schedule&#x2F;attachments&#x2F;135_crypto1hr.pdf 演讲视频在 htt">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-28T08:52:40.000Z">
+<meta property="article:modified_time" content="2020-07-28T09:09:00.909Z">
+<meta property="article:author" content="Jeremie">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeremie&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/about-blog/">关于Blog</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.jeremie.moe"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-密码学一小时必知" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/" class="article-date">
+  <time datetime="2020-07-28T08:52:40.000Z" itemprop="datePublished">2020-07-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      密码学一小时必知[2010]
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文翻译了Colin Percival 于2010年在bsdcan的演讲ppt</p>
+<p>原文标题：Everything you need to know about cryptography in 1 hour</p>
+<p>演讲时间：May 13, 2010</p>
+<p>原文在 <a href="https://www.bsdcan.org/2010/schedule/attachments/135_crypto1hr.pdf" target="_blank" rel="noopener">https://www.bsdcan.org/2010/schedule/attachments/135_crypto1hr.pdf</a></p>
+<p>演讲视频在 <a href="https://www.youtube.com/watch?v=jzY3m5Kv7Y8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=jzY3m5Kv7Y8</a> ( 请自行翻墙 )</p>
+<p>Colin Percival 是密码学方面的专家，FreeBSD项目的安全长官，Tarsnap在线备份服务的创始人，scrypt密钥衍生算法的作者，致力于改进软件中密码学的应用，向程序员传播密码学的正确使用。</p>
+<hr>
+<h3 id="为什么要-cryptography-in-1-hour"><a href="#为什么要-cryptography-in-1-hour" class="headerlink" title="为什么要 cryptography in 1 hour"></a>为什么要 cryptography in 1 hour</h3><p>因为有例如下面这些错误的使用案例：</p>
+<ol>
+<li>Google keyczar(时间通道攻击)</li>
+<li>SSL( session renegotiation)</li>
+<li>Amazon AWS 签名方法 (可能碰撞的签名算法)</li>
+<li>Flicker API 签名(hash length-extension) 错误地使用了错误的工具</li>
+<li>Intel Hyper Threading (architectual side channel) 不常用的环境</li>
+<li>WEP,WPA,GSM…（多种漏洞）</li>
+</ol>
+<p>密码学被攻破通常是由于：</p>
+<ol>
+<li>愚蠢</li>
+<li>使用了错误的工具，或者以错误的方式使用它们</li>
+<li>不常用的环境</li>
+</ol>
+<hr>
+<h3 id="经验智慧：不要亲自写密码学代码！"><a href="#经验智慧：不要亲自写密码学代码！" class="headerlink" title="经验智慧：不要亲自写密码学代码！"></a>经验智慧：不要亲自写密码学代码！</h3><ol>
+<li>使用SSL做传输</li>
+<li>使用GPG保护静止数据</li>
+</ol>
+<p>“如果你在输入A-E-S到你的代码里，你已经开始犯错” – Tomas Ptacek</p>
+<p>现实：如果你无论如何都要写密码学代码，你最好知道你在干什么</p>
+<p>现实：大多数应用程序只需要众所周知的标准模式的一个子集，而这是很容易保证正确的</p>
+<p>55分钟后，你应该：</p>
+<p>知道在99%的情况下应该怎么做</p>
+<p>知道一些常见的错误在哪里</p>
+<p>知道当你在做一些非标准的事情的时候，你真的需要咨询一个密码学专家</p>
+<hr>
+<h3 id="密码学做保护，并对抗一些攻击，但不能对抗所有攻击："><a href="#密码学做保护，并对抗一些攻击，但不能对抗所有攻击：" class="headerlink" title="密码学做保护，并对抗一些攻击，但不能对抗所有攻击："></a>密码学做保护，并对抗一些攻击，但不能对抗所有攻击：</h3><ul>
+<li>贿赂，盗窃，敲诈</li>
+<li>监狱刑罚</li>
+<li>攻击人通常比攻击数据更贵</li>
+<li>攻击人通常比攻击数据更危险</li>
+<li>数据被拷打时不会开记者招待会来控诉</li>
+<li>密码学的目的是强迫美国政府拷打你</li>
+<li>希望他们认为你的信息不是这么重要</li>
+</ul>
+<hr>
+<h3 id="密码学有3个主要目的："><a href="#密码学有3个主要目的：" class="headerlink" title="密码学有3个主要目的："></a>密码学有3个主要目的：</h3><ul>
+<li>加密 Encryption</li>
+<li>认证 Authentication </li>
+<li>识别 Identification</li>
+</ul>
+<ol>
+<li>加密阻止恶意者读取你的数据</li>
+<li>认证阻止恶意者在不被发现的情况下改动你的数据</li>
+<li>识别阻止恶意者假装你</li>
+</ol>
+<p>有时认证和识别在一个步骤中进行：“这条消息自从我写下它之后没有被篡改”和“我是Colin” 可以替换成“这条消息自从Colin写下它之后没有被改过”</p>
+<p>在大多数case里，你需要把2个，或者更多的密码学组件合起来使用</p>
+<hr>
+<h3 id="概念定义"><a href="#概念定义" class="headerlink" title="概念定义"></a>概念定义</h3><ol>
+<li>plaintext是我们关心的数据</li>
+<li>ciphertext是恶意者可以得到的数据</li>
+<li>key用于在这两者之间做转换，有时候我们需要多个key</li>
+</ol>
+<p>对称密码学就是 ，使用相同的key，来把plaintext转换成ciphertext，和把ciphertext转换成 plaintext</p>
+<p>非对称密码学就是，这两个方向的转换使用不同的key</p>
+<p>理想的密码学组件并不存在，但是如果一个密码学组件被识别出不理想，一般就认为它是被攻破的</p>
+<hr>
+<h3 id="hashing"><a href="#hashing" class="headerlink" title="hashing"></a>hashing</h3><p>一个理想的hash函数H(x)是一个函数映射，把任意长度的输入映射成n-bit的输出， 保证：</p>
+<ol>
+<li>抵抗碰撞</li>
+<li>单向</li>
+</ol>
+<p>抵抗碰撞意味着需要 2^(n/2) 的时间来找到2个输入，使得它们的hash相同</p>
+<p>单向意味着给定hash后，需要2^n的时间来找到一个输入，使得它的hash是给定hash</p>
+<p>没有保证任何其他性质</p>
+<p>特别是： 知道H(x)可能允许一个攻击者计算某些y的H(y)</p>
+<hr>
+<h3 id="hashing-实践"><a href="#hashing-实践" class="headerlink" title="hashing 实践"></a>hashing 实践</h3><p><strong>使用</strong> SHA-256</p>
+<p>考虑切换到SHA-3，在未来5-10年内（2010年算起）</p>
+<p>使用一个hash，如果你可以安全地分布 H(x)，并且想验证不安全地收到的x’实际上等于x</p>
+<p><strong>不要使用</strong>：MD2 MD4 MD5 SHA-1 RIPEMD</p>
+<p>不要把 FreeBSD-8.0-RELEASE-amd64-disc1.iso和CHECKSUM.SHA256放到同一个FTP 服务器上，还以为自己干了件有用的事情</p>
+<p><strong>不要尝试把一个hash函数当成对称签名用</strong></p>
+<hr>
+<h3 id="对称认证"><a href="#对称认证" class="headerlink" title="对称认证"></a>对称认证</h3><p>对称认证是通过提供一个消息认证码（MAC，message authentication code）来进行的。</p>
+<p>一个理想的 MAC fk(x)使用一个key，来把任意长度的输入映射到n-bit的输出，确保需要 2^n 的时间，一个攻击者才能在得到任意 (x, fx(x)) 对的情况下，生成任意 (y,fk(y)) 对。 有时MAC被称作随机函数</p>
+<p>与hashing不同，知道 fk(x) 不能使你对另一个key计算出 fk(y)，</p>
+<p>Flicker的API使用了hashing来认证API请求，他们实际需要的是 MAC</p>
+<hr>
+<h3 id="对称认证-实践"><a href="#对称认证-实践" class="headerlink" title="对称认证 实践"></a>对称认证 实践</h3><p><strong>使用</strong> HMAC-SHA256</p>
+<p>确保同样的输入，HMAC-SHA256不会生成不同的消息</p>
+<p>Amazon和Flicker都做错了</p>
+<p><strong>不要使用</strong> CBC-MAC</p>
+<p>理论上安全，但是把你的块加密算法暴露给了攻击者</p>
+<p>不要使用 Poly1305</p>
+<p>太新，除非你是Daniel Bernstein(Poly 1305的发明者)，否则你基本不可能做出一个</p>
+<p>安全和正确的实现</p>
+<p><strong>不要</strong> 当验证一个签名的时候，通过timing side channel的形式泄露信息</p>
+<hr>
+<h3 id="Side-channel-攻击"><a href="#Side-channel-攻击" class="headerlink" title="Side channel 攻击"></a>Side channel 攻击</h3><p>一个side channel 是攻击者除了ciphertext以外可以获取信息的任何方式</p>
+<p>密码系统是以它们的数学设计被定义的，但是side channel 是由于密码系统的人工实现导致的。</p>
+<p>最常见的side channel是timing – 你花费多长时间来 加密/解密/签名/验证 一个消息</p>
+<p>其他side channel包括：电磁辐射，电力消耗，和微架构特征（例如L1缓存替换，在支持 HyperThreading的Intel CPU上）</p>
+<hr>
+<h3 id="Side-channel-攻击-实践"><a href="#Side-channel-攻击-实践" class="headerlink" title="Side channel 攻击 实践"></a>Side channel 攻击 实践</h3><ul>
+<li>咨询一个密码学专家，如果你计划使恶意者可以物理接触到任何密码设备</li>
+<li>咨询一个密码学专家，如果你计划允许恶意者在你允许密码学的物理硬件上运行代码(虚拟化系统)</li>
+<li>咨询一个密码学专家，如果你计划发布一个以新方式泄露信息的CPU</li>
+</ul>
+<p>intel可能做错了 不要写其运行时间泄露信息的代码</p>
+<hr>
+<h3 id="Timing-attacks"><a href="#Timing-attacks" class="headerlink" title="Timing attacks"></a>Timing attacks</h3><p><strong>避免</strong> 依赖于key，或者依赖于plaintext的表查找</p>
+<p>不要有依赖于key，或者依赖于plaintext的分支(if, for, while , foo?bar:baz 等代码指令)</p>
+<p>不要想这种代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MACLEN;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(MAC-computed[i] != MAC-received[i])</span><br><span class="line">        <span class="keyword">return</span> MAC_IS_BAD ;</span><br><span class="line"><span class="keyword">return</span>  MAC_IS_GOOD;</span><br></pre></td></tr></table></figure>
+
+<p>应该这样写</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MACLEN;i++)&#123;</span><br><span class="line">    x  |= (MAC-computed[i] - MAC-received[i]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>  x?MAC_IS_BAD:MAC_IS_GOOD;</span><br></pre></td></tr></table></figure>
+
+<p>Google Keyczar就做错了</p>
+<hr>
+<h3 id="块加密"><a href="#块加密" class="headerlink" title="块加密"></a>块加密</h3><p>对称加密通常构建在块加密算法的基础之上</p>
+<p>一个理想的块加密算法使用一个key来双向地把n-bit的输入x转换成n-bit的输出Ek(x)，这样当 知道(x,Ek(x))时，对任意的(x’,k’)!=(x,k)，你没法以大于2^-n的概率猜出(x’,Ek’(x’))</p>
+<p>有时被称为“随机排列”</p>
+<p>通常我们关心的是Ek(x)不透露出 当x!=x’时Ek(x’)的信息。</p>
+<p>如果一个攻击者可以通过观察一个块加密算法怎么处理不同key，来获取有用信息，该块加密算法 被认为可被 key相关攻击 （key-related attack）攻破。</p>
+<hr>
+<h3 id="块加密-实践"><a href="#块加密-实践" class="headerlink" title="块加密 实践"></a>块加密 实践</h3><p><strong>使用</strong> AES-256</p>
+<p>AES-256有related key攻击漏洞，但是当你把其它事情做对时，这并不是问题</p>
+<p>AES-128理论上足够强壮，但是块加密算法很难没有side channel地正确实现 ，</p>
+<p>并且key里面的额外bit 在key的一些bit泄露之后是有用的。</p>
+<p><strong>不要使用</strong> blowfish</p>
+<p><strong>想都不要想使用DES</strong></p>
+<p><strong>避免</strong> triple-des(3des)</p>
+<p>不要使用块加密算法”raw”，替代地，在一个已经建立的操作模式中使用它(?)。</p>
+<hr>
+<h3 id="块加密算法操作模式"><a href="#块加密算法操作模式" class="headerlink" title="块加密算法操作模式"></a>块加密算法操作模式</h3><p>一个块加密算法操作模式告诉你怎么使用一个块加密算法来保护数据流</p>
+<p>在很多case中，plaintext需要被填充到块大小的整数倍，块密码算法操作模式会 告诉你怎么做到这一点</p>
+<p>流行的模式有: ECB ，CBC , CFB , OFB，CTR，IAPM，CCM，EAX，GCM …</p>
+<p>大多数模式只提供了加密，但也有一些提供了认证</p>
+<h3 id="实践：-使用：CTR模式"><a href="#实践：-使用：CTR模式" class="headerlink" title="实践： 使用：CTR模式"></a>实践： 使用：CTR模式</h3><p>不要使用同时提供加密和认证的模式</p>
+<p>想都不要想使用ECB</p>
+<p>使用一个MAC（例如HMAC-SHA256）来认证你的加密数据</p>
+<p>如果你认为你不需要这么做，咨询一个密码学专家，他会告诉你你为什么是错的。</p>
+<p>验证你的加密数据的真实性，在你揭秘数据之前。</p>
+<hr>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>一个非对称加密模式使用一个签名key来把plaintext转换成ciphertext，使用一个认证码来把 ciphertext转化成plaintext或者“错误的签名”</p>
+<p>签名key不能从认证key算出，但是认证key可以从签名key算出</p>
+<p>ciphertext通常由 plaintext加一个签名构成</p>
+<p>如果一个攻击者接触到了验证key，并且可以说服你签名任意的plaintext，那就可以认为这个 非对称加密系统被攻破了。</p>
+<hr>
+<h3 id="非对称认证"><a href="#非对称认证" class="headerlink" title="非对称认证"></a>非对称认证</h3><p><strong>使用</strong> RSASSA-PSS（RSA签名，使用Probabilistic Signature Scheme padding）</p>
+<p><strong>使用</strong> 2048-bit的RSA key，使用65537作为公钥的公共幂，和SHA256</p>
+<p><strong>不要使用</strong> PKCS v1.5 padding</p>
+<p><strong>想都不要想</strong> 使用不带消息padding的RSA(即RAW)</p>
+<p>可能避免： DSA</p>
+<p>可能避免：椭圆曲线签名模式</p>
+<p><strong>想都不要想</strong> 使用相同的RSA key既做认证，又做加密</p>
+<p>非对称加密</p>
+<p>非对称加密类似于非对称签名，除了方向相反，使用公钥把plaintext转成ciphertext，但是要 使用私钥把ciphertext转成plaintext</p>
+<p>一个</p>
+<p>大多数非对称加密模式都限制能加密的消息大小到一个很低的数字以下。</p>
+<hr>
+<h3 id="非对称加密-实践"><a href="#非对称加密-实践" class="headerlink" title="非对称加密 实践"></a>非对称加密 实践</h3><p><strong>使用</strong> RSAES-OAEP（RSA加密，使用Optimal Asymmeric Encryption Padding）</p>
+<p>使用2048-bit的RSA key，以65537为幂底数，SHA256和MGF1-SHA256</p>
+<p><strong>不要使用</strong> PCKS v1.5 padding</p>
+<p>不要使用不带消息padding的RSA</p>
+<p>生成一个随机key，用这个key使用对称加密加密你的消息，然后使用非对称加密算法加密你的key</p>
+<p>小心避免RSAES-OAEP的timing攻击通道</p>
+<hr>
+<h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>密码通常被直接用于识别，但是也可以被用于加密或者认证。</p>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><p><strong>尽可能避免密码</strong></p>
+<p>使用一个key继承函数，来尽快把密码转成key。</p>
+<p>使用PBKDF2，如果你跟随流行趋势</p>
+<p>使用scrypt，如果你希望2^8倍地比严肃的攻击者更安全</p>
+<p><strong>想都不要想把用户的密码存储在服务器上。绝对不能，就算它们被加密了也不能。</strong></p>
+<hr>
+<h3 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h3><p>SSL是一个可怕的系统</p>
+<p>SSL的复杂性导致它很难别安全地实现</p>
+<p>SSL给了攻击者很多攻击选项</p>
+<p>SSL要求你决定你想信任什么CA</p>
+<p>你相信中国政府吗？</p>
+<p>不幸的是，SSL是唯一可行的选项</p>
+<h3 id="SSL-实践"><a href="#SSL-实践" class="headerlink" title="SSL 实践"></a>SSL 实践</h3><p>随客户端分发非对称签名key，并且使用这个key开始你的整个密码系统</p>
+<p>使用SSL加密你的网站，Email，和其他公开的标准面向Internet的服务器。</p>
+<p>认真地想想你信任哪些CA。</p>
+<hr>
+<h3 id="奇奇怪怪地部分"><a href="#奇奇怪怪地部分" class="headerlink" title="奇奇怪怪地部分"></a>奇奇怪怪地部分</h3><p>咨询一个密码学专家，如果</p>
+<ul>
+<li>你的密码学硬件设备，攻击者可以物理接触到。（例如smartcards）</li>
+<li>你想使用最少的电力消耗（例如在手机上）</li>
+<li>你需要处理尽可能大的数据流量（例如 10Gbps的 IPSec 隧道）</li>
+<li>你需要传输尽可能少的bit（例如和一个核潜艇的通信）</li>
+<li>你想忽视我在这个talk中提出的任何建议</li>
+</ul>
+<hr>
+<p>QA</p>
+<p>from : <a href="https://blog.helong.info/blog/2015/04/12/translate-Everything-you-need-to-know-about-cryptgraphy-in-1-hour/" target="_blank" rel="noopener">https://blog.helong.info/blog/2015/04/12/translate-Everything-you-need-to-know-about-cryptgraphy-in-1-hour/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/" data-id="ckd5pztl8002q7k26fcnq310n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/28/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">现代密码学实践指南[2015年]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ePost/" style="font-size: 10px;">ePost</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/28/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/">长寿个人网站构建思路</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jeremie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/about-blog/" class="mobile-nav-link">关于Blog</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
