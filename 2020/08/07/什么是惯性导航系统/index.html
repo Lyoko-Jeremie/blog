@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>什么是惯性导航系统？ | Jeremie&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="from : https:&#x2F;&#x2F;www.oxts.com&#x2F;zh&#x2F;what-is-inertial-navigation-guide&#x2F; GPS 出现之前的生活由于现在甚至连厨房用具都装有 GPS 接收器，很难想象 GPS 出现之前的生活是怎样的。人们是如何生活的？甚至可能有不见其人的声音告诉您左转、右转以及在可能时掉头？对于依赖卫星导航仪和智能手机的一代人而言，这是一个严重的问题—人们到底是怎么知道自">
+<meta property="og:type" content="article">
+<meta property="og:title" content="什么是惯性导航系统？">
+<meta property="og:url" content="http://hexo.jeremie.moe/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="Jeremie&#39;s Blog">
+<meta property="og:description" content="from : https:&#x2F;&#x2F;www.oxts.com&#x2F;zh&#x2F;what-is-inertial-navigation-guide&#x2F; GPS 出现之前的生活由于现在甚至连厨房用具都装有 GPS 接收器，很难想象 GPS 出现之前的生活是怎样的。人们是如何生活的？甚至可能有不见其人的声音告诉您左转、右转以及在可能时掉头？对于依赖卫星导航仪和智能手机的一代人而言，这是一个严重的问题—人们到底是怎么知道自">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/400_IMUframe-300x288.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/400_IMUaxes.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/1000_accelerometer.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/600_CarStaticAccelBraking.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/900_Accelerometers.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/380_GyroRotation-210x300.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/1000_MEMSangularratesensor.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/990_DeadReckoning.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/INS/1000_DriftinINS-948x1024.jpg">
+<meta property="article:published_time" content="2020-08-07T08:40:32.000Z">
+<meta property="article:modified_time" content="2020-08-07T09:09:46.609Z">
+<meta property="article:author" content="Jeremie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hexo.jeremie.moe/images/INS/400_IMUframe-300x288.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeremie&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/about-blog/">关于Blog</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.jeremie.moe"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-什么是惯性导航系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2020-08-07T08:40:32.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      什么是惯性导航系统？
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from : <a href="https://www.oxts.com/zh/what-is-inertial-navigation-guide/" target="_blank" rel="noopener">https://www.oxts.com/zh/what-is-inertial-navigation-guide/</a></p>
+<h1 id="GPS-出现之前的生活"><a href="#GPS-出现之前的生活" class="headerlink" title="GPS 出现之前的生活"></a>GPS 出现之前的生活</h1><p>由于现在甚至连厨房用具都装有 GPS 接收器，很难想象 GPS 出现之前的生活是怎样的。人们是如何生活的？甚至可能有不见其人的声音告诉您左转、右转以及在可能时掉头？对于依赖卫星导航仪和智能手机的一代人而言，这是一个严重的问题—人们到底是怎么知道自己在哪里的？<br>事实是，在 GPS 出现以前，如果普通人想知道他们在哪里，他们必须求助于地图、观察和极其不准确的假设。而且，如果情况真的很糟，他们就问路。然而，对于拥有大量的金钱、充足的空间和真正需要知道自己所在位置的个人和行业来说，他们的救星经常以 INS（惯性导航系统）的形式出现。</p>
+<h1 id="什么是惯性导航系统？"><a href="#什么是惯性导航系统？" class="headerlink" title="什么是惯性导航系统？"></a>什么是惯性导航系统？</h1><p>惯性导航系统有各种形状和尺寸。它们的共同点是使用多个惯性传感器，以及某种形式的中央处理单元来跟踪这些传感器的测量值。INS 使用的传感器通常是陀螺仪和加速度计，并且内部通常都有几种传感器。稍后我们将介绍 INS 的实际工作方式，现在，最重要的事情是认识它们与 GPS 的区别 - 您可能更熟悉 GPS。</p>
+<p>打开 GPS 接收器，假设一切正常，在很短的时间后，它将生成位置测量值。接收器生成的位置测量值非常具体，不存在 GPS 的不精确性。它指出“您在这个纬度和这个经度”- 换句话说，它用已知的坐标系提供给我们一个绝对位置。惯性导航系统不能这样工作。就它们而言，它们生成的测量值是相对于他们最后已知的位置。因此，即使在惯性导航系统已经打开几分钟后，它也不能说“您在这个纬度和这个经度”，但它可能会说，“您没有从开始位置移动“。</p>
+<p>那么，为什么人们使用惯性导航系统呢？如果他们不能告诉你你在哪里，他们怎么能把人类导航到月球上，为什么潜艇不一直坠毁，飞机和导弹是怎么找到他们的？谢天谢地，这个问题的答案很简单。惯性导航系统可以判断它相对于出发地的位置，因此，如果您告诉 INS 其出发位置，它可以轻松地根据自己的测量结果得出现在的位置。这就是宇宙飞船、潜艇、飞机和导弹使用 INS 成功导航的方式，因为它们知道它们从哪里开始。</p>
+<h1 id="INS-实际上是如何运行的？"><a href="#INS-实际上是如何运行的？" class="headerlink" title="INS 实际上是如何运行的？"></a>INS 实际上是如何运行的？</h1><p>惯性导航系统包括两个不同的部分。第一个是 IMU（惯性测量单元），有时也称为 IRU（惯性参考单元）。这是提供加速度和角速度测量的加速度计和陀螺仪的统称。第二部分是导航计算机。导航计算机获取来自 IMU 的测量值，并使用它们来计算 INS 的相对位置、方向和速度。</p>
+<p>基本上使用两种导航计算机；稳定平台和捷联导航仪。稳定平台使用真实的旋转机械陀螺仪实现平台稳定，而不受 INS 旋转影响。因此，当惯性导航系统旋转时，其内部的稳定平台不会旋转。这样，系统就可以了解其方向，并可以利用来自加速度计的测量值。这类系统的缺点是万向节死锁（参见陀螺仪部分以获取完整说明）、高成本和复杂性。</p>
+<p>相反，捷联式导航仪内部的传感器不会独立于 INS 进行移动。如果您愿意，它们会固定下来。这克服了与稳定平台相关的许多问题，这也是现在更多人买得起惯性导航系统的主要原因。与稳定平台内的旋转机械陀螺仪不同，捷联式导航仪内部使用的陀螺仪通常为 MEMS（微机电系统），似乎没有任何活动部件。实际上，最好将它们视为角速度传感器，而不是陀螺仪，尽管人们通常这样叫。</p>
+<p>那么，INS 是如何工作的呢？为了捕获在 3D 空间中导航所需的测量值，惯性传感器的轴以相互垂直的方式布置。换句话说，每条轴与其他两条轴成 90° 角（参见下图）。</p>
+<p><img src="/images/INS/400_IMUframe-300x288.jpg" alt="IMU 参照系"></p>
+<blockquote>
+<p>IMU 参照系：此图像显示了惯性导航系统用于测量移动和方向的三条轴 (xyz)。INS 中的轴位置是固定的，因此它们随之旋转。每条轴都以两个方向测量 - 图像中的箭头显示哪个方向读数为正。例如，如果 INS 沿绿色箭头的方向加速，则 y 轴将显示正加速度。如果 INS 以相反方向加速，我们将看到沿 y 轴为负加速度。每条轴的角速度也会被测量。如果 INS 按照圆形红色箭头指示旋转，我们将在 x 轴陀螺仪上看到正读数。如果 INS 以相反的方向旋转，我们将在 x 轴陀螺仪上看到负值。</p>
+</blockquote>
+<p>通过沿着（和围绕）x 轴、y 轴和 z 轴进行测量，导航计算机可以了解其移动和旋转方式。在 IMU 参照系图像中，您可以清楚地看到测量 xyz 轴是如何在我们的产品中布局的。您还可以看到一个圆形箭头，显示 x 轴陀螺如何测量角速度。</p>
+<p>值得指出的是，尽管每个箭头都指向一个方向，但陀螺仪和加速度计仍沿着或围绕每条轴在两个方向上进行测量。箭头仅指示传感器将哪个方向视为正向运动。因此，如果产品向下加速（沿蓝色箭头方向），则 z 轴加速度计将指示正值；如果产品向上加速，则 Z 轴加速度计将显示负值。</p>
+<h1 id="参照系"><a href="#参照系" class="headerlink" title="参照系"></a>参照系</h1><p>此时，我们应该解释 IMU 参照系等术语的含义。刚才我们谈到了当产品加速下降时，z 轴加速度计上的正测量值，但是如果我们将 INS 翻转到如下图所示的方向，会发生什么呢？现在，当 INS 向下加速时，z 轴将记录一个负值。这就是为什么参照系很重要的原因。</p>
+<p><img src="/images/INS/400_IMUaxes.jpg" alt="INS 参考框架"></p>
+<p>对您我来说，向上意味着我们之上，下面意味着我们之下。同样，我们都知道哪条路都是分左右方向的，如果我说我向前移动了 1 米，您可以准确地想象我做了什么——因为您把自己放到了我的参照系中。作为人类，我们非常擅长这样做。事实上，我们发现”从另一个角度看待事物”是如此容易，以至于很容易忘记每个对象都有自己的参照系，而我们如何描述运动取决于所使用的参照系。</p>
+<p>例如，想象自己站在火车站台上。想象您可以看到有人站在火车车厢内寻找座位。当火车驶出车站时，此人开始向火车后方行走。从那个人的角度来看，他们正以恒定的速度向前走。但是对您来说，从站台的参照系看火车时，那个人最初似乎并没有移动 - 因为他们向前行走（在其框架中）的速度与火车在其框架中前进的速度相同。但是，随着火车速度的加快，此人似乎朝火车前进的方向移动。对于您来说，他们正在向后移动，但是对于火车上的人来说，他们仍在向前移动。两种观点都是正确的，只是使用了不同的参照系。</p>
+<p>幸运的是，大多数惯性导航系统足够智能，能够将运动从一个参照系转换到另一个参照系，只要先给它们一点点信息即可。因此，想象一下将 INS 倒置，使 z 轴指向上方。只要我们在开始之前告诉 INS 它是倒置的，那么当您向上移动您的手时，惯性测量单元将在 z 轴上记录一个正值（就其而言指向下方），但是惯性导航系统（计算机）知道它实际上被您倒置了。所以它旋转所有的测量值，把它们放到一个对我们有用的不同参照系中；一个表明 INS 正在向上移动的参照系。</p>
+<h1 id="加速计"><a href="#加速计" class="headerlink" title="加速计"></a>加速计</h1><p>加速计是大多数惯性导航系统中使用的传感器类型之一。您可以从它们的名字中猜出它们测量的是加速度而不是速度。根据处理物体物理特性的时间长度，您可能会记得 SI 的加速度单位是 m/s²（即：米/平方秒）。值 1 m/s² 表示，每过去一秒，物体的速度就会增加 1 m/s（即：米/秒）。</p>
+<p>尽管惯性导航系统无法直接测量速度，但是通过跟踪加速度的大小以及持续时间，惯性导航系统可以通过将加速度乘以时间来轻松计算出速度是多少。例如，如果 5 秒的加速度为 2.5 m/s²，并且假定初始速度为 0 m/s，则 INS 现在必须具有 12.5 m/s (2.5 m/s2 = 5 s = 12.5 m/s) 的速度。距离也可以计算出来。使用 s = 0.5 × at² 求出，其中 s 是距离，a 是加速度，t 是时间。在这种情况下，假设惯性导航系统在 x 轴上看到加速度，则可以算出它向前移动了31.25 米 (0.5×2.5 m/s²×5s² = 31.25 m)。</p>
+<p>因此，拥有三个加速计非常有用，特别是当它们以相互垂直的方式排列时，因为它们允许 INS 测量 3D 空间中的加速度并计算行驶距离和当前速度。但是，当人们第一次看到从三轴加速计输出的数据时，往往会感到困惑，为什么向下的轴显示 -9.81 m/s² 的加速度？为了回答这个问题，我们需要研究加速计的工作原理以及它们实际测量的是什么。</p>
+<p>此时，您可能会想，“等等！之前您说过加速计可以测量加速度”。尽管加速计确实可以测量加速度，但我们不想混淆问题，说加速计实际测量的是相对于自由落体的加速度，这就是为什么静止时垂直加速计的读数为 -9.81 m/s² 的原因。如果还是不明白，不要担心，下一节将对此进行说明。</p>
+<h2 id="适当的加速度"><a href="#适当的加速度" class="headerlink" title="适当的加速度"></a>适当的加速度</h2><p>您无疑听说过艾萨克·牛顿爵士的名字，并记得他写了一些运动定律。牛顿第一定律告诉我们，除非有力作用在物体上，否则它将保持完全静止，或以相同的速度持续运动。换句话说，要使某物运动或改变其速度，我们需要施加力。他的第二条定律描述了物体的加速度与作用在物体上的力以及物体的质量之间的关系。可以总结为力=质量×加速度 (F = ma)。</p>
+<p>加速计使用牛顿第二运动定律中描述的原理来测量相对于自由落体的加速度。也就是说，它们测量作用在已知质量上的相对力，并以此来计算它必须发生的加速度。为了理解这一点，让我们首先绘制一个简单的加速计。</p>
+<p><img src="/images/INS/1000_accelerometer.jpg" alt="加速度计"></p>
+<p>从上图中，我们可以看到加速计包含一个已知质量，该质量连接到能够测量力的传感器上。但是，请注意，质量被限制在加速计的外壳内，只能向左或向右移动，这定义了加速计的测量轴。</p>
+<p>那么，在现实世界中，这是如何工作的呢？下图显示了当我们将加速计放在汽车中时会发生什么情况。汽车以四种状态显示：静态、加速、匀速巡航和制动。您可以看到在每种情况下加速计内部的质量发生了什么。</p>
+<p><img src="/images/INS/600_CarStaticAccelBraking.jpg" alt="加速度计解释与汽车"></p>
+<p>当汽车静止和匀速巡航时，由于没有力作用在其上（至少测量轴上没有作用力），质量保持在其中心位置。因为质量处于其中心位置，所以传感器检测不到力，因此记录不到加速度。当汽车加速并制动时，质量就会移动。在加速时，它朝传感器的后方移动，而在制动时，它朝着传感器的前方移动。汽车制动和加速的速度越快，质量的位移越远。每当质量发生位移时，传感器就会测量力，并记录一个值。因为传感器知道质量以及作用在该质量上的力，所以它可以轻松计算必须引起质量运动的加速度。</p>
+<p>虽然这似乎很合乎逻辑，但它并不能解释为什么垂直放置在地板上的加速度计会产生 9.81 m/s² 的值，即使地板显然没有移动。然而，自由落体的加速度计从天而降时明显正在加速，为何显示零加速？答案见下图。</p>
+<p><img src="/images/INS/900_Accelerometers.jpg" alt="加速度计和重力"></p>
+<h1 id="陀螺仪"><a href="#陀螺仪" class="headerlink" title="陀螺仪"></a>陀螺仪</h1><p>加速度计擅长测量直线运动，但它们不擅长旋转，这就是陀螺仪的用处。陀螺仪根本不关心线性运动，只关心旋转。如前所述，在描述不同的惯性导航系统时，术语陀螺仪可以指不同的东西，这取决于所描述的系统类型。</p>
+<p><img src="/images/INS/380_GyroRotation-210x300.jpg" alt=""></p>
+<p>在传统意义上，陀螺仪采用一个或多个旋转转子，该转子保持在万向架中或悬挂在其他系统中，该系统旨在将其与外部扭矩隔离。 这种陀螺仪之所以起作用，是因为一旦转子旋转，它便希望保持其轴或旋转。 换句话说，如果您通过陀螺仪的旋转轴投影一条线，则无论您如何尝试扭曲和旋转陀螺仪，投影线将始终指向同一点。 显然，如果您可以对其施加扭矩，则可能会使陀螺仪移动，而采用万向节就是要防止这种运动。</p>
+<p>万向节使用多个彼此垂直安装的同心环，这些同心环通过正交排列的枢轴连接。假设环没有在万向节中死锁，这种设计可使陀螺仪在三轴中自由旋转。当两个轴对齐时，万向节发生死锁。在这种状态下，万向节具有两个自由度，而不是三个，因此在某个方向上施加的外部扭矩可能会影响旋转轴。</p>
+<p>由于陀螺仪的转子要保持其初始旋转轴，因此可以将传感器安装到万向节上，以测量其所连接的外部框架的相对方向变化。通过这种方式，可以保持外部框架相对于陀螺仪轴的方向。左图说明了这一点。</p>
+<p>捷联导航仪中使用的陀螺仪不受万向节死锁的影响。那是因为它们不是传统意义上的陀螺仪。而是测量角速度的 MEMS 设备，通常以 °/s（读作：度每秒）为单位。因此，无论 MEMS 陀螺仪指向哪个方向，只要它不围绕其测量轴旋转，就会输出 0°/s 的值。但是，如果陀螺仪绕其测量轴旋转并需要大约 1 秒钟来执行每次旋转，它将输出 360°/s 的值。</p>
+<p>是正数还是负数取决于旋转方向。</p>
+<p><img src="/images/INS/1000_MEMSangularratesensor.jpg" alt="MEMS 角速率传感器"></p>
+<p>从中可以看到，就像加速度计一样，陀螺仪本身不会告诉 INS 它的方向。首次通电时，陀螺仪只知道其旋转速度有多快。INS 的工作是跟踪所有这些测量。因此，如果 INS 在绕 z 轴的 0.25 秒内看到 360°/s 的平均速度，它就知道无论指向哪个方向开始，它现在都旋转了 90° (360°/s÷ 0.25 s = 90°)。当然，如果 INS 在运动之前就知道它是朝北的，并且还知道正陀螺值表示顺时针旋转，那么它可以很容易地算出它现在朝东。</p>
+<p>就像通常使用三个加速度计一样，INS 通常包含三个陀螺仪，用于测量围绕三个相互垂直轴的旋转。通过这种方式，INS 可以测量其在 3D 空间中的方向。</p>
+<h1 id="导航；把这一切组合在一起"><a href="#导航；把这一切组合在一起" class="headerlink" title="导航；把这一切组合在一起"></a>导航；把这一切组合在一起</h1><p>利用从三个加速度计和三个陀螺仪获得的测量值，惯性导航系统可以跟踪其在三维空间中的位置。它使用称为航位推算的过程来执行此操作。航位推算的实际过程非常容易理解；您可以从某些来源（在本案例中为陀螺仪和加速度计）中获取信息，并将它们转换为运动添加到您最后的已知位置，以查看您现在的位置。航位推算的简化 2D 示例如下。</p>
+<p><img src="/images/INS/990_DeadReckoning.jpg" alt="死推算"></p>
+<p>您可以看到，INS 最初是静止的，并且与图像成直角对齐，其 x 轴指向上方。然后，图像显示了其他三个位置以及它们之间的传感器记录的信息。当然，实际上，INS 每秒更新其位置数十或数百次，但是在本例中，仅在发生关键变化时才显示位置更新，以便于理解。</p>
+<p>因此，在时间为零时，INS 是静止的（并且不知道它在哪里）。然后，X 轴加速度计上出现 5 m/s² 的加速度 1 秒，其速度为 5 m/s（或 18 km/h）。随后立即完全停止运行 - 在 0.5 秒内检测到 -10 m/s² 的加速度。由于其他传感器上没有记录其他测量值，因此捷联式导航仪可以轻松地确定它沿 x 轴方向移动了 3.75 米。同样，此时 INS 不知道它在哪里，因为我们没有提供任何位置信息。</p>
+<p>一旦 INS 在位置更新 1 处停止，z 轴陀螺仪就会在 0.5 秒钟内检测到 90°/s 的值；因此它知道它已经沿顺时针方向旋转了 45°。同样，一旦完成该运动，INS 将再次在 x 轴加速度计上看到加速度。这次是 1m/s²，持续 10 秒，然后是 -5 m/s²，持续 2 秒。使用与以前相同的技术，INS 可以得出结论，现在 INS 从位置更新 1 处以 45° 角前进了 60 米。这就是我们之前谈到的 INS 的位置更新是相对于最后一个已知位置这一事实的含义。</p>
+<p>最后一次运动不同于以前的运动。在位置更新 2 中，您可以看到 INS 旋转了，因此其方向与最初的方向相同。但是，当它向位置 3 移动时，我们可以知道 INS 现在正与其测量轴（IMU 参考系）呈一定角度移动 - 以 135° 的方向向后和向右移动。</p>
+<p>由于此运动，同时在 x 轴和 y 轴上录得加速度。也没有引起 INS 停止的负加速度 - 因此，尽管加速度计上的测量值在 1 秒后降为零，但导航计算机知道该装置仍然具有速度。在这种情况下，它以 7.07 m/s（约 25 km/h）的速度运动，位置更新 3 发生在 INS 离开位置更新 2 后 1.5 秒。此时，INS 覆盖了 7.95 米。</p>
+<h1 id="优势和劣势"><a href="#优势和劣势" class="headerlink" title="优势和劣势"></a>优势和劣势</h1><p>我们尚未涉及的一件事就是漂移，这是基本的无辅助惯性导航系统的致命弱点 - 无辅助意味着仅使用加速度计和陀螺仪测量来计算其位置的系统。漂移是用于描述加速度计和陀螺仪测量中的小误差累积的术语，这些误差逐渐导致 INS 位置估计变得越来越不准确。</p>
+<p>很容易理解为什么发生漂移。想象一下，用一根 5 米长的卷尺测量木材的长度。如果您能以 1 毫米的精度读取卷尺上的刻度，则很容易说出这根木材长 4 米 ± 1 毫米。另一方面，如果您只能找到 0.5 米长的卷尺，而您仍然只能以 1 毫米的精度读取它，那么在完成测量并与卷尺一起移动 8 次时，您只能说该木材长 4 米 ± 8 毫米。实际上，您可能根本不会量到 4 m 长。</p>
+<p>INS 中的漂移以相同的方式累积。每次读取加速度计或陀螺仪时，读数都会出现微小的误差。如果我们只读取一个读数就可以得出我们加速或转弯的速度，那么这将不是问题。但是，由于导航计算机正在对每个测量结果进行累加，以计算出它是如何从之前的位置估计值移动的，因此微小的误差会随着时间推移而增加。</p>
+<p><img src="/images/INS/1000_DriftinINS-948x1024.jpg" alt="INS 漂移"></p>
+<p>当然，这是一个非常简化的观点。系统中已进行了大量工作，以尽量减少这些误差的累积，但是并没有摆脱它们存在的事实。然而，这并不意味着惯性导航系统的原理是无用的，或者不如 GPS。远非如此。</p>
+<p>在本部分的开头，我们说过漂移是无辅助惯性导航系统的致命弱点，那么辅助导航系统呢？当您将 INS 与 GPS 组合以创建 GPS 辅助 INS（也写作 GPS INS）时，您可以解决漂移问题，并解决影响 GPS 的问题。您可以在这里找到有关 <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/" title="GPS 的章节">GPS 的章节</a> …</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" data-id="ckdk0gktv008vjo26cacc8vh4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">全球卫星导航系统 (GNSS) 简介</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ePost/" style="font-size: 10px;">ePost</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/">什么是惯性导航系统？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jeremie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/about-blog/" class="mobile-nav-link">关于Blog</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

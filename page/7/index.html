@@ -70,6 +70,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-archlinux/archlinux安装VNC服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
+  <time datetime="2015-08-03T13:50:17.000Z" itemprop="datePublished">2015-08-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/">archlinux安装VNC服务器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>完全参照：<a href="https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
+<h4 id="安装tigervnc"><a href="#安装tigervnc" class="headerlink" title="安装tigervnc"></a>安装tigervnc</h4><p>这是一个TightVNC的linux实现<br>以你需要的用户身份执行vncserver第一次启动、设置密码并测试服务器<br>默认的是第一个桌面:1<br>实际端口是5900+1</p>
+<p>如下指令可以关闭某个桌面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+
+<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">xinitrc</a>来编辑</p>
+<blockquote>
+<p>hit： 简单的编辑方法是<br>  注掉所有exec开头的行<br>  并且注掉末尾最后一个exec行前面的连续几行（这几行末尾有&amp;，是和exec同时执行的内容）<br>  可添加如下指令在文件末尾启动桌面环境<br>  exec startxfce4</p>
+</blockquote>
+<p>windows下使用TightVNC连接即可</p>
+<p>设置开关机行为<br>示例文件在 <code>/usr/lib/systemd/system/vncserver.service</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;vncserver.service &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:1.service</span><br></pre></td></tr></table></figure>
+
+<p>然后编辑<code>/etc/systemd/system/vncserver@:1.service</code><br>可以看到其中有使用说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x&#x3D;2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User&#x3D; </span><br><span class="line"># (&quot;User&#x3D;foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;&#x2F;usr&#x2F;bin&#x2F;vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \&#96;systemctl --system daemon-reload\&#96; </span><br><span class="line"># 5. Run \&#96;systemctl enable vncserver@:&lt;display&gt;.service\&#96; </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Vncserver</span><br></pre></td></tr></table></figure>
+
+<p>其实我们只需要在User=后面添加我们的用户名即可<br>如果有需要的话可以修改ExecStart这一项添加启动参数的方式改变行为<br>之后重载systemctl</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>再启动服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
+<p>即可使用</p>
+<p>在使用时可以发现VNC不会自动根据客户机改变桌面分辨率<br>所以我们可以在启动参数中设置一个分辨率</p>
+<p>比如wiki上的示例</p>
+<blockquote>
+<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
+</blockquote>
+<p>如需要完整的选项表，向 vncserver 传递 -help 开关。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt3005njo26at4idlki" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-archlinux/archlinux-arm-树莓派设置网络连接与无线网络连接" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" class="article-date">
+  <time datetime="2015-08-02T14:23:39.000Z" itemprop="datePublished">2015-08-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/">archlinux arm 树莓派设置网络连接与无线网络连接</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>到手两个树莓派<br>其中一个装了arch<br>但是因为家里网络环境只有无线网络<br>arch默认的无线却没有wpa加密的支持包<br>于是便有了此文<br>下面是整理的内容 </p>
+<p>相关工具命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看网络设备 </span><br><span class="line">**ip </span><br><span class="line">link** </span><br><span class="line">查看网络地址 </span><br><span class="line">**ifconfig** </span><br><span class="line">查看系统服务状态 </span><br><span class="line">**systemctl**</span><br></pre></td></tr></table></figure>
+
+<p>使用netctl工具的手动网络配置方法<br>来自：<a href="https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm" target="_blank" rel="noopener">https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm</a> </p>
+<p>在/etc/netctl/examples/目录下有netctl网络连接工具配置文件的范例<br>从范例创建一个新的网络连接配置（以普通的wpa加密的无线网络连接为例）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">从wireless-wpa范例文件创建一个权限为640的配置文件 </span><br><span class="line">这样的权限配置可以防止配置文件中的密码泄露 </span><br><span class="line"></span><br><span class="line">install -m640 &#x2F;etc&#x2F;netctl&#x2F;examples&#x2F;wireless-wpa &#x2F;etc&#x2F;netctl&#x2F;wireless-home</span><br><span class="line"></span><br><span class="line">编辑这个文件 </span><br><span class="line">将其中的MyNetwork和WirelessKey替换为SSID和密码 </span><br><span class="line">保存文件 </span><br><span class="line">启动配置文件 </span><br><span class="line"></span><br><span class="line">netctl start wireless-home</span><br><span class="line"></span><br><span class="line">启动后可以ping一下进行检测 </span><br><span class="line">没问题之后设置该配置文件开机自启动 </span><br><span class="line"></span><br><span class="line">netctl enable wireless-home</span><br></pre></td></tr></table></figure>
+
+<p>其实netctl操作的是systemctl服务中的netctl服务<br>启动配置文件时真正做的事情是以配置文件启动服务<br>netctl start xxx </p>
+<p>相当于<br>systemctl start netctl@xxx </p>
+<p>所以当出现问题时会显示要求使用如下命令查看故障原因<br>systemctl status netctl@xxx </p>
+<p>然后.如果在上面启动配置文件时遇到错误<br>查看服务的status时发现如下信息就可以做对应的解决方案<br>如果说wpa-s…什么什么的一个东西没有安装<br>是因为你使用的是wpa加密的无线网络<br>但是没有安装那个支持wpa的库<br>需要安装后再试<br>如果说这个配置文件“already up”<br>说明对应的设备端口已经在使用中<br>使用如下命令停用该设备再启用配置文件即可<br>ip link set 设备名（比如eth0） down<br>参见：<a href="https://wiki.archlinux.org/index.php/Netctl#Troubleshooting" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Netctl#Troubleshooting</a><br><a href="https://wiki.archlinux.org/index.php/Network\_configuration" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Network\_configuration</a> </p>
+<hr>
+<p>另：如果使用有线网络的DHCP自动分配<br>插上网线再启动dhcpcd服务即可<br>另外：在配置静态IP是会遇到如下格式的IP<br>192.168.1.21/24<br>这是CIDR表示法，把ip地址和子网掩码合并到一起，可以一个ip表示一个ip簇<br>参见<a href="https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing#CIDR\_notation" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing#CIDR\_notation</a> </p>
+<p>常用的255.255.255.0等价于24</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="ckdk0gkt4005tjo263tda58ip" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Erlang分布式环境下注册名与调用方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" class="article-date">
@@ -144,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckd5qos9t0008gw266lzm1ytn" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckdk0gkpg0005jo26b7t54xx0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckd5qosa3000qgw26cvgo1oyt" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckdk0gkpm000djo263qel3sat" class="article-share-link">Share</a>
       
       
     </footer>
@@ -248,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckd5qoscl006sgw26emtr759b" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt4005rjo261ac6hv6v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckd5qosck006qgw26hitl7cuj" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckdk0gkt3005pjo268noq7h1r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -384,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckd5qosae001pgw26hgtve4tf" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckdk0gkq70017jo26ganse0se" class="article-share-link">Share</a>
       
       
     </footer>
@@ -428,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckd5qosce0061gw261q1b1mpp" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckdk0gksy0055jo2629ylapli" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +615,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckd5qoscm006wgw26hn026qld" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt5005xjo267j4phw1l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -532,98 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckd5qosci006igw262iik3qri" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-有关Erlang分布式节点长名试验" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" class="article-date">
-  <time datetime="2015-06-29T06:24:19.000Z" itemprop="datePublished">2015-06-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/">有关Erlang分布式节点长名试验</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>节点名分长名与短名两种<br>节点名由前缀与后缀组成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本机唯一节点名（前缀）@本机地址（后缀）</span><br></pre></td></tr></table></figure>
-
-<p>对于cookie<br>两个几点连接时cookie必须一致 否则连接请求会被阻止</p>
-<p>对于长名<br>节点名前缀在同一个机器上必须要唯一 即使同一机器上的多个节点后缀可以不同<br>节点长名后缀可使用可由DNS解析的域名或者直接为IP地址<br>当连接使用域名的节点会访问由DNS服务器解析的对应IP</p>
-<p>当使用IP作为后缀时<br>使用<code>net_adm:ping(‘长节点名’).</code>建立连接时会连接到到对应的IP地址处<br>若目标节点后缀与目标IP不同时无法建立连接 即使是ping通后的自动建立全连通网络时也无法建立到错误的节点处<br>若使用127.0.0.1作为后缀 则只有本机节点能够连接到以127.0.0.1作为后缀的节点<br>若使用错误的IP地址 则无法接受ping 但其可以ping其他正确的节点 但在全连通过程中无法连接到其他设备的节点</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckd5qosav003dgw26542kan66" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-有关ICS服务与Pcap_DNSProxy共存的解决方案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
-  <time datetime="2015-06-27T16:30:50.000Z" itemprop="datePublished">2015-06-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Windows/">Windows</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">有关ICS服务与Pcap_DNSProxy共存的解决方案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为学校使用客户端拨号上网<br>之前又使用了netsh开启win7的虚拟wifi（HotWifi）功能共享上网<br>现在要给承担拨号以及wifi共享任务的网关机添加一个DNS服务器实现反DNS投毒的功能<br>但是因为实现从客户端拨号连接到虚拟无线热点之间使用的ICS网络共享服务自带了DNS以及DHCP功能 占用了53端口<br>以至于安装的Pcap_DNSProxy服务器无法打开53端口正常工作</p>
-<p>想到的解决方案是将Pcap_DNSProxy的服务设置为自动启动<br>并将ICS服务设置为自动延迟启动<br>使得在正常情况下Pcap_DNSProxy总能比ICS先启动并占用53端口<br>以此屏蔽ICS的DNS服务功能</p>
-<p>另外<br>因为ICS的DHCP自动IP分配功能IP分配缓慢且无法手动设置IP<br>使用了一个开启了桥接功能的路由并设置好DHCP来以抢先机制取代ICS的又慢又难用的DHCP功能<br>而且以路由器作为网络中心也可以解决因为作为无线热点的USB无线网卡由于性能不足导致内网传输缓慢以及全速传输内网传输时硬件过热导致的设备丢失问题</p>
-<p>附当前网络物理结构<br> <a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1-300x200.png" alt="物理结构"></a></p>
-<p> 网络逻辑结构（点击看大图）<br> <a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2-300x145.png" alt="逻辑结构"></a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckd5qosaw003fgw262hx6el1q" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckdk0gkt2005ljo260l3s45yr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -677,7 +710,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -690,6 +723,14 @@
       <ul>
         
           <li>
+            <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/">什么是惯性导航系统？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
           </li>
         
@@ -699,14 +740,6 @@
         
           <li>
             <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/">长寿个人网站构建思路</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
           </li>
         
       </ul>

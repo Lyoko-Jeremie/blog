@@ -70,6 +70,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/" class="article-date">
+  <time datetime="2020-03-05T10:49:48.000Z" itemprop="datePublished">2020-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/">使用mount挂载特定目录到公共文件夹以便解决文件访问权限与修改更新之间的冲突</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>神秘代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o bind,ro,username&#x3D;nginx &#x2F;home&#x2F;jeremie&#x2F;WingImaging&#x2F;WebFront&#x2F;dist&#x2F; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;webfront&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>fstab：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#</span><br><span class="line"># &#x2F;etc&#x2F;fstab</span><br><span class="line"># Created by anaconda on Tue Jan 16 10:02:13 2018</span><br><span class="line">#</span><br><span class="line"># Accessible filesystems, by reference, are maintained under &#39;&#x2F;dev&#x2F;disk&#39;</span><br><span class="line"># See man pages fstab(5), findfs(8), mount(8) and&#x2F;or blkid(8) for more info</span><br><span class="line">#</span><br><span class="line">UUID&#x3D;b0a16d98-3b8c-400f-948d-0092477704fe &#x2F;                       ext4    defaults        1 1</span><br><span class="line">UUID&#x3D;1c944257-c4f0-4023-88c6-ded8ef40ebda &#x2F;data1                  ext4    defaults        0 2</span><br><span class="line">&#x2F;home&#x2F;jeremie&#x2F;WingImaging&#x2F;WebFront&#x2F;dist&#x2F; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;webfront&#x2F;     none    defaults,noauto,x-systemd.automount,nofail,bind,ro,username&#x3D;nginx       0 0</span><br></pre></td></tr></table></figure>
+
+
+<p>原理：<br>使用mount的bind模式，将特定文件夹挂载到另一位置，并施以特定用户身份和特定访问权限以便其他程序读取<br>在fstab中以此种方式设置可实现同样的功能</p>
+<p>注意其中的<code>noauto,x-systemd.automount</code>两个参数，表示其只在首次访问时才自动挂载，以便等待真实文件系统准备就绪<br>其中的<code>nofail</code>参数表示允许失败<br><code>bind,ro,username=nginx</code>参数表示此挂载为bind模式，且read only，挂载后用户身份为nginx</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/03/05/%E4%BD%BF%E7%94%A8mount%E6%8C%82%E8%BD%BD%E7%89%B9%E5%AE%9A%E7%9B%AE%E5%BD%95%E5%88%B0%E5%85%AC%E5%85%B1%E6%96%87%E4%BB%B6%E5%A4%B9%E4%BB%A5%E4%BE%BF%E8%A7%A3%E5%86%B3%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%9B%B4%E6%96%B0%E4%B9%8B%E9%97%B4%E7%9A%84%E5%86%B2%E7%AA%81/" data-id="ckdk0gkqo001rjo26hs8j4osy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-trojan-systemd-config" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/03/05/trojan-systemd-config/" class="article-date">
+  <time datetime="2020-03-04T19:20:49.000Z" itemprop="datePublished">2020-03-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/05/trojan-systemd-config/">trojan-systemd-config</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        这里看起来好像有些东西, 需要输入密码才能查看.
+        
+          <p class="article-more-link">
+            <a href="/2020/03/05/trojan-systemd-config/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/03/05/trojan-systemd-config/" data-id="ckdk0gkq9001bjo263xnv9puu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-curl强制指定域名解析结果" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/03/05/curl%E5%BC%BA%E5%88%B6%E6%8C%87%E5%AE%9A%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%BB%93%E6%9E%9C/" class="article-date">
@@ -110,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/05/curl%E5%BC%BA%E5%88%B6%E6%8C%87%E5%AE%9A%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%BB%93%E6%9E%9C/" data-id="ckd5qosa4000ugw268mza0s35" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/05/curl%E5%BC%BA%E5%88%B6%E6%8C%87%E5%AE%9A%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E7%BB%93%E6%9E%9C/" data-id="ckdk0gkpp000gjo2655cf4me0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/05/%E9%83%A8%E7%BD%B2RSSHUB/" data-id="ckd5qosb7004cgw263ras5hqm" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/05/%E9%83%A8%E7%BD%B2RSSHUB/" data-id="ckdk0gkrn003fjo26d5xmcyq5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/02/firefox-new-tab-open-config/" data-id="ckd5qosa70015gw26dmv0dbgl" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/02/firefox-new-tab-open-config/" data-id="ckdk0gkpy000ujo26bg2e82es" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/02/26/hello-world/" data-id="ckd5qosaa001agw2699ym0jk3" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/02/26/hello-world/" data-id="ckdk0gkq20010jo263kiggwz7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2019/09/13/lets-encrypt-cloudflare/" data-id="ckd5qosac001fgw2659pb0k1a" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2019/09/13/lets-encrypt-cloudflare/" data-id="ckdk0gkq40012jo260b82coo1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,7 +444,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2019/09/13/qbittorrent-archlinux-vps-e6-90-ad-e5-bb-ba-e6-96-b9-e6-b3-95/" data-id="ckd5qosad001kgw2657plb7by" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2019/09/13/qbittorrent-archlinux-vps-e6-90-ad-e5-bb-ba-e6-96-b9-e6-b3-95/" data-id="ckdk0gkq80019jo260g4s8uvq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2019/08/15/%E6%9C%89%E5%85%B3%E5%BD%93%E4%BB%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8F%8A%E8%AE%A8%E8%AE%BA/" data-id="ckd5qosax003igw26eyyj7wn8" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2019/08/15/%E6%9C%89%E5%85%B3%E5%BD%93%E4%BB%8A%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E8%AF%84%E8%AE%BA%E5%8F%8A%E8%AE%A8%E8%AE%BA/" data-id="ckdk0gkr8002qjo26abztfckl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
@@ -436,89 +532,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2019/04/05/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" data-id="ckd5qosa1000mgw26a6rqh434" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/CentOS7开放防火墙端口" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/02/03/archlinux/CentOS7%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3/" class="article-date">
-  <time datetime="2019-02-03T08:15:20.000Z" itemprop="datePublished">2019-02-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/03/archlinux/CentOS7%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3/">CentOS 7开放防火墙端口</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"></span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;8080&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;8080&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;443&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;443&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;25960-25970&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;25960-25970&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;32760-32770&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;32760-32770&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;57360-57370&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;57360-57370&#x2F;udp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;60000-60010&#x2F;tcp --permanent</span><br><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;60000-60010&#x2F;udp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2019/02/03/archlinux/CentOS7%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3/" data-id="ckd5qosci006ggw26bae5e43a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/archlinux对源测速排序并保存" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/29/archlinux/archlinux%E5%AF%B9%E6%BA%90%E6%B5%8B%E9%80%9F%E6%8E%92%E5%BA%8F%E5%B9%B6%E4%BF%9D%E5%AD%98/" class="article-date">
-  <time datetime="2018-12-29T04:53:04.000Z" itemprop="datePublished">2018-12-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/29/archlinux/archlinux%E5%AF%B9%E6%BA%90%E6%B5%8B%E9%80%9F%E6%8E%92%E5%BA%8F%E5%B9%B6%E4%BF%9D%E5%AD%98/">archlinux对源测速排序并保存</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reflector --verbose --protocol http --sort rate --save &#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2018/12/29/archlinux/archlinux%E5%AF%B9%E6%BA%90%E6%B5%8B%E9%80%9F%E6%8E%92%E5%BA%8F%E5%B9%B6%E4%BF%9D%E5%AD%98/" data-id="ckd5qoscm006ugw265mjle5zd" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2019/04/05/SSR%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" data-id="ckdk0gkpj0009jo26hbh2f9jg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -572,7 +586,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -585,6 +599,14 @@
       <ul>
         
           <li>
+            <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/">什么是惯性导航系统？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
+          </li>
+        
+          <li>
             <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
           </li>
         
@@ -594,14 +616,6 @@
         
           <li>
             <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/">长寿个人网站构建思路</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/">netdata汇聚多个节点的监测数据到一个中心节点</a>
           </li>
         
       </ul>

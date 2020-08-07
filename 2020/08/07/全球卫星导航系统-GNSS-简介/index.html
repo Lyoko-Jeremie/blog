@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>全球卫星导航系统 (GNSS) 简介 | Jeremie&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="from : https:&#x2F;&#x2F;www.oxts.com&#x2F;zh&#x2F;what-is-gnss&#x2F; 全球卫星导航系统 (GNSS) 简介每天每一小时，我们都被无线电波包围。有些电波（例如电视和广播）为我们带来愉悦，有些电波（如 GPS）则提供宝贵的信息，如果没有这些信息，我们将茫然无措。然而，尽管 GPS 在我们日常生活中很重要，但我们通常对它的工作原理了解甚少。 本文档旨在使您对卫星导航有所了解。内容会比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="全球卫星导航系统 (GNSS) 简介">
+<meta property="og:url" content="http://hexo.jeremie.moe/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="Jeremie&#39;s Blog">
+<meta property="og:description" content="from : https:&#x2F;&#x2F;www.oxts.com&#x2F;zh&#x2F;what-is-gnss&#x2F; 全球卫星导航系统 (GNSS) 简介每天每一小时，我们都被无线电波包围。有些电波（例如电视和广播）为我们带来愉悦，有些电波（如 GPS）则提供宝贵的信息，如果没有这些信息，我们将茫然无措。然而，尽管 GPS 在我们日常生活中很重要，但我们通常对它的工作原理了解甚少。 本文档旨在使您对卫星导航有所了解。内容会比">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/DifferentGNSS-700x501.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/2GNSSreceivers.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/GPSSpaceSegment.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/GroundAntennas.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/GPSSignals.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/TheGPSSignal-700x736.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/BinaryString.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/SearchingForSatellites.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/SatelliteReceiver-700x639.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/Triangulation-700x543.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/Trilateration-584x1024.jpg">
+<meta property="og:image" content="http://hexo.jeremie.moe/images/GNSS/ThreeSpheres.jpg">
+<meta property="article:published_time" content="2020-08-07T08:40:21.000Z">
+<meta property="article:modified_time" content="2020-08-07T09:10:58.592Z">
+<meta property="article:author" content="Jeremie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hexo.jeremie.moe/images/GNSS/DifferentGNSS-700x501.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Jeremie&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jeremie&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives/">归档</a>
+        
+          <a class="main-nav-link" href="/about-blog/">关于Blog</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hexo.jeremie.moe"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-全球卫星导航系统-GNSS-简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/" class="article-date">
+  <time datetime="2020-08-07T08:40:21.000Z" itemprop="datePublished">2020-08-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      全球卫星导航系统 (GNSS) 简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>from : <a href="https://www.oxts.com/zh/what-is-gnss/" target="_blank" rel="noopener">https://www.oxts.com/zh/what-is-gnss/</a></p>
+<h1 id="全球卫星导航系统-GNSS-简介"><a href="#全球卫星导航系统-GNSS-简介" class="headerlink" title="全球卫星导航系统 (GNSS) 简介"></a>全球卫星导航系统 (GNSS) 简介</h1><p>每天每一小时，我们都被无线电波包围。有些电波（例如电视和广播）为我们带来愉悦，有些电波（如 GPS）则提供宝贵的信息，如果没有这些信息，我们将茫然无措。然而，尽管 GPS 在我们日常生活中很重要，但我们通常对它的工作原理了解甚少。</p>
+<p>本文档旨在使您对卫星导航有所了解。内容会比某些解释更深入，但避免了只有系统工程师才需要知道的复杂内容。最后，您将对卫星导航的实际工作方式有深刻了解，更重要的是，知道它可以为您做什么和不能做什么。</p>
+<h1 id="什么是-GNSS？"><a href="#什么是-GNSS？" class="headerlink" title="什么是 GNSS？"></a>什么是 GNSS？</h1><p>现在，GPS 这个词已为普通大众所熟悉，以至于它已成为任何卫星导航系统的代名词，但我们需要小心，GPS 一词实际上是由美国军方创建系统的名称，代表全球定位系统，也有其他系统。例如，俄罗斯的军事系统被称为 GLONASS（全球轨道导航卫星系统），而中国正在开发一种名为”北斗-2”的系统。</p>
+<p>在谈及卫星导航系统时，您经常会遇到一个术语 GNSS，它代表全球导航卫星系统。这是用于描述地球上任何以导航为目的传输信号的全球卫星系统的通称。如果您将卫星系统用于测量目的，则区分使用 GPS 或 GLONASS 等术语非常重要，因为每个系统的工作方式略有不同（尽管最终结果似乎相同）。</p>
+<p>截至 2017 年，主要的 GNSS 包括：</p>
+<ul>
+<li>GPS：美国的全球定位系统。</li>
+<li>GLONASS：俄罗斯的全球轨道导航卫星系统。</li>
+<li>北斗-2：中国正在开发的系统 - 目前尚未完全投入运行。</li>
+<li>Galileo：欧盟正在开发的系统 - 目前尚未完全投入运行。</li>
+</ul>
+<p><img src="/images/GNSS/DifferentGNSS-700x501.jpg" alt="全球卫星导航系统"></p>
+<h1 id="GNSS-接收器如何工作？"><a href="#GNSS-接收器如何工作？" class="headerlink" title="GNSS 接收器如何工作？"></a>GNSS 接收器如何工作？</h1><p>大多数 GNSS 接收器有两个部分：天线以及处理单元或接收器。天线用于接收卫星信号，而接收器则可以感知接收到的信息，并将其转换为我们理解的测量值，例如纬度和经度。</p>
+<p><img src="/images/GNSS/2GNSSreceivers.jpg" alt="全球导航卫星系统接收器和INS"></p>
+<p>重要的是要认识到，位置、速度和海拔的计算与天线本身有关，与接收器无关。为了解 GNSS 的工作原理，我们需要将 GNSS 分成几个部分，并了解每个部分。由于 GPS 是人们最熟悉的系统，因此让我们来了解一下它，它可以分成三个部分：</p>
+<ul>
+<li>太空段</li>
+<li>控制段</li>
+<li>用户段</li>
+</ul>
+<h2 id="太空段"><a href="#太空段" class="headerlink" title="太空段"></a>太空段</h2><p><img src="/images/GNSS/GPSSpaceSegment.jpg" alt="卫星"></p>
+<p>太空段与在轨卫星有关。2015 年，GPS 星座由地球中轨道的 32 颗非对地静止卫星组成，尽管并非所有卫星都处于活动状态。每颗卫星在平均海拔 20,200 公里（即 26,571 公里的轨道半径）处，每 11 小时 58 分钟 2 秒绕轨道运行一圈。</p>
+<p>GPS 卫星星座被排列成六个间隔相等的轨道平面，每个平面中不少于四颗卫星。这样的布置可确保几乎在任何时候都可以从地平线上方 15° 看到至少四颗卫星 - 尽管实际上通常能看到更多的卫星。</p>
+<p>虽然卫星的年限和设计各不相同，但其工作原理保持不变。每个时钟都包含四个基频为 10.23 MHz 的高精度时钟，它们不断在 L 波段传输两个载波，这些载波以光速返回地球，被称为 L1 和 L2。</p>
+<ul>
+<li>L1 载波的频率为 1575.42 MHz (10.23 MHz × 154 = 1575.42 MHz)。</li>
+<li>L2 载波的频率为 1227.60 MHz (10.23 MHz × 120 = 1227.60 MHz)。</li>
+</ul>
+<p>载波之所以重要，是因为它们将信息从卫星带回地球，正是这些信息使我们的接收器能够确定所处的位置。但是，我们稍后再来了解这是如何完成的。</p>
+<h2 id="控制段"><a href="#控制段" class="headerlink" title="控制段"></a>控制段</h2><p>控制段是指位于地球各地（靠近赤道）的若干地面站，这些地面站用于跟踪、控制和向每颗 GPS 卫星发送信息。这是一个重要的部分，因为每颗卫星的时钟同步至关重要 — 整个系统依赖于计时。</p>
+<p><img src="/images/GNSS/GroundAntennas.jpg" alt="GPS 地面天线"></p>
+<p>发送到每颗卫星的轨道信息也至关重要，因为我们需要这些信息，以便找出发送信息时卫星的位置。所有这些信息都发送到卫星，然后通过 L1 载波导航信息发送到 GPS 接收器。</p>
+<h2 id="用户段"><a href="#用户段" class="headerlink" title="用户段"></a>用户段</h2><p>用户段是大多数人感兴趣的部分。此段包括拥有 GPS 接收器的任何人或任何事物；卫星导航、手机、无人机、执法。那么它是如何工作的呢？</p>
+<p>正如我们已经看到的那样，有一个卫星群在我们头顶上盘旋，以光速源源不断地将信息流发送到地球。了解它们如何帮助确定我们的位置需要一些时间，但它是基于一个名为三边测量的过程。</p>
+<p>在进一步了解之前，我们应该纠正一个普遍的误解。卫星导航或手机内的 GNSS 接收器绝不会向卫星发送任何信息。我们今天使用的接收器完全是被动的 - 它们仅接收信息。当欧洲的伽利略系统投入运行时，其接收器会略有不同，因为它会有一个紧急功能，该功能会在激活后发送信息，但这不适用于正常运行。</p>
+<p>当您听到人们谈论被 GPS 跟踪的东西（例如一辆装甲车）时，情况就是这样。车辆上的 GNSS 接收器正在接收来自卫星的信号，并确定其位置。一旦知道了位置，它就会使用其他系统（例如 GSM 数据连接）将该信息发送回某个监测站。</p>
+<p><img src="/images/GNSS/GPSSignals.jpg" alt="GPS 信号"></p>
+<p>因此，目前，GNSS 接收器通过接收相关在轨卫星发送的信号来工作。使用的信号取决于接收器的类型。GPS 接收器只能使用 GPS 卫星的信号，而 GLONASS 接收器只能使用 GLONASS 卫星的信号。还有另一种接收器实际上可以从两种卫星（GPS 和 GLONASS）接收信号，以增强其测量范围。</p>
+<p>现在我们再次来重点谈谈 GPS 接收器。</p>
+<h1 id="GPS-接收器如何知道我在哪里？"><a href="#GPS-接收器如何知道我在哪里？" class="headerlink" title="GPS 接收器如何知道我在哪里？"></a>GPS 接收器如何知道我在哪里？</h1><p>关于GPS 接收器如何知道您在哪里的简短且简化的回答就是：</p>
+<ul>
+<li>它计算它看到的每颗卫星发出的信号要花费多长时间到达。</li>
+<li>它将时间乘以光速以计算到每颗卫星的距离。</li>
+<li>然后，使用三边测量法计算相对于不少于三颗卫星的位置。</li>
+<li>因为接收器在发送信号时知道每颗卫星的精确位置，所以它可以将其相对位置转换为基于地球的坐标系。</li>
+</ul>
+<p>当然，这种解释在大多数人的头脑中引起了很多疑问。接收器如何计算信号的传输时间？除非知道信号的发送时间，但这又怎么可能知道呢？什么是三边测量？接收器如何知道卫星发送信号时在哪里？这仅仅是个开始。</p>
+<p>好消息是，您无需了解任何这些即可使用 GPS。然而，没有多少信息是多余的，因此，如果您想进一步了解它的工作原理（当您正在收集测量值用于工作时，这可能对您有所帮助），请继续阅读。</p>
+<h1 id="GPS-信号"><a href="#GPS-信号" class="headerlink" title="GPS 信号"></a>GPS 信号</h1><p>理解 GPS 最困难的部分是信号本身。根据时间计算距离非常简单，甚至三边测量（稍后将要介绍）听起来也没有添加几张图时那么棘手。但是 GPS 信号及其工作方式非常复杂。</p>
+<p>那么，发送给我们的是什么信息呢？从每颗卫星发送的唯一信号包含两个代码和一条消息：</p>
+<ul>
+<li>C/A 代码（粗/捕获码）</li>
+<li>P 代码（精确代码）[以加密形式，称为 Y 代码]</li>
+<li>导航消息</li>
+</ul>
+<p>P 代码已加密供军事使用，因此可以忽略。加密的目的是防止欺骗和控制系统的访问权。顺便说一句，P 代码加密后，被称为 Y 代码。</p>
+<p><img src="/images/GNSS/TheGPSSignal-700x736.jpg" alt="GPS 信号"></p>
+<p>作为平民，我们只对 C/A 代码和导航消息感兴趣。C/A 代码实际上是由 1,023 个位组成的二进制字符串。乍一看，序列似乎是完全随机的，但事实并非如此。序列经过了精心编排，因此，如果将序列写在两块描图纸上并覆盖它们，则只有一个位置可以匹配（如下所示）。</p>
+<p><img src="/images/GNSS/BinaryString.jpg" alt="GNSS 二进制"></p>
+<p>稍后，当介绍如何计算与卫星的距离时，我们将知道为什么 C/A 代码只匹配一个位置。现在，我们需要知道的是每颗卫星发送的 C/A 代码对该卫星都是唯一的，虽然它似乎是一个随机的比特字符串，但事实并非如此。该代码实际上遵循精确的确定性模式，因此通常称为伪随机噪声（PRN）。</p>
+<p>导航消息不同于 C/A 代码，因为它包含数据。这包括有关时钟校正、卫星健康状况、星历（精确轨道）数据、电离层模型参数和年历（关于星座中所有卫星的一般信息）数据的信息。由于导航消息中包含的信息量以及传输速度相对较慢，因此发送整个消息需要 12.5 分钟。稍后，我们将详细介绍此消息。</p>
+<p>我们需要了解的 GPS 信号的最后部分是载波本身。正如我们已经说过的，每颗卫星传输两个频率-L1在1575.42MHz和L2在1227.60兆赫。所有三个元素（C/A 代码、Y 代码和导航消息）都调制到 L1 载波上，而只有 Y 代码被调制到 L2 载波上。但是，虽然民用用户无法从 L2 载波中解调 Y 代码，但我们可以使用 L2 载波本身，我们稍后将在差分修正中谈到。</p>
+<p>C/A 代码以 1.023 Mb/s 的速度调制到载波上。导航消息以 50 b/s 的速度调制到载波上。</p>
+<h1 id="寻找卫星"><a href="#寻找卫星" class="headerlink" title="寻找卫星"></a>寻找卫星</h1><p>接收器开机后需要做的第一件事就是寻找卫星。它是如何做的取决于接收器最后一次锁定 GPS 卫星已有多长时间。这是因为我们已经知道，GPS 星座中的每颗卫星都会发送一条导航消息，并且该消息的一部分是年历，其中包含星座中每颗卫星轨道的大致信息。</p>
+<p>年历数据可使用约 6 个月，因此，使用其最近的已知位置和当前时间，接收器可以对应该看到哪些卫星做出合理猜测。之所以这样做，是因为另一种选择是盲目搜索所有卫星，这可能需要一些时间。实际上，这就是为什么一段时间未开机或自上次开机以来已经运送到世界各地的接收器可能要花费大量时间来获取 GPS 锁定的原因所在 - 因为必须盲目搜索 。</p>
+<p><img src="/images/GNSS/SearchingForSatellites.jpg" alt="查找全球导航卫星系统卫星"></p>
+<p>假设我们的接收器有有效的年历数据，并且自上次开机以来没有移动太多，它将对当前应该能够看到哪些卫星以及信号频率如何受多普勒频移的影响有一个合理认识。现在，它可以开始从希望从天线接收到的信号中看到的卫星中寻找信号。</p>
+<p>接收器首先对信号的频率和 C/A 代码相位进行二维搜索。这并不容易，但作为最终用户，我们不需要对此过于担心。一旦接收器认为它从卫星上找到了信号，便对其进行确认，然后用 PLL（锁相环）和 CLL（代码锁环）锁定在卫星上。然后在解调数据之前搜索位同步。</p>
+<h1 id="计算出到卫星的距离"><a href="#计算出到卫星的距离" class="headerlink" title="计算出到卫星的距离"></a>计算出到卫星的距离</h1><p>正如我们已经看到的那样，GPS 星座中的每颗卫星都传输唯一的 C/A 代码，这似乎是随机噪声，但实际上是一个确定性序列。因为序列是确定性的，所以 GPS 接收器能够生成与卫星本身完全相同的代码序列。通过在内部生成相同的码型，接收器可以查找卫星正在发射的码型，然后算出与自己的码型相比有多少延迟。</p>
+<p>由于采用了精确的时钟同步，它可以做到这一点。例如，假设您和一个朋友站在一片很大的旷野中。您同步手表后，您的朋友同意在正午时分扣动发令枪扳机。然后，您的朋友走到了旷野的另一端。正午时分，他们扣动发令枪扳机，但是根据您的手表，直到正午后四秒，您才听到爆炸声，因为声音必须在旷野中传播。如果我们假设声音速度为 340 m/s，我们可以乘以这个时间，求出您的朋友是在 1360 米远的地方。</p>
+<p>接收器和 GPS 卫星的工作方式相似。因为接收器能够准确地将其时钟与卫星时钟同步，并且因为接收器知道达到速度的时间，所以才能计算出卫星的距离。</p>
+<p>当然，还需要考虑其他因素，但这就是基本原理。</p>
+<p><img src="/images/GNSS/SatelliteReceiver-700x639.jpg" alt="卫星到接收器"></p>
+<h1 id="距离测量如何帮助我确定自己的位置？"><a href="#距离测量如何帮助我确定自己的位置？" class="headerlink" title="距离测量如何帮助我确定自己的位置？"></a>距离测量如何帮助我确定自己的位置？</h1><p>继续以您和一些朋友在一片旷野中为例，想象您自己站在一个大的正方形旷野中。每个朋友都有一种发出不同声音的方法（启动手枪、敲打乐器、喊叫等）。您同步手表，一个朋友走到旷野的每个角落。从中午开始，他们同意每 10 秒发出一次声音。</p>
+<p>现在假设当他们开始发出噪音时，两个声音同时到达，紧接着是另外两个声音。然后，您向延迟的声音方向移动一点。十秒钟后，又一波声音到达，但这次第二对的延迟较短。如果您继续移动，您会来到一个所有四个声音同时到达的位置。如您所知，每个人都站在旷野的一角，那么您也可以算出自己必须正好站在中心。</p>
+<p>就 GPS 导航而言，卫星可能不在天空的角落，但是由于星历表数据的存在，我们可以在发送信号时确定它们相对于已知坐标系的精确位置，并使用 C/A 代码，我们还可以计算出距该已知位置有多远。接下来介绍一个名为三边测量的过程。</p>
+<p>三边测量有点像三角测量。使用三角测量时，您可以通过说一个特定点相对于点 1 的角度为 a，相对于点 2 的角度为 b 来确定这个特定点。以指定角度从每个点绘制的线将相交，并且它们的交点就是我们的新点位置。</p>
+<p><img src="/images/GNSS/Triangulation-700x543.jpg" alt="三角"></p>
+<p>三边测量法的工作方式类似，但使用距离而不是角度来查找点。另一个主要区别是，使用三边测量法时，您至少需要三个参考点，而不是两个，才能将搜索范围缩小到一个位置。</p>
+<p><img src="/images/GNSS/Trilateration-584x1024.jpg" alt="三角化"></p>
+<p>GPS 使用相同的技术，但处理方法略有不同。我们一直在观察的圆圈是二维的。在现实生活中，事物远不止是三维的，这意味着我们的相交圆成为相交球体。</p>
+<p>当两个球体相交时，您最终不会得到两个相交点，而是得到一个相交环（想象两个气泡连接在一起）。如果第三个气泡加入，它将在所有三个相交环相交处创建两个点。如下所示。</p>
+<p><img src="/images/GNSS/ThreeSpheres.jpg" alt="领域"></p>
+<p>此时，您可能还记得听说过 GPS 只需三颗卫星即可生成位置测量值。这种说法既是对的，也是错的。从上图中可以清楚地看出，为了使用三边测量法得出单个点，需要第四个球体（向我们展示哪个点是正确的）。但是，由于 GPS 使用以地球为中心的地球固定坐标系，因此可以立即排除其中一个点，因为它恰好位于地球大气层之外。因此，另一点必须是正确的。</p>
+<p>因此 GPS 只能使用三颗卫星来生成位置测量值，但是为了实现这一点，其内部时钟必须准确，否则无法正确计算距离。校正内部时钟需要四颗卫星！这就是为什么这种说法既对又错的原因。只要系统使用四颗卫星来校正其内部时钟，它就可以降回三颗卫星，并且仍然可以进行位置估算 — 只是不能永远做到这一点。</p>
+<h1 id="什么是-SPS？"><a href="#什么是-SPS？" class="headerlink" title="什么是 SPS？"></a>什么是 SPS？</h1><p>术语 SPS 代表标准定位服务，并描述仅基于 C/A 代码的 GPS 位置测量。之所以需要区分是因为并非所有 GPS 位置测量都以相同的方式进行，并且用于计算测量值的方法会影响准确性。</p>
+<p>SPS 提供最低精度的 GPS 位置测量，通常在 3-10 米范围内。为了进行 SPS 测量，GPS 接收器锁定四颗或更多颗卫星，然后使用 C/A 码估计到每颗卫星的距离。这些估计称为伪距测量。</p>
+<p>使用 SPS，测量精度取决于接收器将其内部生成的 C/A 代码与天线接收到的 C/A 代码正确对准的能力。尽管即使它能够完美地做到这一点，但精度仍然受到系统设计的限制。</p>
+<p>在大多数情况下，我们希望达到的最佳对准精度约为位宽度的 1％。由于位以每毫秒 1,023 的速度传输，光每毫秒传输约 300,000 米，因此我们的 1％ 对准实现的精度大约为 3 米。但是，某些 L1 接收器可以达到大约 0.6％ 的对准度，从而使它们的精度达到 1.8 米。</p>
+<p>尽管该精度水平足以满足卫星导航需求，但在许多其他应用中仍需要更高的精度，因此通常需要其他测量技术，例如 DGPS（差分 GPS）和实时运动学（RTK）。</p>
+<h1 id="什么是差分修正或-DGPS？"><a href="#什么是差分修正或-DGPS？" class="headerlink" title="什么是差分修正或 DGPS？"></a>什么是差分修正或 DGPS？</h1><p>SPS 测量中的大多数误差来自以下事实：接收器无法真正知道卫星信号通过电离层时如何影响其速度。由于导航消息中包含一些估计值，因此可以从中获得一点线索，这使它可以对可能的影响进行猜测，但这只是估计值。在实践中，这意味着延迟乘以的速度并不十分正确 — 这又意味着计算出的伪距也不正确。</p>
+<p>允许这样做的唯一方法是测量而不是估计信号速度在通过大气层下降时如何受到影响。这就是差分 GPS 的用武之地。DGPS 可以通过多种方式实现，但是本质上它们使用的技术都相同。</p>
+<p>将一个单独的 GPS 接收器（称为基站）放在预先测量的位置并打开。因为已经非常精确地知道基站的位置，所以基站能够将其自己的 GPS 接收器生成的位置测量值与已知坐标进行比较。任何差异都意味着它们从多个卫星之一发出的信号被延迟。系统要做的就是算出应该对每颗卫星进行多少修正，以修正 GPS 位置测量值。</p>
+<p>一旦基站知道如何修正来自每个卫星的信号后，便可以与该地区的任何其他 GPS 接收器（通常称为漫游器）共享此信息。这通常使用无线电调制解调器来实现。巡回接收器检查其所看到的卫星是否可进行修正，并在适用的情况下进行应用，即使其不在已知位置，也可提高其伪距测量的准确性。</p>
+<p>还有其他方法可以实现 DGPS。不必使用自己的本地基站（您在自己的站点上设置），而是可以通过基于 Web 的服务和数据连接来接收差分修正。在这种情况下，您的接收器（流动站）将以正常方式计算出其位置。然后，它将其位置传输到中央服务器，该服务器计算出离您最近的参考站的位置，然后再从该位置发回差分修正。这样的系统的优点在于，您可以从一个国家的一端行驶到另一端，并获得整个行程的有效修正。</p>
+<p>另一种方法是使用称为 SBAS（基于卫星的增强系统）的基于卫星的修正服务。这些工作方式略有不同。已知位置的地球地面站可以对不同地理位置的差分进行修正。然后将这些修正上载到卫星，在那里它们可以广播到任何能够接收它们的接收器。但是，除了接收器需要配备正确的硬件之外，您通常还需要支付订阅费才能解锁修正。</p>
+<p>使用 SBAS 服务可以提高接收器的准确性，但不能达到与本地基站相同的程度。使用 DGPS 时，位置测量的精度通常会提高到几十厘米，例如 40 厘米左右。通过 SABS 实现的 DGPS 通常精确到亚米，大约在 50-60 厘米之间。</p>
+<h1 id="什么是-RTK？"><a href="#什么是-RTK？" class="headerlink" title="什么是 RTK？"></a>什么是 RTK？</h1><p>RTK 代表实时运动学，是另一种提高 GPS 位置测量精度的技术，然而，它是最难理解且实施最密集的技术之一。</p>
+<p>我们已经看到，SPS 是 GPS 系统实现的第一个定位，并且使用 C/A 代码实现。如果可以使用差分修正，则可以提高 SPS 精度，因为可以消除卫星信号的时序延迟。使用约为 40 厘米的 DPGS 位置精度是很正常的。RTK 是 DGPS 的下一步，它有两个版本：RTK 浮点解（可达到分米级精度）以及 RTK 整数（可达到厘米级精度）。</p>
+<p>要了解任一版本的工作原理，必须了解两点。首先是 RTK 正在改变我们使用民用 GPS 接收器应能实现的规则。它并不是一个被设计成旨在帮助我们的技术系统。相反，GPS 制造商认为这是一种比使用 C/A 代码所要达到的精度更高的方法。要了解的第二点就是，它基于载波本身，而不是基于它们所携带的 C/A 代码或导航消息。</p>
+<p>那么它是怎样工作的？我们已经看到，SPS 基于使用 C/A 代码计算出的伪距测量值。接收器通过将其时钟与 GPS 卫星同步，然后为它可以看到的每颗卫星生成自己的 C/A 代码版本来完成此操作。如果它必须将自己的 C/A 代码副本延迟例如 7 毫秒，以匹配在天线上接收到的 C/A 代码，则它知道来自该卫星的信号的传输时间为 7 毫秒，然后就可以算出卫星有多远。</p>
+<p>RTK 的最终目的是确定天线和卫星之间有多少个载波。这样做的原因很简单。我们已经看到，每颗卫星都广播了由 1,023 位组成的唯一 C/A 码。该代码以 1.023 Mb/s 的速率发送，这意味着大约每微秒发送一个位。在一微秒内，来自卫星的无线电信号覆盖了大约 300 米的距离。</p>
+<p>C/A代码调制到的载波频率更高，但是-1575.42 MHz。这意味着单波覆盖了大约19厘米。如果我们能计算出卫星和天线之间有多少个全波，那么就可以更准确地计算出距离。事实上，如果我们知道有多少个全波，而且也可以测量出部分波（相位角），那么我们就可以非常精确。</p>
+<p>RTK 整数和 RTK 浮点解可以被视为在系统中同时运行的两种独立（但相关）的算法。如果 RTK 整数有一个有效的解，则系统将切换至该解（但是 RTK 浮点解算法将继续在后台运行）。如果 RTK 整数随后变得无效，则系统将恢复为 RTK 浮点解，只要载波相位锁没有丢失，就无需再次启动。</p>
+<p>那么算法有何不同？ RTK 浮点解旨在使用统计方法来识别您可能的位置（提高当前 DGPS 的准确性）。它至少需要与基站一起安装四颗普通卫星，并且（以俗称方式）在围绕卫星旋转的当前位置测量周围寻找一个圆点。与 RTK 整数不同，浮点解算法从不尝试解决歧义问题 — 它仅尝试识别围绕当前位置估计值绘制的圆内最可能的位置。RTK 浮点解的精度大约为 40 厘米，但最多可以提高到 20 厘米。</p>
+<p>另一方面，RTK 整数旨在解决歧义问题，只有在解决之后才使用它。它需要五颗普通卫星，并且当找到有效的解决方案时，系统就会知道有 n 个载波以及它与卫星之间的任何部分波。它可以将其测量结果与 19 厘米波长的 0.6% 对准，从而提供约 1 厘米的精度。</p>
+<h1 id="DGPS-或-RTK-不能提高速度测量的准确性吗？"><a href="#DGPS-或-RTK-不能提高速度测量的准确性吗？" class="headerlink" title="DGPS 或 RTK 不能提高速度测量的准确性吗？"></a>DGPS 或 RTK 不能提高速度测量的准确性吗？</h1><p>常见的误解是，GPS 速度测量是通过测量两次连续位置测量之间移动所需的时间来进行的。这不是测量速度的方法，也是位置精度对速度精度没有影响的原因。</p>
+<p>为了计算速度，GPS 接收器实际上使用多普勒频移。因此，它们查看每颗卫星的载波中的频移，并使用该信息来计算速度矢量。因此，您的接收器是否处于 RTK 整数的 SPS 模式并不重要，速度测量将同样准确。<br>GNSS 有哪些局限性？</p>
+<p>总体而言，GNSS 系统非常出色。它们易于使用，不会漂移，并且可以达到较高的准确性。但是，它们并不完美。对于初次使用者来说，为了充分发挥系统的潜能，他们需要清晰、连续的天空视野。如果您在一片旷野中工作，那很棒，但是，如果您要测量城市街道，或者在桥梁和隧道下进行工作，则最多只能得到降低后的精度，而在最坏情况下根本得不到测量值。</p>
+<p>此外，虽然 GPS 接收器非常擅长捕获位置和速度测量值，但如果您也对侧倾、俯仰和偏航感兴趣，那就不好了。双天线系统有助于解决其中一些问题，但仍无法提供完整的图像。对于极其动态的操作，根本就不需要分辨率。</p>
+<p>如需进一步了解惯性导航系统，请单击此处 <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" title="什么是惯性导航系统">什么是惯性导航系统</a> …</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/" data-id="ckdk0gktw008wjo2630m9anq3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          什么是惯性导航系统？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">密码学一小时必知[2010]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ePost/" rel="tag">ePost</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ePost/" style="font-size: 10px;">ePost</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/">什么是惯性导航系统？</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Jeremie<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives/" class="mobile-nav-link">归档</a>
+  
+    <a href="/about-blog/" class="mobile-nav-link">关于Blog</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
