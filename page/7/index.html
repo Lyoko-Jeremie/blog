@@ -70,6 +70,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-树莓派Archlinux安装X11桌面环境" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" class="article-date">
+  <time datetime="2015-08-03T14:03:07.000Z" itemprop="datePublished">2015-08-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">树莓派Archlinux安装X11桌面环境</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>部分参照：<a href="http://www.tommyappco.com/additions.php?req=28" target="_blank" rel="noopener">http://www.tommyappco.com/additions.php?req=28</a> BUT：我用的是Pi2 arm7版本 使用上面连接中的gdm桌面时表示慢到无法使用 而且NetworkManager和netctl好像不兼容，不能同时生效 下面是安装桌面环境的代码</p>
+<blockquote>
+<p><strong>pacman -Syu pacman -S xf86-video-fbdev xorg-xinit dbus pacman -S xorg-server xorg-utils xorg-server-utils mesa pacman -S xorg-twm xterm xorg-xclock pacman -S xfce4</strong></p>
+</blockquote>
+<p>之后可以使用startxfce4启动桌面看一看 使用logout退出桌面并查看错误输出 之后如需启动桌面环境直接执行如下指令即可</p>
+<blockquote>
+<p><strong>startxfce4</strong></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="ckdocsz1j003h2c261wo3g7xa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-archlinux/archlinux安装VNC服务器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
@@ -129,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt3005njo26at4idlki" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdocsz38006l2c266m85apvr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="ckdk0gkt4005tjo263tda58ip" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="ckdocsz37006j2c2653l15ame" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckdk0gkpg0005jo26b7t54xx0" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckdocsz0800012c261xa6gf8k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -313,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckdk0gkpm000djo263qel3sat" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckdocsz0i000f2c266zvsbcoy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt4005rjo261ac6hv6v" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdocsz38006n2c267tm0hb0g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -455,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckdk0gkt3005pjo268noq7h1r" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckdocsz3a006t2c26a6nh8yk2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -508,7 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckdk0gkq70017jo26ganse0se" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckdocsz0w001f2c263y2c0p8u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -552,7 +600,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckdk0gksy0055jo2629ylapli" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckdocsz3200602c266cw75o3l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -615,48 +663,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdk0gkt5005xjo267j4phw1l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/archlinux修改火狐语言" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" class="article-date">
-  <time datetime="2015-07-05T13:53:11.000Z" itemprop="datePublished">2015-07-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/">archlinux修改火狐语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在archlinux下修改火狐语言<br>1.安装火狐<br>2.安装中文语言包<br>3.修改about:config中的general.useragent.locale为zh-CN<br>4.修改about:config中的intl.locale.matchOS为false<br>完成</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckdk0gkt2005ljo260l3s45yr" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdocsz39006p2c26cz2udlfy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -723,6 +730,10 @@
       <ul>
         
           <li>
+            <a href="/2020/08/10/memo/2020-08-10/">2020-08-10</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/">什么是惯性导航系统？</a>
           </li>
         
@@ -736,10 +747,6 @@
         
           <li>
             <a href="/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
           </li>
         
       </ul>
