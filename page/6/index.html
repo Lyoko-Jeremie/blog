@@ -70,6 +70,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Erlang启动脚本" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" class="article-date">
+  <time datetime="2015-11-09T02:32:32.000Z" itemprop="datePublished">2015-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/">Erlang启动脚本</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Erlang可以直接使用一个beam文件作为启动脚本<br>参见：<a href="https://stackoverflow.com/questions/1865997/erlang-startup-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/1865997/erlang-startup-script</a></p>
+<p>使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -boot start_sasl -s XYZ_app start</span><br></pre></td></tr></table></figure>
+
+<p>即可在启动时启动sasl并执行XYZ_app的start函数<br>在start函数中执行一些无法在erl参数中执行的指令即可<br>比如ping指令、先行库启动指令，等等<br>而可以放在erl参数中的有detached、setcookie、name/sname、pa/pz、daemon、boot</p>
+<p>注意：escript不能作为先行启动脚本使用，因为escript执行完后会直接退出虚拟机而不会等待程序继续执行</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" data-id="ckdzqa0v1000bmo264oy0aeml" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-树莓派archlinux移动硬盘搭建网络存储" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" class="article-date">
@@ -107,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckdocsz1i003f2c269krxd17q" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckdzqa0wp0040mo2695dxbrpt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdocsz1b002x2c266uwr7rkl" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0wj003hmo26empw345r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ckdocsz18002n2c262iq342sg" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ckdzqa0wd0036mo2699fwbjv3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ckdocsz12001w2c26bwpgeh22" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ckdzqa0w4002nmo2653fw1amm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckdocsz16002d2c269vot9578" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckdzqa0w8002tmo26fkfbcdtb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -402,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ckdocsz0g000c2c26dht8fp3x" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ckdzqa0v8000omo26finm2lf8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -459,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ckdocsz3a006v2c26d38e5rfb" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ckdzqa0y70070mo260c5bbzij" class="article-share-link">Share</a>
       
       
     </footer>
@@ -500,7 +546,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ckdocsz0r00152c265mg8bj0y" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ckdzqa0vi001kmo26d0vg25mr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -560,53 +606,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckdocsz35006d2c26a767ewg1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-erlang在OTP框架下的代码热更新" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" class="article-date">
-  <time datetime="2015-08-21T07:07:59.000Z" itemprop="datePublished">2015-08-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Erlang/">Erlang</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/">Erlang在OTP框架下的代码热更新</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>网上有许多说原理的，但是却找不到一个完整的在OTP框架下的有关code_change函数用法的热更新</p>
-<p>内容参考自以下网站与OTP文档<br><a href="http://www.jiancool.com/article/61163151807/" target="_blank" rel="noopener">http://www.jiancool.com/article/61163151807/</a></p>
-<p>实践了一下，关键的更新代码是这样</p>
-<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">update</span><span class="params">()</span> -&gt;</span></span><br><span class="line">    sys:suspend(?SERVER),</span><br><span class="line">    code:purge(?MODULE),</span><br><span class="line">    code:load_file(?MODULE),</span><br><span class="line">    sys:change_code(?SERVER, ?MODULE, undefined, extraData),</span><br><span class="line">    sys:resume(?SERVER).</span><br></pre></td></tr></table></figure>
-
-<p>首先suspend暂停线程（change_code必须在暂停状态下使用。并且，暂停状态下线程不会响应call与cast，只会响应带外消息【所以主动模式TCP/UDP通信模块没法直接更新？】）<br>purge清除旧的模块代码（可选，但是如果不清除旧代码，在第二次更新是会出现not_purged错误并且更新失败）（其实是清除上一次更新后遗留下来的代码）（也可使用soft_purge进行软清除）<br>load_file加载新的代码文件<br>change_code调用对应进程的对应旧模块的新版本code_change回调函数来做一些转换操作（这里一般进行state状态量从旧版本到新版本的转换操作）（P:调用的是新代码的code_change函数，所以只要每次更新时在新代码中放置从旧代码到新代码的对state变量的转换函数即可）（网上就没有说清楚这个地方的）<br>最后调用resume恢复进程运行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ckdocsz0n000q2c26cr195fij" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckdzqa0y1006amo26gq2s33ua" class="article-share-link">Share</a>
       
       
     </footer>
@@ -620,7 +620,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
   </nav>
 
 </section>
@@ -631,7 +631,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AHK/">AHK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ArchLinux/">ArchLinux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Code/">Code</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Erlang/">Erlang</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/GalGame/">GalGame</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/OpenWRT/">OpenWRT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/WinSDK/">WinSDK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/firefox/">firefox</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/memo/">memo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/notes/">notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/">人工智灵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B3%E4%BA%8EBlog/">关于Blog</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/">备忘</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/Notes/">Notes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/">杂物</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/">密码学</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/">杂物</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E7%89%A9/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/">樱花庄的宠物女孩</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/">游戏制作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/">Notes</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A3%9E%E8%A1%8C/">飞行</a></li></ul>
     </div>
   </div>
 
@@ -673,6 +673,10 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
       <ul>
         
           <li>
+            <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
+          </li>
+        
+          <li>
             <a href="/2020/08/10/memo/2020-08-10/">2020-08-10</a>
           </li>
         
@@ -686,10 +690,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
         
           <li>
             <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
-          <li>
-            <a href="/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">现代密码学实践指南[2015年]</a>
           </li>
         
       </ul>
