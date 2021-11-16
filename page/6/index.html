@@ -26,7 +26,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -70,6 +70,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-官方JNI规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/" class="article-date">
+  <time datetime="2015-11-23T12:36:33.000Z" itemprop="datePublished">2015-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/">未分类</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/">官方JNI规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a target="_blank" rel="noopener" href="http://linlinjava.org/2015/04/01/learning-jni.html">http://linlinjava.org/2015/04/01/learning-jni.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/11/23/%E5%AE%98%E6%96%B9JNI%E8%A7%84%E8%8C%83/" data-id="ckw1zrows002r08265sb095z4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Erlang启动脚本" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" class="article-date">
@@ -96,9 +137,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Erlang可以直接使用一个beam文件作为启动脚本<br>参见：<a href="https://stackoverflow.com/questions/1865997/erlang-startup-script" target="_blank" rel="noopener">https://stackoverflow.com/questions/1865997/erlang-startup-script</a></p>
+        <p>Erlang可以直接使用一个beam文件作为启动脚本<br>参见：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1865997/erlang-startup-script">https://stackoverflow.com/questions/1865997/erlang-startup-script</a></p>
 <p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -boot start_sasl -s XYZ_app start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erl -boot start_sasl -s XYZ_app start</span><br></pre></td></tr></table></figure>
 
 <p>即可在启动时启动sasl并执行XYZ_app的start函数<br>在start函数中执行一些无法在erl参数中执行的指令即可<br>比如ping指令、先行库启动指令，等等<br>而可以放在erl参数中的有detached、setcookie、name/sname、pa/pz、daemon、boot</p>
 <p>注意：escript不能作为先行启动脚本使用，因为escript执行完后会直接退出虚拟机而不会等待程序继续执行</p>
@@ -106,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" data-id="ckdzqa0v1000bmo264oy0aeml" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/11/09/Erlang%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" data-id="ckw1zrow1000e0826926gc2qd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,18 +183,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>树莓派2B 旧希捷500G移动硬盘 archlinux（2015-10-25） sambantfs-3g 参考资料： <a href="https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a href="https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)</a> <a href="https://wiki.archlinux.org/index.php/NTFS-3G" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/NTFS-3G</a> ntfs-3g库实现了ntfs分区的读写 samba实现windows版的smb局域网共享 关键： 需要写权限的目录必须要设置目录权限1770身份权限root:sambashare</p>
+        <p>树莓派2B 旧希捷500G移动硬盘 archlinux（2015-10-25） sambantfs-3g 参考资料： <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/NTFS-3G_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/NTFS-3G">https://wiki.archlinux.org/index.php/NTFS-3G</a> ntfs-3g库实现了ntfs分区的读写 samba实现windows版的smb局域网共享 关键： 需要写权限的目录必须要设置目录权限1770身份权限root:sambashare</p>
 <p>groupadd sambashare<br>chown root:sambashare &lt;共享目录&gt;<br>chmod 1770 &lt;共享目录&gt;</p>
 <p>如此才能够让sambashare用户组中的用户获得对此目录的读取执行写入权限 添加用户的方法： 先添加一个系统用户 再设置其的samba密码即可</p>
 <p>useradd <user><br>pdbedit -a -u <user></p>
 <p>每次修改samba配置文件之后不要忘记用命令testparm检查配置文件正确性 设置自动挂载分区只要在/etc/fstab中添加条目即可 例如：</p>
 <p>/dev/设备 /mnt/载点 ntfs-3g gid=users,dmask=022,fmask=133 0 0</p>
-<p>  另： 树莓派USB口供电不足，所以挂载移动硬盘需要独立供电或者使用三口USB线从外部取电或者使用自带供电的USBHub 并且，树莓派的网卡口和USB口都是从一个USB口扩展出来的，所以性能不会有多快，测试读写大概稳定在10MB/s</p>
+<p>  另： 树莓派USB口供电不足，所以挂载移动硬盘需要独立供电或者使用三口USB线从外部取电或者使用自带供电的USBHub 并且，树莓派的网卡口和USB口都是从一个USB口扩展出来的，所以性能不会有多快，测试读写大概稳定在10MB/s</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckdzqa0wp0040mo2695dxbrpt" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckw1zrox0003l08269btp1t0r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,40 +230,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参照：<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000</a></p>
+        <p>参照：<a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000</a></p>
 <p>安装git</p>
 <p>创建git用户</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser -m git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser -m git</span><br></pre></td></tr></table></figure>
 
 <p>将用户公钥放入<code>/home/git/.ssh/authorized_keys</code>文件中一行一个<br>之后用户即可使用密钥方式登录git仓库<br>这时可以初始化git仓库</p>
 <p>先选定一个目录作为Git仓库，假定是<code>/srv/sample.git</code>，在<code>/srv</code>目录下输入命令初始化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare sample.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init --bare sample.git</span><br></pre></td></tr></table></figure>
 
 <p>然后设置文件夹用户为git【注意这里设置git用户的shell为git-shell有可能无法使用】</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R git:git sample.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R git:git sample.git</span><br></pre></td></tr></table></figure>
 
 <p>之后如使用smartGit可以用下面的路径添加远程库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh:&#x2F;&#x2F;git@服务器地址:服务器端口&#x2F;srv&#x2F;sample.git</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh://git@服务器地址:服务器端口/srv/sample.git</span><br></pre></td></tr></table></figure>
+<p> </p>
 <hr>
 <p>ssh key 生成方法：</p>
 <p>在git shell中执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</span><br></pre></td></tr></table></figure>
 <p>按说明创建即可</p>
 <p>手动添加key到本地使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~&#x2F;.ssh&#x2F;私钥文件.ppk</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/私钥文件.ppk</span><br></pre></td></tr></table></figure>
 
 <p>若提示<code>Could not open a connection to your authentication agent.</code>则使用以下命令启动ssh-agent</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval &#96;ssh-agent -s&#96;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br></pre></td></tr></table></figure>
 
 <p>若本地多key共存，可以在文件中如下指定key对应的服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host 服务器地址</span><br><span class="line"> port 服务器端口</span><br><span class="line"> HostName 服务器地址</span><br><span class="line"> PreferredAuthentications publickey</span><br><span class="line"> IdentityFile ~&#x2F;.ssh&#x2F;私钥文件.ppk</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host 服务器地址</span><br><span class="line"> port 服务器端口</span><br><span class="line"> HostName 服务器地址</span><br><span class="line"> PreferredAuthentications publickey</span><br><span class="line"> IdentityFile ~/.ssh/私钥文件.ppk</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0wj003hmo26empw345r" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/14/%E6%90%AD%E5%BB%BAgit%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckw1zrowu0030082688t82fbh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,12 +298,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参照：<a href="http://www.keyfc.net/bbs/showtopic-8664.aspx" target="_blank" rel="noopener">http://www.keyfc.net/bbs/showtopic-8664.aspx</a></p>
+        <p>参照：<a target="_blank" rel="noopener" href="http://www.keyfc.net/bbs/showtopic-8664.aspx">http://www.keyfc.net/bbs/showtopic-8664.aspx</a></p>
 <p>REALLIVE系列引擎中BGM(*.NWA)文件的提取方法</p>
 <p>正常状态下NWA文件是带有特殊头信息的PCM格式</p>
 <p>一种解法是直接放入音频编辑软件，去除开头杂音后保存</p>
 <p>另一种是foobar2000安装插件foo_adpcm直接读取.</p>
-<p><a href="http://kode54.foobar2000.org/" target="_blank" rel="noopener">http://kode54.foobar2000.org/</a><br><a href="http://kode54.foobar2000.org/?v" target="_blank" rel="noopener">http://kode54.foobar2000.org/?v</a></p>
+<p><a target="_blank" rel="noopener" href="http://kode54.foobar2000.org/">http://kode54.foobar2000.org/</a><br><a target="_blank" rel="noopener" href="http://kode54.foobar2000.org/?v">http://kode54.foobar2000.org/?v</a></p>
 <blockquote>
 <p>foo_adpcm<br>  144.1 KB<br>  2013-08-13 03:04:24<br>  Supports CRI ADX, my own BRR format based on Sony SPC-700 and PSX ADPCM, everything from in_cube (DSP, GCM, HPS, IDSP, SPT/SPD, MSS, ADP), EA MUS/ASF and MAP files, a host of formats from foo_okiapcm/libpcm (Circus-XPCM sample files (and also ADPCM files from the Saturn version of Symphony of the Night / Dracula X: Nocturne in the Moonlight) (<em>.PCM), Konami-Gungage-XA sample files (</em>.8), KID-WAF sample files (<em>.WAF), BasiL-WPD sample files (</em>.WPD), TamaSoft-MPF sample files (<em>.MPF), StudioMiris-WDT sample files (</em>.WDT), Hayashigumi-KWF sample files (<em>.KWF), VisualArts-NWA sample files (</em>.NWA), jANIS-PX sample files (<em>.PX), CLOVER-BW sample files (</em>.BW)), RAC IMA-ADPCM files from Star Trek: The Next Generation – A Final Unity PC game, and XA ADPCM files from various games. Whew.</p>
 </blockquote>
@@ -271,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ckdzqa0wd0036mo2699fwbjv3" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/12/%E6%81%8B%E7%88%B1%E5%AE%B6%E5%BA%AD%E6%95%99%E5%B8%88%E9%9C%B2%E9%9C%B2%E7%BE%8E%E2%98%85Coordinate!%E6%B8%B8%E6%88%8F%E5%8E%9F%E5%A3%B0%E6%96%87%E4%BB%B6.NWA%E8%AF%BB%E5%8F%96%E5%8A%9E%E6%B3%95/" data-id="ckw1zrowt002t0826efwx05ew" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,14 +347,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-revoke [KEY-ID]</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-revoke [KEY-ID]</span><br></pre></td></tr></table></figure>
 
-<p><a href="http://www.ruanyifeng.com/blog/2013/07/gpg.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2013/07/gpg.html</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2013/07/gpg.html">http://www.ruanyifeng.com/blog/2013/07/gpg.html</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ckdzqa0w4002nmo2653fw1amm" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E4%BD%BF%E7%94%A8gpg%E7%94%9F%E6%88%90%E5%90%8A%E9%94%80%E5%AF%86%E9%92%A5/" data-id="ckw1zrowo002c08265der8omb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,16 +397,16 @@
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /D c:\Users\&lt;用户名&gt;\.gnupg c:\Users\&lt;用户名&gt;\AppData\Roaming\gnupg</span><br></pre></td></tr></table></figure>
 
 <p>git默认使用的签名是与用户名和邮箱对应的签名<br>可以在库（repository）的.git目录下的配置文件（config）中添加如下内容指定KEY-ID</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">signingkey &#x3D; &lt;gpg-key-id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">signingkey = &lt;gpg-key-id&gt;</span><br></pre></td></tr></table></figure>
 
 <p>这个方法对多个KEY同样有效 或者可以设置全局KEY-ID</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.signingkey &lt;gpg-key-id&gt;</span><br></pre></td></tr></table></figure>
 
 <p>打tag的命令：</p>
-<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -s &lt;tagname&gt; -m "&lt;tagmessage&gt;" &lt;commitSHA1-id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -s &lt;tagname&gt; -m &quot;&lt;tagmessage&gt;&quot; &lt;commitSHA1-id&gt;</span><br></pre></td></tr></table></figure>
 
 <p>另外 也可以使用-u参数指定特定提交使用的KEY-ID</p>
-<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -u &lt;KEY-ID&gt; -s &lt;tagname&gt; -m "&lt;tagmessage&gt;" &lt;commit-id&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -u &lt;KEY-ID&gt; -s &lt;tagname&gt; -m &quot;&lt;tagmessage&gt;&quot; &lt;commit-id&gt;</span><br></pre></td></tr></table></figure>
 
 <p>完成后用如下指令可以查看结果</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git show &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
@@ -375,7 +415,7 @@
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag -v &lt;tagname&gt;</span><br></pre></td></tr></table></figure>
 
 <p>同样可以签署commit</p>
-<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -S -m "&lt;tagmessage&gt;"</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -a -S -m &quot;&lt;tagmessage&gt;&quot;</span><br></pre></td></tr></table></figure>
 
 
 <p>在 Git 1.8.3 及以后的版本中，“git merge” 与“git pull” 可以使用<code>--verify-signatures</code>选项来检查并拒绝没有携带可信 GPG 签名的提交。<br>如果使用这个选项来合并一个包含未签名或有效的提交的分支时，合并不会生效。</p>
@@ -386,12 +426,12 @@
 
 <hr>
 <p>参考：</p>
-<p>git help tag<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000" target="_blank" rel="noopener">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000</a> <a href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E7%AD%BE%E7%BD%B2%E5%B7%A5%E4%BD%9C" target="_blank" rel="noopener">https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E7%AD%BE%E7%BD%B2%E5%B7%A5%E4%BD%9C</a> <a href="https://airk000.github.io/git/2013/09/30/git-tag-with-gpg-key" target="_blank" rel="noopener">https://airk000.github.io/git/2013/09/30/git-tag-with-gpg-key</a><br>另外是一个签名的“幽默故事” <a href="http://www.oschina.net/translate/git-horror-story" target="_blank" rel="noopener">http://www.oschina.net/translate/git-horror-story</a></p>
+<p>git help tag<br><a target="_blank" rel="noopener" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000</a> <a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E7%AD%BE%E7%BD%B2%E5%B7%A5%E4%BD%9C">https://git-scm.com/book/zh/v2/Git-%E5%B7%A5%E5%85%B7-%E7%AD%BE%E7%BD%B2%E5%B7%A5%E4%BD%9C</a> <a target="_blank" rel="noopener" href="https://airk000.github.io/git/2013/09/30/git-tag-with-gpg-key">https://airk000.github.io/git/2013/09/30/git-tag-with-gpg-key</a><br>另外是一个签名的“幽默故事” <a target="_blank" rel="noopener" href="http://www.oschina.net/translate/git-horror-story">http://www.oschina.net/translate/git-horror-story</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckdzqa0w8002tmo26fkfbcdtb" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/29/%E5%9C%A8git%E4%B8%AD%E4%BD%BF%E7%94%A8GPG%E7%BB%99tag%E7%AD%BE%E5%90%8D%E7%9A%84%E6%96%B9%E6%B3%95/" data-id="ckw1zrowq002j08266cnreqxi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -428,27 +468,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>系统：centos、archlinux 平台：搬瓦工、conoha User：root 搬瓦工 centos C-P 流程（copy-past+回车即可）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install epel-release</span><br><span class="line">yum install python-setuptools &amp;&amp; easy_install pip</span><br><span class="line">yum install m2crypto git libsodium nano </span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line">git clone -b manyuser https:&#x2F;&#x2F;github.com&#x2F;shadowsocksr&#x2F;shadowsocksr</span><br><span class="line"></span><br><span class="line">nano &#x2F;etc&#x2F;shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;port_password&quot;:&#123;</span><br><span class="line">         &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line">         &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano &#x2F;etc&#x2F;init.d&#x2F;shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">#description: some desc here</span><br><span class="line">#processname: the_process_name </span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">        start)</span><br><span class="line">                nohup python &#x2F;root&#x2F;shadowsocks&#x2F;shadowsocks&#x2F;server.py -c &#x2F;etc&#x2F;shadowsocks.json;;</span><br><span class="line">        stop)</span><br><span class="line">                ;;</span><br><span class="line">        restart)</span><br><span class="line">                ;;</span><br><span class="line">        *)  </span><br><span class="line">                echo &quot;Usage: #0 &#123;start|stop|restart&#125;&quot;;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chmod +x &#x2F;etc&#x2F;init.d&#x2F;shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chkconfig --add shadowsocks</span><br><span class="line"></span><br><span class="line">chkconfig shadowsocks on</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install epel-release</span><br><span class="line">yum install python-setuptools &amp;&amp; easy_install pip</span><br><span class="line">yum install m2crypto git libsodium nano </span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line">git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr</span><br><span class="line"></span><br><span class="line">nano /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;port_password&quot;:&#123;</span><br><span class="line">         &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line">         &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/init.d/shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!/bin/sh</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">#description: some desc here</span><br><span class="line">#processname: the_process_name </span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">        start)</span><br><span class="line">                nohup python /root/shadowsocks/shadowsocks/server.py -c /etc/shadowsocks.json;;</span><br><span class="line">        stop)</span><br><span class="line">                ;;</span><br><span class="line">        restart)</span><br><span class="line">                ;;</span><br><span class="line">        *)  </span><br><span class="line">                echo &quot;Usage: #0 &#123;start|stop|restart&#125;&quot;;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chmod +x /etc/init.d/shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chkconfig --add shadowsocks</span><br><span class="line"></span><br><span class="line">chkconfig shadowsocks on</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>conoha archlinux C-P 流程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -S python-setuptools python-pip python2-m2crypto git libsodium</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git clone -b akkariiin&#x2F;master https:&#x2F;&#x2F;github.com&#x2F;shadowsocksrr&#x2F;shadowsocksr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano &#x2F;etc&#x2F;shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line"> &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line"> &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line"> &quot;local_port&quot;:1080,</span><br><span class="line"> &quot;port_password&quot;:&#123;</span><br><span class="line"> &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line"> &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line"> &#125;,</span><br><span class="line"> &quot;timeout&quot;:300,</span><br><span class="line"> &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line"> &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv shadowsocksr&#x2F; &#x2F;usr&#x2F;bin&#x2F;shadowsocksr&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;shadowsocksR.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description&#x3D;ShadowsocksR Server Service</span><br><span class="line">Requires&#x3D;network.target</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type&#x3D;simple</span><br><span class="line">User&#x3D;nobody</span><br><span class="line">Restart&#x3D;always</span><br><span class="line"># way 1</span><br><span class="line">AmbientCapabilities&#x3D;CAP_NET_BIND_SERVICE</span><br><span class="line"># way 2</span><br><span class="line">#PermissionsStartOnly&#x3D;true</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;bin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python2.7</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;bin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.6</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;bin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.7</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;usr&#x2F;sbin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python2.7</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;usr&#x2F;sbin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.6</span><br><span class="line">#ExecStartPre&#x3D;-&#x2F;usr&#x2F;sbin&#x2F;setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.7</span><br><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;python &#x2F;usr&#x2F;bin&#x2F;shadowsocksr&#x2F;shadowsocks&#x2F;server.py -c &#x2F;etc&#x2F;shadowsocks.json</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl start shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl status shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl enable shadowsocksR.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -S python-setuptools python-pip python2-m2crypto git libsodium</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git clone -b akkariiin/master https://github.com/shadowsocksrr/shadowsocksr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line"> &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line"> &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line"> &quot;local_port&quot;:1080,</span><br><span class="line"> &quot;port_password&quot;:&#123;</span><br><span class="line"> &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line"> &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line"> &#125;,</span><br><span class="line"> &quot;timeout&quot;:300,</span><br><span class="line"> &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line"> &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv shadowsocksr/ /usr/bin/shadowsocksr/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/systemd/system/shadowsocksR.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=ShadowsocksR Server Service</span><br><span class="line">Requires=network.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=nobody</span><br><span class="line">Restart=always</span><br><span class="line"># way 1</span><br><span class="line">AmbientCapabilities=CAP_NET_BIND_SERVICE</span><br><span class="line"># way 2</span><br><span class="line">#PermissionsStartOnly=true</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line">ExecStart=/usr/bin/python /usr/bin/shadowsocksr/shadowsocks/server.py -c /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl start shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl status shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl enable shadowsocksR.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>archlinux修改服务配置文件后需要重载并重启服务才能有效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
 
-<p>P： <del>archlinux默认的python是python3，SSR的开发是针对python2的，所以在作者收到bug反馈并修复之前会有各种奇怪bug，所以需要指定archlinux使用python2</del><br>P2: 上述的systemd配置文件中ExecStartPre部分和PermissionsStartOnly=true配合，完成在服务启动前以root权限赋予监听特权端口（0~1024）的能力，且在/bin/setcap前添加-号忽略执行失败，以完成无需服务本身使用root即可监听80及443端口的能力。 详见： <a href="https://bugzilla.redhat.com/show_bug.cgi?id=651797" target="_blank" rel="noopener">https://bugzilla.redhat.com/show_bug.cgi?id=651797</a> <a href="https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre" target="_blank" rel="noopener">https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -xeu shadowsocksR</span><br></pre></td></tr></table></figure>
+<p>P： <del>archlinux默认的python是python3，SSR的开发是针对python2的，所以在作者收到bug反馈并修复之前会有各种奇怪bug，所以需要指定archlinux使用python2</del><br>P2: 上述的systemd配置文件中ExecStartPre部分和PermissionsStartOnly=true配合，完成在服务启动前以root权限赋予监听特权端口（0~1024）的能力，且在/bin/setcap前添加-号忽略执行失败，以完成无需服务本身使用root即可监听80及443端口的能力。 详见： <a target="_blank" rel="noopener" href="https://bugzilla.redhat.com/show_bug.cgi?id=651797">https://bugzilla.redhat.com/show_bug.cgi?id=651797</a> <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre">https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -xeu shadowsocksR</span><br></pre></td></tr></table></figure>
 
 <p>可以查看系统服务日志 授权可执行文件绑定特权端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python2.7</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br></pre></td></tr></table></figure>
 
 <p>系统更新后使用的脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nano after-update.sh</span><br><span class="line"></span><br><span class="line">setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python2.7</span><br><span class="line">setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.6</span><br><span class="line">setcap &#39;cap_net_bind_service&#x3D;+eip&#39; &#x2F;bin&#x2F;python3.7</span><br><span class="line"></span><br><span class="line">chmod +x after-update.sh</span><br><span class="line">.&#x2F;after-update.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nano after-update.sh</span><br><span class="line"></span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line"></span><br><span class="line">chmod +x after-update.sh</span><br><span class="line">./after-update.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ckdzqa0v8000omo26finm2lf8" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="ckw1zrow6000p0826dtd742j6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -484,28 +524,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参见：<br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/04/13/2445399.html" target="_blank" rel="noopener">http://www.cnblogs.com/sheldonxu/archive/2012/04/13/2445399.html</a><br><a href="http://www.centoscn.com/CentOS/config/2014/0804/3424.html" target="_blank" rel="noopener">http://www.centoscn.com/CentOS/config/2014/0804/3424.html</a></p>
+        <p>参见：<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/sheldonxu/archive/2012/04/13/2445399.html">http://www.cnblogs.com/sheldonxu/archive/2012/04/13/2445399.html</a><br><a target="_blank" rel="noopener" href="http://www.centoscn.com/CentOS/config/2014/0804/3424.html">http://www.centoscn.com/CentOS/config/2014/0804/3424.html</a></p>
 <p>1. 在/etc/init.d下创建Service启动脚本</p>
 <p>脚本头部的固定写法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">#description: some desc here</span><br><span class="line">#processname: the_process_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">#description: some desc here</span><br><span class="line">#processname: the_process_name</span><br></pre></td></tr></table></figure>
 
-<p>其中2345是runlevel，即2-5，85是系统启动顺序，15是系统关闭顺序<br>当然，它要有运行权限: <code>chmod +x /etc/init.d/some_service</code></p>
+<p>其中2345是runlevel，即2-5，85是系统启动顺序，15是系统关闭顺序<br>当然，它要有运行权限: <code>chmod +x /etc/init.d/some_service</code></p>
 <p>脚本内容的一般写法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case &quot;$1&quot; in</span><br><span class="line">    start)</span><br><span class="line">        echo &quot;Starting myservice...&quot;;;</span><br><span class="line">    stop)</span><br><span class="line">        echo &quot;Shutting down myservice...&quot;;;</span><br><span class="line">    restart)</span><br><span class="line">        echo &quot;Shutting down myservice...&quot;</span><br><span class="line">        echo &quot;Starting myservice...&quot;;;</span><br><span class="line">    *) </span><br><span class="line">        echo &quot;Usage: #0 &#123;start|stop|restart&#125;&quot;;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">case &quot;$1&quot; in</span><br><span class="line">    start)</span><br><span class="line">        echo &quot;Starting myservice...&quot;;;</span><br><span class="line">    stop)</span><br><span class="line">        echo &quot;Shutting down myservice...&quot;;;</span><br><span class="line">    restart)</span><br><span class="line">        echo &quot;Shutting down myservice...&quot;</span><br><span class="line">        echo &quot;Starting myservice...&quot;;;</span><br><span class="line">    *) </span><br><span class="line">        echo &quot;Usage: #0 &#123;start|stop|restart&#125;&quot;;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
 
 <p>2. 注册到系统</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add some_service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add some_service</span><br></pre></td></tr></table></figure>
 
 <p>3. 设置随系统启动 激活：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig some_service on</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig some_service on</span><br></pre></td></tr></table></figure>
 
 <p>取消：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig some_service off</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig some_service off</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ckdzqa0y70070mo260c5bbzij" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="ckw1zroxz006v08262nsk9ifg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -541,72 +581,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在编程使用raspberry的GPIO口时 要想操作GPIO、I2C必须要拥有root权限 但是在多应用程序通信联合运行时就出现一个大问题 非root应用程序不能启动一个访问gpio口的应用程序 想到的解决方法一个就是以root启动调用者 但是这样就失去了安全性 第二个就是使得被调用程序始终以root权限执行 操作方法如下 1、将可执行文件的所有者设置为root 2、设置所有人可读可执行此文件（这两步直接在root下gcc编译即可实现）3、使用“chmod u+s xxx”将xxx文件设置为s权限 这样这个程序在使用ls -all查看时便是如此权限“-rwsr-xr-x” 然后就可以让任意用户使用普通的调用方法却能让程序运行在root权限下   参考：<a href="http://jazka.blog.51cto.com/809003/240549" target="_blank" rel="noopener">http://jazka.blog.51cto.com/809003/240549</a></p>
+        <p>在编程使用raspberry的GPIO口时 要想操作GPIO、I2C必须要拥有root权限 但是在多应用程序通信联合运行时就出现一个大问题 非root应用程序不能启动一个访问gpio口的应用程序 想到的解决方法一个就是以root启动调用者 但是这样就失去了安全性 第二个就是使得被调用程序始终以root权限执行 操作方法如下 1、将可执行文件的所有者设置为root 2、设置所有人可读可执行此文件（这两步直接在root下gcc编译即可实现）3、使用“chmod u+s xxx”将xxx文件设置为s权限 这样这个程序在使用ls -all查看时便是如此权限“-rwsr-xr-x” 然后就可以让任意用户使用普通的调用方法却能让程序运行在root权限下   参考：<a target="_blank" rel="noopener" href="http://jazka.blog.51cto.com/809003/240549">http://jazka.blog.51cto.com/809003/240549</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ckdzqa0vi001kmo26d0vg25mr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/Archlinux更新时导入Key出错解决方案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
-  <time datetime="2015-08-30T16:21:09.000Z" itemprop="datePublished">2015-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Archlinux更新时导入Key出错解决方案</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>pacman -Syu 系统更新时，在下载完新的包之后出现如下错误</p>
-<blockquote>
-<pre><code>(20/20) checking keys in keyring                   [----------------------] 100%
-downloading required keys...
-error: key &quot;A6234074498E9CEE&quot; could not be looked up remotely
-error: required key missing from keyring
-error: failed to commit transaction (unexpected error)
-Errors occurred, no packages were upgraded.</code></pre></blockquote>
-<p>显示为无法导入Key</p>
-<p>wiki中的说明如下 <a href="https://wiki.archlinux.org/index.php/Pacman-key#Cannot_import_keys" target="_blank" rel="noopener">链接</a></p>
-<blockquote>
-<pre><code>Outdated archlinux-keyring package.
-Incorrect date.
-Your ISP blocked the port used to import PGP keys.
-Your pacman cache contains copy of unsigned packages from previous attempts.</code></pre></blockquote>
-<p>其实首先尝试手动更新key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
-
-<p>异常基本可以解决</p>
-<p>否则就是服务器无法访问或者keyring包版本太老需要更新</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckdzqa0y1006amo26gq2s33ua" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="ckw1zrowg001j08267w5jd2un" class="article-share-link">Share</a>
       
       
     </footer>
@@ -660,7 +640,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -671,6 +651,10 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -688,10 +672,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -704,7 +684,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.</co
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

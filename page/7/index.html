@@ -26,7 +26,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -70,6 +70,70 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-archlinux/Archlinux更新时导入Key出错解决方案" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2015-08-30T16:21:09.000Z" itemprop="datePublished">2015-08-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">Archlinux更新时导入Key出错解决方案</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>pacman -Syu 系统更新时，在下载完新的包之后出现如下错误</p>
+<blockquote>
+<pre><code>(20/20) checking keys in keyring                   [----------------------] 100%
+downloading required keys...
+error: key &quot;A6234074498E9CEE&quot; could not be looked up remotely
+error: required key missing from keyring
+error: failed to commit transaction (unexpected error)
+Errors occurred, no packages were upgraded.
+</code></pre>
+</blockquote>
+<p>显示为无法导入Key</p>
+<p>wiki中的说明如下 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Pacman-key#Cannot_import_keys">链接</a></p>
+<blockquote>
+<pre><code>Outdated archlinux-keyring package.
+Incorrect date.
+Your ISP blocked the port used to import PGP keys.
+Your pacman cache contains copy of unsigned packages from previous attempts.
+</code></pre>
+</blockquote>
+<p>其实首先尝试手动更新key</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman-key --populate archlinux</span><br></pre></td></tr></table></figure>
+
+<p>异常基本可以解决</p>
+<p>否则就是服务器无法访问或者keyring包版本太老需要更新</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckw1zroxq00650826g01xfeu3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-erlang在OTP框架下的代码热更新" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" class="article-date">
@@ -97,7 +161,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>网上有许多说原理的，但是却找不到一个完整的在OTP框架下的有关code_change函数用法的热更新</p>
-<p>内容参考自以下网站与OTP文档<br><a href="http://www.jiancool.com/article/61163151807/" target="_blank" rel="noopener">http://www.jiancool.com/article/61163151807/</a></p>
+<p>内容参考自以下网站与OTP文档<br><a target="_blank" rel="noopener" href="http://www.jiancool.com/article/61163151807/">http://www.jiancool.com/article/61163151807/</a></p>
 <p>实践了一下，关键的更新代码是这样</p>
 <figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">update</span><span class="params">()</span> -&gt;</span></span><br><span class="line">    sys:suspend(?SERVER),</span><br><span class="line">    code:purge(?MODULE),</span><br><span class="line">    code:load_file(?MODULE),</span><br><span class="line">    sys:change_code(?SERVER, ?MODULE, undefined, extraData),</span><br><span class="line">    sys:resume(?SERVER).</span><br></pre></td></tr></table></figure>
 
@@ -106,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ckdzqa0va000umo26da7kador" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="ckw1zrowa00150826bmlxagty" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +206,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>部分参照：<a href="http://www.tommyappco.com/additions.php?req=28" target="_blank" rel="noopener">http://www.tommyappco.com/additions.php?req=28</a> BUT：我用的是Pi2 arm7版本 使用上面连接中的gdm桌面时表示慢到无法使用 而且NetworkManager和netctl好像不兼容，不能同时生效 下面是安装桌面环境的代码</p>
+        <p>部分参照：<a target="_blank" rel="noopener" href="http://www.tommyappco.com/additions.php?req=28">http://www.tommyappco.com/additions.php?req=28</a> BUT：我用的是Pi2 arm7版本 使用上面连接中的gdm桌面时表示慢到无法使用 而且NetworkManager和netctl好像不兼容，不能同时生效 下面是安装桌面环境的代码</p>
 <blockquote>
 <p><strong>pacman -Syu pacman -S xf86-video-fbdev xorg-xinit dbus pacman -S xorg-server xorg-utils xorg-server-utils mesa pacman -S xorg-twm xterm xorg-xclock pacman -S xfce4</strong></p>
 </blockquote>
@@ -154,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="ckdzqa0wn003tmo26a9oz9xxu" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="ckw1zrowy003g0826eqn9ffr1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,40 +254,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>完全参照：<a href="https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
+        <p>完全参照：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Virtual/_Network/_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
 <h4 id="安装tigervnc"><a href="#安装tigervnc" class="headerlink" title="安装tigervnc"></a>安装tigervnc</h4><p>这是一个TightVNC的linux实现<br>以你需要的用户身份执行vncserver第一次启动、设置密码并测试服务器<br>默认的是第一个桌面:1<br>实际端口是5900+1</p>
 <p>如下指令可以关闭某个桌面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
 
-<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">xinitrc</a>来编辑</p>
+<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">xinitrc</a>来编辑</p>
 <blockquote>
 <p>hit： 简单的编辑方法是<br>  注掉所有exec开头的行<br>  并且注掉末尾最后一个exec行前面的连续几行（这几行末尾有&amp;，是和exec同时执行的内容）<br>  可添加如下指令在文件末尾启动桌面环境<br>  exec startxfce4</p>
 </blockquote>
 <p>windows下使用TightVNC连接即可</p>
 <p>设置开关机行为<br>示例文件在 <code>/usr/lib/systemd/system/vncserver.service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;vncserver.service &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/lib/systemd/system/vncserver.service /etc/systemd/system/vncserver@:1.service</span><br></pre></td></tr></table></figure>
 
 <p>然后编辑<code>/etc/systemd/system/vncserver@:1.service</code><br>可以看到其中有使用说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x&#x3D;2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User&#x3D; </span><br><span class="line"># (&quot;User&#x3D;foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;&#x2F;usr&#x2F;bin&#x2F;vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \&#96;systemctl --system daemon-reload\&#96; </span><br><span class="line"># 5. Run \&#96;systemctl enable vncserver@:&lt;display&gt;.service\&#96; </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Vncserver</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to /etc/systemd/system/vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x=2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User= </span><br><span class="line"># (&quot;User=foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;/usr/bin/vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \`systemctl --system daemon-reload\` </span><br><span class="line"># 5. Run \`systemctl enable vncserver@:&lt;display&gt;.service\` </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https://wiki.archlinux.org/index.php/Vncserver</span><br></pre></td></tr></table></figure>
 
 <p>其实我们只需要在User=后面添加我们的用户名即可<br>如果有需要的话可以修改ExecStart这一项添加启动参数的方式改变行为<br>之后重载systemctl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
 
 <p>再启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
 <p>即可使用</p>
 <p>在使用时可以发现VNC不会自动根据客户机改变桌面分辨率<br>所以我们可以在启动参数中设置一个分辨率</p>
 <p>比如wiki上的示例</p>
 <blockquote>
-<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
+<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
 </blockquote>
 <p>如需要完整的选项表，向 vncserver 传递 -help 开关。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0y4006mmo266jwyh3p4" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckw1zroxw006j0826dzwb1gui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,24 +325,24 @@
       
         <p>到手两个树莓派<br>其中一个装了arch<br>但是因为家里网络环境只有无线网络<br>arch默认的无线却没有wpa加密的支持包<br>于是便有了此文<br>下面是整理的内容 </p>
 <p>相关工具命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看网络设备 </span><br><span class="line">**ip </span><br><span class="line">link** </span><br><span class="line">查看网络地址 </span><br><span class="line">**ifconfig** </span><br><span class="line">查看系统服务状态 </span><br><span class="line">**systemctl**</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">查看网络设备 </span><br><span class="line">**ip </span><br><span class="line">link** </span><br><span class="line">查看网络地址 </span><br><span class="line">**ifconfig** </span><br><span class="line">查看系统服务状态 </span><br><span class="line">**systemctl**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>使用netctl工具的手动网络配置方法<br>来自：<a href="https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm" target="_blank" rel="noopener">https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm</a> </p>
+<p>使用netctl工具的手动网络配置方法<br>来自：<a target="_blank" rel="noopener" href="https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm">https://raspberrypi.stackexchange.com/questions/7987/wifi-configuration-on-arch-linux-arm</a> </p>
 <p>在/etc/netctl/examples/目录下有netctl网络连接工具配置文件的范例<br>从范例创建一个新的网络连接配置（以普通的wpa加密的无线网络连接为例）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">从wireless-wpa范例文件创建一个权限为640的配置文件 </span><br><span class="line">这样的权限配置可以防止配置文件中的密码泄露 </span><br><span class="line"></span><br><span class="line">install -m640 &#x2F;etc&#x2F;netctl&#x2F;examples&#x2F;wireless-wpa &#x2F;etc&#x2F;netctl&#x2F;wireless-home</span><br><span class="line"></span><br><span class="line">编辑这个文件 </span><br><span class="line">将其中的MyNetwork和WirelessKey替换为SSID和密码 </span><br><span class="line">保存文件 </span><br><span class="line">启动配置文件 </span><br><span class="line"></span><br><span class="line">netctl start wireless-home</span><br><span class="line"></span><br><span class="line">启动后可以ping一下进行检测 </span><br><span class="line">没问题之后设置该配置文件开机自启动 </span><br><span class="line"></span><br><span class="line">netctl enable wireless-home</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">从wireless-wpa范例文件创建一个权限为640的配置文件 </span><br><span class="line">这样的权限配置可以防止配置文件中的密码泄露 </span><br><span class="line"></span><br><span class="line">install -m640 /etc/netctl/examples/wireless-wpa /etc/netctl/wireless-home</span><br><span class="line"></span><br><span class="line">编辑这个文件 </span><br><span class="line">将其中的MyNetwork和WirelessKey替换为SSID和密码 </span><br><span class="line">保存文件 </span><br><span class="line">启动配置文件 </span><br><span class="line"></span><br><span class="line">netctl start wireless-home</span><br><span class="line"></span><br><span class="line">启动后可以ping一下进行检测 </span><br><span class="line">没问题之后设置该配置文件开机自启动 </span><br><span class="line"></span><br><span class="line">netctl enable wireless-home</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>其实netctl操作的是systemctl服务中的netctl服务<br>启动配置文件时真正做的事情是以配置文件启动服务<br>netctl start xxx </p>
 <p>相当于<br>systemctl start netctl@xxx </p>
 <p>所以当出现问题时会显示要求使用如下命令查看故障原因<br>systemctl status netctl@xxx </p>
-<p>然后.如果在上面启动配置文件时遇到错误<br>查看服务的status时发现如下信息就可以做对应的解决方案<br>如果说wpa-s…什么什么的一个东西没有安装<br>是因为你使用的是wpa加密的无线网络<br>但是没有安装那个支持wpa的库<br>需要安装后再试<br>如果说这个配置文件“already up”<br>说明对应的设备端口已经在使用中<br>使用如下命令停用该设备再启用配置文件即可<br>ip link set 设备名（比如eth0） down<br>参见：<a href="https://wiki.archlinux.org/index.php/Netctl#Troubleshooting" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Netctl#Troubleshooting</a><br><a href="https://wiki.archlinux.org/index.php/Network\_configuration" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Network\_configuration</a> </p>
+<p>然后.如果在上面启动配置文件时遇到错误<br>查看服务的status时发现如下信息就可以做对应的解决方案<br>如果说wpa-s…什么什么的一个东西没有安装<br>是因为你使用的是wpa加密的无线网络<br>但是没有安装那个支持wpa的库<br>需要安装后再试<br>如果说这个配置文件“already up”<br>说明对应的设备端口已经在使用中<br>使用如下命令停用该设备再启用配置文件即可<br>ip link set 设备名（比如eth0） down<br>参见：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Netctl#Troubleshooting">https://wiki.archlinux.org/index.php/Netctl#Troubleshooting</a><br><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Network/_configuration">https://wiki.archlinux.org/index.php/Network\_configuration</a> </p>
 <hr>
-<p>另：如果使用有线网络的DHCP自动分配<br>插上网线再启动dhcpcd服务即可<br>另外：在配置静态IP是会遇到如下格式的IP<br>192.168.1.21/24<br>这是CIDR表示法，把ip地址和子网掩码合并到一起，可以一个ip表示一个ip簇<br>参见<a href="https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing#CIDR\_notation" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing#CIDR\_notation</a> </p>
+<p>另：如果使用有线网络的DHCP自动分配<br>插上网线再启动dhcpcd服务即可<br>另外：在配置静态IP是会遇到如下格式的IP<br>192.168.1.21/24<br>这是CIDR表示法，把ip地址和子网掩码合并到一起，可以一个ip表示一个ip簇<br>参见<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Classless/_Inter-Domain/_Routing#CIDR\_notation">https://en.wikipedia.org/wiki/Classless\_Inter-Domain\_Routing#CIDR\_notation</a> </p>
 <p>常用的255.255.255.0等价于24</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="ckdzqa0y4006kmo265ze26fzu" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="ckw1zroxt006f08266meodqsf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,10 +381,10 @@
         <p>在分布式环境下进行远程调用</p>
 <p>标准的OTP模型是使用global参数注册server名，使用global参数进行调用<br>global注册时会将信息注册到kernel.global模块中.global模块会在分布式系统运行时运行</p>
 <p>参见</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kernel-3.2&#x2F;doc&#x2F;html&#x2F;global.htmlstdlib-2.4&#x2F;doc&#x2F;html&#x2F;gen_server.html#start\_link-3 stdlib-2.4&#x2F;doc&#x2F;html&#x2F;gen_server.html#cast-2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kernel-3.2/doc/html/global.htmlstdlib-2.4/doc/html/gen_server.html#start\_link-3 stdlib-2.4/doc/html/gen_server.html#cast-2</span><br></pre></td></tr></table></figure>
 
 <p>同样的，在gen_server文档中的一个细节是<br>如果start_link注册是使用的是global模式，在cast、call等调用时也要使用该模式才能正确调用<br>另：在不同节点上的代码要直接访问的部分一定要在调用节点本地有代码被加载，否则无法正确调用运行</p>
-<p>下面的内容来自：<a href="https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt" target="_blank" rel="noopener">https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt</a></p>
+<p>下面的内容来自：<a target="_blank" rel="noopener" href="https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt">https://veniceweb.googlecode.com/svn/trunk/public/daily_tech_doc/erlang_global_20091109.txt</a></p>
 <hr>
 <p>重点介绍erlang的global模块.</p>
 <ol>
@@ -329,22 +393,18 @@
 <p>这个模块在所有的链接的erlang节点的集群中实现了register_name/2和whereis_name/1的功能.一个注册名是一个pid的别名，<br>这个名字服务进程管理这些注册的pid,如果一个process终止，名字将自动被注销unregistered.</p>
 <p>这些注册名储存在name table中，这个name table在每一个节点上都存在，因此名字服务的调用是快速的，当一个操作改变了name table, 所有的节点的name table都会自动被更新.</p>
 <ol start="2">
-<li>单个节点的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">1</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(?MODULE, handle_msg, [Name]),</span><br><span class="line">    register(Name, Pid).          <span class="comment">%% 在本地node注册process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    Name ! &#123;Msg, self()&#125;,         <span class="comment">%% 向本地node的process发消息</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">            Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>单个节点的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">1</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(?MODULE, handle_msg, [Name]),</span><br><span class="line">    register(Name, Pid).          <span class="comment">%% 在本地node注册process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    Name ! &#123;Msg, self()&#125;,         <span class="comment">%% 向本地node的process发消息</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">            Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>测试:<br>启动一个本地的process, 并注册一个名字pid1, 调用whereis/1测试,返回Pid,<br>测试通过名字pid1对进程发消息,<br>之后停止process, 再次调用whereis/1测试，返回undefined</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; test:start(pid1).</span><br><span class="line">true</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">&lt;0.64.0&gt;</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 1”).</span><br><span class="line">“received your msg: test – 1”</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 2”).</span><br><span class="line">“received your msg: test – 2”</span><br><span class="line">&gt; test:rpc_call(pid1, stop).</span><br><span class="line">stop</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; test:start(pid1).</span><br><span class="line">true</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">&lt;0.64.0&gt;</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 1”).</span><br><span class="line">“received your msg: test – 1”</span><br><span class="line">&gt; test:rpc_call(pid1, “test – 2”).</span><br><span class="line">“received your msg: test – 2”</span><br><span class="line">&gt; test:rpc_call(pid1, stop).</span><br><span class="line">stop</span><br><span class="line">&gt; whereis(pid1).</span><br><span class="line">undefined</span><br></pre></td></tr></table></figure>
 
 <ol start="3">
-<li>Erlang Nodes集群的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">2</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name, Node)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(Node, ?MODULE, handle_msg, [Name]),</span><br><span class="line">    global:register_name(Name, Pid).    <span class="comment">%% 注册global的process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    global:send(Name, &#123;Msg, self()&#125;),   <span class="comment">%% 向global的name消息发送方式</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">        Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>Erlang Nodes集群的例子:<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-export</span><span class="params">([start/<span class="number">2</span>, rpc_call/<span class="number">2</span>, handle_msg/<span class="number">1</span>])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">start</span><span class="params">(Name, Node)</span> -&gt;</span></span><br><span class="line">    Pid = spawn(Node, ?MODULE, handle_msg, [Name]),</span><br><span class="line">    global:register_name(Name, Pid).    <span class="comment">%% 注册global的process的名字</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">rpc_call</span><span class="params">(Name, Msg)</span> -&gt;</span></span><br><span class="line">    global:send(Name, &#123;Msg, self()&#125;),   <span class="comment">%% 向global的name消息发送方式</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;Reply, Name&#125; -&gt;</span><br><span class="line">        Reply</span><br><span class="line">    <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">handle_msg</span><span class="params">(Name)</span> -&gt;</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">        &#123;stop, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;stop, Name&#125;;</span><br><span class="line">        &#123;Msg, Pid&#125; -&gt;</span><br><span class="line">            Pid ! &#123;“received your msg: ” ++ Msg, Name&#125;,</span><br><span class="line">            handle_msg(Name)</span><br><span class="line">    <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure></li>
 </ol>
 <p>测试:<br>在同一台机器上启动三个节点的erlang集群:</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">erl -sname node1 -setcookie testcookie</span><br><span class="line">erl -sname node2 -setcookie testcookie</span><br><span class="line">erl -sname node3 -setcookie testcookie</span><br></pre></td></tr></table></figure>
 <p>在node1上启动服务:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(node1@dev-pc)&gt; test:start(pid1, node()).</span><br><span class="line">yes</span><br><span class="line">(node1@dev-pc)&gt; test:rpc_call(pid1, “msg – 1”).</span><br><span class="line">“received your msg: msg – 1”</span><br><span class="line">在node2和node3上测试效果:</span><br><span class="line">(node3@dev-pc)&gt; test:rpc_call(pid1, “msg – 3”).</span><br><span class="line">“received your msg: msg – 3”</span><br><span class="line"></span><br><span class="line">(node2@dev-pc)&gt; test:rpc_call(pid1, “msg – 2”).</span><br><span class="line">“received your msg: msg – 2”</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(node1@dev-pc)&gt; test:start(pid1, node()).</span><br><span class="line">yes</span><br><span class="line">(node1@dev-pc)&gt; test:rpc_call(pid1, “msg – 1”).</span><br><span class="line">“received your msg: msg – 1”</span><br><span class="line">在node2和node3上测试效果:</span><br><span class="line">(node3@dev-pc)&gt; test:rpc_call(pid1, “msg – 3”).</span><br><span class="line">“received your msg: msg – 3”</span><br><span class="line"></span><br><span class="line">(node2@dev-pc)&gt; test:rpc_call(pid1, “msg – 2”).</span><br><span class="line">“received your msg: msg – 2”</span><br></pre></td></tr></table></figure>
 
 <ol start="4">
 <li>分布式的知识补充:<br>&lt;1&gt; 如何在调用远程node上的方法?<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpc:call(Node, Mod, Func, [Arg1, … ArgN]).</span><br></pre></td></tr></table></figure>
@@ -362,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckdzqa0v2000dmo26di2dg1t8" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="ckw1zrow0000c0826ajl5f1n4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,15 +459,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最新版Shadowsocks-win-2.5.1已经支持多服务器负载均衡与优选功能了<br>在选择服务器的菜单中已经有了“负载均衡”和“高可用”的选项了<br>再也不会因为视频大流量导致TCP链接被临时阻断了<br>看视频时使用负载均衡能够使得YTB视频加载更快<br>浏览网页时使用高可用提高网页加载速度..</p>
-<p>看了一下Git上该项目的说明，可以自己实现IStrategy类改进负载均衡的算法。<br>而看了一下当前默认的负载均衡算法，TCP部分使用的是随机分配算法，UDP部分使用的是标准的求余分布. 下面是负载均衡部分的服务器分布代码<br><a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio管理员.png" target="_blank" rel="noopener"></a><a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio管理员.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio%E7%AE%A1%E7%90%86%E5%91%98.png" alt="2015-07-31 20_12_32-shadowsocks-csharp - Microsoft Visual Studio(管理员)"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public Server GetAServer(IStrategyCallerType type, IPEndPoint localIPEndPoint)</span><br><span class="line">&#123;</span><br><span class="line">    var configs &#x3D; _controller.GetCurrentConfiguration().configs;</span><br><span class="line">    int index;</span><br><span class="line">    if (type &#x3D;&#x3D; IStrategyCallerType.TCP)</span><br><span class="line">    &#123;</span><br><span class="line">        index &#x3D; _random.Next();</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        index &#x3D; localIPEndPoint.GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line">    return configs[index % configs.Count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看了一下Git上该项目的说明，可以自己实现IStrategy类改进负载均衡的算法。<br>而看了一下当前默认的负载均衡算法，TCP部分使用的是随机分配算法，UDP部分使用的是标准的求余分布. 下面是负载均衡部分的服务器分布代码<br><a target="_blank" rel="noopener" href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio%E7%AE%A1%E7%90%86%E5%91%98.png"></a><a target="_blank" rel="noopener" href="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio%E7%AE%A1%E7%90%86%E5%91%98.png"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/07/2015-07-31-20_12_32-shadowsocks-csharp-Microsoft-Visual-Studio%E7%AE%A1%E7%90%86%E5%91%98.png" alt="2015-07-31 20_12_32-shadowsocks-csharp - Microsoft Visual Studio(管理员)"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public Server GetAServer(IStrategyCallerType type, IPEndPoint localIPEndPoint)</span><br><span class="line">&#123;</span><br><span class="line">    var configs = _controller.GetCurrentConfiguration().configs;</span><br><span class="line">    int index;</span><br><span class="line">    if (type == IStrategyCallerType.TCP)</span><br><span class="line">    &#123;</span><br><span class="line">        index = _random.Next();</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        index = localIPEndPoint.GetHashCode();</span><br><span class="line">    &#125;</span><br><span class="line">    return configs[index % configs.Count];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>我感觉负载均衡算法如果能够再加入可用性测试的部分就更好.<br>像我这种有五六个服务器的使用这个样的会更好….</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckdzqa0v9000smo26ex60dwty" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="ckw1zrow6000q08269erectkp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -443,30 +503,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>惯例的参考：<a href="http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html" target="_blank" rel="noopener">http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S bftpd</span><br></pre></td></tr></table></figure>
+        <p>惯例的参考：<a target="_blank" rel="noopener" href="http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html">http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S bftpd</span><br></pre></td></tr></table></figure>
 
 <p>安装后<code>bftpd.conf</code>配置文件在/etc目录下 几乎不用修改即可使用 独立模式启动服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;sbin&#x2F;bftpd -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/bftpd -d</span><br></pre></td></tr></table></figure>
 
-<p>直接以IP默认端口连接  以非root账户登录 终止则直接杀死进程即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall bftpd</span><br></pre></td></tr></table></figure>
+<p>直接以IP默认端口连接  以非root账户登录 终止则直接杀死进程即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall bftpd</span><br></pre></td></tr></table></figure>
 
 <p>需要以后台服务方式运行则最方便的方法是使用xinetd超级服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xinetd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xinetd</span><br></pre></td></tr></table></figure>
 
 <p>安装 启动并设置自启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xinetd</span><br><span class="line">systemctl enable xinetd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xinetd</span><br><span class="line">systemctl enable xinetd</span><br></pre></td></tr></table></figure>
 
 <p>在<code>/etc/xinetd.conf</code>文件中添加以下内容让xintetd托管bftpd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">service ftp</span><br><span class="line">&#123;</span><br><span class="line"> disable &#x3D; no</span><br><span class="line"> socket_type &#x3D; stream</span><br><span class="line"> wait &#x3D; no</span><br><span class="line"> user &#x3D; root</span><br><span class="line"> server &#x3D; &#x2F;usr&#x2F;sbin&#x2F;bftpd</span><br><span class="line"> log\_on\_success +&#x3D; HOST PID</span><br><span class="line"> log\_on\_failure +&#x3D; HOST</span><br><span class="line"> nice &#x3D; 10</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">service ftp</span><br><span class="line">&#123;</span><br><span class="line"> disable = no</span><br><span class="line"> socket_type = stream</span><br><span class="line"> wait = no</span><br><span class="line"> user = root</span><br><span class="line"> server = /usr/sbin/bftpd</span><br><span class="line"> log\_on\_success += HOST PID</span><br><span class="line"> log\_on\_failure += HOST</span><br><span class="line"> nice = 10</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p>完成</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0y6006wmo26ahx75i5d" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckw1zroxx006n0826htwg6g7w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,35 +562,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参照：<a href="https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a><br>首先，使用添加源的方法已经无法安装yaourt了<br>所以使用第二个方法</p>
+        <p>参照：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Yaourt_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a><br>首先，使用添加源的方法已经无法安装yaourt了<br>所以使用第二个方法</p>
 <p>首先安装 base-devel包（<strong>needed</strong> 前面是两个英文短横线，WP会自动转义）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br></pre></td></tr></table></figure>
 
 <p>全部安装完成后检查fakeroot 和 sudo是否安装好<br>可以直接再安装一下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fakeroot</span><br><span class="line">pacman -S sudo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S fakeroot</span><br><span class="line">pacman -S sudo</span><br></pre></td></tr></table></figure>
 
-<p>有关sudo的相关配置参见我的linux安装文档 <a href="http://jeremie.moe/wordpress/%e5%ae%89%e8%a3%85archlinux/" target="_blank" rel="noopener">点这里</a></p>
+<p>有关sudo的相关配置参见我的linux安装文档 <a target="_blank" rel="noopener" href="http://jeremie.moe/wordpress/%e5%ae%89%e8%a3%85archlinux/">点这里</a></p>
 <blockquote>
 <p><em>Note：必须在非root用户下才能使用makepkg 指令</em></p>
 </blockquote>
 <p>之后使用你喜欢的下载器或者安装wget来执行wiki中的步骤（其中<strong>wget</strong> 可能要安装才能用）</p>
 <p>安装 package-query：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;pa&#x2F;package-query&#x2F;package-query.tar.gz</span><br><span class="line">tar zxvf package-query.tar.gz</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz</span><br><span class="line">tar zxvf package-query.tar.gz</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>安装 yaourt：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https:&#x2F;&#x2F;aur.archlinux.org&#x2F;packages&#x2F;ya&#x2F;yaourt&#x2F;yaourt.tar.gz</span><br><span class="line">tar zxvf yaourt.tar.gz</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz</span><br><span class="line">tar zxvf yaourt.tar.gz</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
 
 <p>安装完成后记得使用以下指令更新数据库（<strong>devel</strong> 和<strong>aur</strong>前面是两个英文短横线）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Sy --devel --aur</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Sy --devel --aur</span><br></pre></td></tr></table></figure>
 
 <p>也可以直接如下更新整个系统<br>同步数据库，升级软件包，搜索 AUR 和 devel (all packages based on cvs, svn, git, bzr(…)-version) 升级：（<strong>devel</strong> 和<strong>aur</strong>前面是两个英文短横线）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syu --devel --aur</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syu --devel --aur</span><br></pre></td></tr></table></figure>
 
 <p>下面这条命令将会检查升级包括AUR软件包在内的所有系统软件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syua</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -Syua</span><br></pre></td></tr></table></figure>
 
 <p>然后就可以愉快地像使用pacman一样使用yaourt了</p>
 <p>另外：可以使用如下指令合并.pacman/pacnew</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -C</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yaourt -C</span><br></pre></td></tr></table></figure>
 
 
 <p>Editer时可以对新旧文件进行对比<br>但是需要调用vimdiff<br>所以需要安装vim</p>
@@ -539,17 +599,17 @@
 <hr>
 <p>上面的方法的下载地址貌似改了路径<br>已经404了</p>
 <p>安装部分改为以下方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;package-query.git</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">git clone https:&#x2F;&#x2F;aur.archlinux.org&#x2F;yaourt.git</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git clone https://aur.archlinux.org/package-query.git</span><br><span class="line">cd package-query</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br><span class="line"></span><br><span class="line">git clone https://aur.archlinux.org/yaourt.git</span><br><span class="line">cd yaourt</span><br><span class="line">makepkg -si</span><br><span class="line">cd ..</span><br></pre></td></tr></table></figure>
 
 <p>因此安装依赖包也改变为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br><span class="line">pacman -S git wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S --needed base-devel</span><br><span class="line">pacman -S git wget</span><br></pre></td></tr></table></figure>
 
-<p>参照：<a href="https://archlinux.fr/yaourt-en" target="_blank" rel="noopener">https://archlinux.fr/yaourt-en</a></p>
+<p>参照：<a target="_blank" rel="noopener" href="https://archlinux.fr/yaourt-en">https://archlinux.fr/yaourt-en</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckdzqa0y5006qmo26161ydfij" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85Yaourt/" data-id="ckw1zroxx006l0826bagm7g1p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,7 +649,7 @@
 <blockquote>
 <p><strong>树莓派也是标准的计算机，也要按照正常的操作流程来开关机，否则会出现各种稀奇古怪匪夷所思的问题 树莓派的小黄灯在闪或者亮的时候代表在进行磁盘操作</strong></p>
 </blockquote>
-<p>很重要所以放在第一 然后安装教程：<a href="http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2" target="_blank" rel="noopener">http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2</a> 说说其中的重点 不要指望能在windows下进行这个操作 mkfs.vfat指令不能用就去安装dosfstools<code>这个包</code></p>
+<p>很重要所以放在第一 然后安装教程：<a target="_blank" rel="noopener" href="http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2">http://archlinuxarm.org/platforms/armv7/broadcom/raspberry-pi-2</a> 说说其中的重点 不要指望能在windows下进行这个操作 mkfs.vfat指令不能用就去安装dosfstools<code>这个包</code></p>
 <blockquote>
 <p><strong><em>pacman -S dosfstools</em></strong></p>
 </blockquote>
@@ -602,51 +662,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckdzqa0vl001smo267wgt0b7p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/ArchLinux之pacman调用axel多线程加速下载" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" class="article-date">
-  <time datetime="2015-07-22T12:33:14.000Z" itemprop="datePublished">2015-07-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/">ArchLinux之pacman调用axel多线程加速下载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>整理转自：<a href="http://www.nenew.net/" target="_blank" rel="noopener">奶牛博客</a><br><a href="http://www.nenew.net/arch-linux-pacman-axel-multi-download.html" target="_blank" rel="noopener">http://www.nenew.net/arch-linux-pacman-axel-multi-download.html</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">安装</span><br><span class="line">sudo pacman -S axel</span><br><span class="line">编辑&#x2F;etc&#x2F;axelrc</span><br><span class="line">alternate_output &#x3D; 1</span><br><span class="line">打开输出</span><br><span class="line">设置&#x2F;etc&#x2F;pacman.conf文件使其调用axel下载</span><br><span class="line">XferCommand &#x3D; &#x2F;usr&#x2F;bin&#x2F;axel -n 5 -a -o %o %u</span><br><span class="line">-n后面是线程数</span><br></pre></td></tr></table></figure>
-
-<p>同时对pacman和yaourt有效</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckdzqa0y00063mo26fc5y8ari" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/24/raspberry%20pi%202%20%E5%AE%89%E8%A3%85archlinux%20arm%20%E7%89%88/" data-id="ckw1zrowi001q08263qpv3elt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -700,7 +716,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -711,6 +727,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -728,10 +748,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -744,7 +760,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

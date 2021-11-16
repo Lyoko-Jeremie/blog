@@ -40,7 +40,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -104,7 +104,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>from : <a href="https://www.oxts.com/zh/what-is-inertial-navigation-guide/" target="_blank" rel="noopener">https://www.oxts.com/zh/what-is-inertial-navigation-guide/</a></p>
+        <p>from : <a target="_blank" rel="noopener" href="https://www.oxts.com/zh/what-is-inertial-navigation-guide/">https://www.oxts.com/zh/what-is-inertial-navigation-guide/</a></p>
 <h1 id="GPS-出现之前的生活"><a href="#GPS-出现之前的生活" class="headerlink" title="GPS 出现之前的生活"></a>GPS 出现之前的生活</h1><p>由于现在甚至连厨房用具都装有 GPS 接收器，很难想象 GPS 出现之前的生活是怎样的。人们是如何生活的？甚至可能有不见其人的声音告诉您左转、右转以及在可能时掉头？对于依赖卫星导航仪和智能手机的一代人而言，这是一个严重的问题—人们到底是怎么知道自己在哪里的？<br>事实是，在 GPS 出现以前，如果普通人想知道他们在哪里，他们必须求助于地图、观察和极其不准确的假设。而且，如果情况真的很糟，他们就问路。然而，对于拥有大量的金钱、充足的空间和真正需要知道自己所在位置的个人和行业来说，他们的救星经常以 INS（惯性导航系统）的形式出现。</p>
 <h1 id="什么是惯性导航系统？"><a href="#什么是惯性导航系统？" class="headerlink" title="什么是惯性导航系统？"></a>什么是惯性导航系统？</h1><p>惯性导航系统有各种形状和尺寸。它们的共同点是使用多个惯性传感器，以及某种形式的中央处理单元来跟踪这些传感器的测量值。INS 使用的传感器通常是陀螺仪和加速度计，并且内部通常都有几种传感器。稍后我们将介绍 INS 的实际工作方式，现在，最重要的事情是认识它们与 GPS 的区别 - 您可能更熟悉 GPS。</p>
 <p>打开 GPS 接收器，假设一切正常，在很短的时间后，它将生成位置测量值。接收器生成的位置测量值非常具体，不存在 GPS 的不精确性。它指出“您在这个纬度和这个经度”- 换句话说，它用已知的坐标系提供给我们一个绝对位置。惯性导航系统不能这样工作。就它们而言，它们生成的测量值是相对于他们最后已知的位置。因此，即使在惯性导航系统已经打开几分钟后，它也不能说“您在这个纬度和这个经度”，但它可能会说，“您没有从开始位置移动“。</p>
@@ -138,7 +138,7 @@
 <p>虽然这似乎很合乎逻辑，但它并不能解释为什么垂直放置在地板上的加速度计会产生 9.81 m/s² 的值，即使地板显然没有移动。然而，自由落体的加速度计从天而降时明显正在加速，为何显示零加速？答案见下图。</p>
 <p><img src="/images/INS/900_Accelerometers.jpg" alt="加速度计和重力"></p>
 <h1 id="陀螺仪"><a href="#陀螺仪" class="headerlink" title="陀螺仪"></a>陀螺仪</h1><p>加速度计擅长测量直线运动，但它们不擅长旋转，这就是陀螺仪的用处。陀螺仪根本不关心线性运动，只关心旋转。如前所述，在描述不同的惯性导航系统时，术语陀螺仪可以指不同的东西，这取决于所描述的系统类型。</p>
-<p><img src="/images/INS/380_GyroRotation-210x300.jpg" alt=""></p>
+<p><img src="/images/INS/380_GyroRotation-210x300.jpg"></p>
 <p>在传统意义上，陀螺仪采用一个或多个旋转转子，该转子保持在万向架中或悬挂在其他系统中，该系统旨在将其与外部扭矩隔离。 这种陀螺仪之所以起作用，是因为一旦转子旋转，它便希望保持其轴或旋转。 换句话说，如果您通过陀螺仪的旋转轴投影一条线，则无论您如何尝试扭曲和旋转陀螺仪，投影线将始终指向同一点。 显然，如果您可以对其施加扭矩，则可能会使陀螺仪移动，而采用万向节就是要防止这种运动。</p>
 <p>万向节使用多个彼此垂直安装的同心环，这些同心环通过正交排列的枢轴连接。假设环没有在万向节中死锁，这种设计可使陀螺仪在三轴中自由旋转。当两个轴对齐时，万向节发生死锁。在这种状态下，万向节具有两个自由度，而不是三个，因此在某个方向上施加的外部扭矩可能会影响旋转轴。</p>
 <p>由于陀螺仪的转子要保持其初始旋转轴，因此可以将传感器安装到万向节上，以测量其所连接的外部框架的相对方向变化。通过这种方式，可以保持外部框架相对于陀螺仪轴的方向。左图说明了这一点。</p>
@@ -164,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" data-id="ckdzqa0w5002omo264ae23rze" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/08/07/%E4%BB%80%E4%B9%88%E6%98%AF%E6%83%AF%E6%80%A7%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F/" data-id="ckw1zroym009v0826br2qfhih" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -241,6 +241,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -258,10 +262,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -274,7 +274,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -26,7 +26,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -70,6 +70,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-archlinux/ArchLinux之pacman调用axel多线程加速下载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" class="article-date">
+  <time datetime="2015-07-22T12:33:14.000Z" itemprop="datePublished">2015-07-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/">ArchLinux之pacman调用axel多线程加速下载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整理转自：<a target="_blank" rel="noopener" href="http://www.nenew.net/">奶牛博客</a><br><a target="_blank" rel="noopener" href="http://www.nenew.net/arch-linux-pacman-axel-multi-download.html">http://www.nenew.net/arch-linux-pacman-axel-multi-download.html</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">安装</span><br><span class="line">sudo pacman -S axel</span><br><span class="line">编辑/etc/axelrc</span><br><span class="line">alternate_output = 1</span><br><span class="line">打开输出</span><br><span class="line">设置/etc/pacman.conf文件使其调用axel下载</span><br><span class="line">XferCommand = /usr/bin/axel -n 5 -a -o %o %u</span><br><span class="line">-n后面是线程数</span><br></pre></td></tr></table></figure>
+
+<p>同时对pacman和yaourt有效</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/07/22/archlinux/ArchLinux%E4%B9%8Bpacman%E8%B0%83%E7%94%A8axel%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8A%A0%E9%80%9F%E4%B8%8B%E8%BD%BD/" data-id="ckw1zroxo005y0826hlp1byqr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-archlinux/archlinux搭建SS服务器" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
@@ -96,34 +140,34 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考：<a href="https://wiki.archlinux.org/index.php/Shadowsocks_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Shadowsocks_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a><br>说一下步骤以及WIKI上不清楚的地方</p>
+        <p>参考：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Shadowsocks_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Shadowsocks_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a><br>说一下步骤以及WIKI上不清楚的地方</p>
 <hr>
 <p>首先是安装SS</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S shadowsocks</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S shadowsocks</span><br></pre></td></tr></table></figure>
 
 <p>再cd到 /etc/shadowsocks/ 目录创建 xxx.josn 的服务器配置文件（同时这里放置的也是客户端配置文件）</p>
 <p>服务器版本配置文件内容（这里是重点，网上好像都没说清楚）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">	&quot;server_port&quot;:443,</span><br><span class="line">	&quot;local_port&quot;:1080,</span><br><span class="line">	&quot;password&quot;:&quot;your-passwd&quot;,</span><br><span class="line">	&quot;timeout&quot;:300,</span><br><span class="line">	&quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">	&quot;server_port&quot;:443,</span><br><span class="line">	&quot;local_port&quot;:1080,</span><br><span class="line">	&quot;password&quot;:&quot;your-passwd&quot;,</span><br><span class="line">	&quot;timeout&quot;:300,</span><br><span class="line">	&quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>其实和客户端配置文件几乎一样<br>只是服务器的重要在于server_port、password、method这三个<br>两个local并没有存在的意义<br>server也直接0.0.0.0就ok<br>客户端连接时直接匹配server_port、password、method就可以正确连接上服务器<br>至于fast_open这个linux特有特性，我客户端使用的是windows所以并不关心，也无法测试</p>
 <p>然后<br>配置文件写好后<br>启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start shadowsocks-server@xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start shadowsocks-server@xxx</span><br></pre></td></tr></table></figure>
 
 <p>上面指令最后@后面的xxx就是json配置文件的名字（无后缀）（注意这里没有通常的.service）<br>这时可以用以下命令查看是否启动完</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl</span><br></pre></td></tr></table></figure>
 
 <p>如果有问题可以使用如下指令查看详细错误信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status shadowsocks@xxx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status shadowsocks@xxx</span><br></pre></td></tr></table></figure>
 
 <p>同时也可以连接试试看 确认正常后替换start为enable设置自启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable shadowsocks@foo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable shadowsocks@foo</span><br></pre></td></tr></table></figure>
 
 <p>显示创建链接成功就ok了 重启服务器测试是否自动启动 之后就可以愉快地SS了～～～</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0y6006umo26al83hf9g" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/10/archlinux/archlinux%E6%90%AD%E5%BB%BASS%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckw1zroxy006r0826af5r0rau" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckdzqa0y3006gmo26fxbsfw9q" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/05/archlinux/archlinux%E4%BF%AE%E6%94%B9%E7%81%AB%E7%8B%90%E8%AF%AD%E8%A8%80/" data-id="ckw1zroxw006h08263jmugl9b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +245,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>节点名分长名与短名两种<br>节点名由前缀与后缀组成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本机唯一节点名（前缀）@本机地址（后缀）</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">本机唯一节点名（前缀）@本机地址（后缀）</span><br></pre></td></tr></table></figure>
 
 <p>对于cookie<br>两个几点连接时cookie必须一致 否则连接请求会被阻止</p>
 <p>对于长名<br>节点名前缀在同一个机器上必须要唯一 即使同一机器上的多个节点后缀可以不同<br>节点长名后缀可使用可由DNS解析的域名或者直接为IP地址<br>当连接使用域名的节点会访问由DNS服务器解析的对应IP</p>
@@ -210,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckdzqa0wm003omo268l868tl5" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/29/%E6%9C%89%E5%85%B3Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E8%8A%82%E7%82%B9%E9%95%BF%E5%90%8D%E8%AF%95%E9%AA%8C/" data-id="ckw1zrowx003b08262343blba" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,13 +293,13 @@
         <p>因为学校使用客户端拨号上网<br>之前又使用了netsh开启win7的虚拟wifi（HotWifi）功能共享上网<br>现在要给承担拨号以及wifi共享任务的网关机添加一个DNS服务器实现反DNS投毒的功能<br>但是因为实现从客户端拨号连接到虚拟无线热点之间使用的ICS网络共享服务自带了DNS以及DHCP功能 占用了53端口<br>以至于安装的Pcap_DNSProxy服务器无法打开53端口正常工作</p>
 <p>想到的解决方案是将Pcap_DNSProxy的服务设置为自动启动<br>并将ICS服务设置为自动延迟启动<br>使得在正常情况下Pcap_DNSProxy总能比ICS先启动并占用53端口<br>以此屏蔽ICS的DNS服务功能</p>
 <p>另外<br>因为ICS的DHCP自动IP分配功能IP分配缓慢且无法手动设置IP<br>使用了一个开启了桥接功能的路由并设置好DHCP来以抢先机制取代ICS的又慢又难用的DHCP功能<br>而且以路由器作为网络中心也可以解决因为作为无线热点的USB无线网卡由于性能不足导致内网传输缓慢以及全速传输内网传输时硬件过热导致的设备丢失问题</p>
-<p>附当前网络物理结构<br> <a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1-300x200.png" alt="物理结构"></a></p>
-<p> 网络逻辑结构（点击看大图）<br> <a href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2.png" target="_blank" rel="noopener"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2-300x145.png" alt="逻辑结构"></a></p>
+<p>附当前网络物理结构<br> <a target="_blank" rel="noopener" href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1.png"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/1-300x200.png" alt="物理结构"></a></p>
+<p> 网络逻辑结构（点击看大图）<br> <a target="_blank" rel="noopener" href="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2.png"><img src="http://jeremie.moe/wordpress/wp-content/uploads/2015/06/2-300x145.png" alt="逻辑结构"></a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckdzqa0wn003rmo26hg9vgxh3" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/28/%E6%9C%89%E5%85%B3ICS%E6%9C%8D%E5%8A%A1%E4%B8%8EPcap_DNSProxy%E5%85%B1%E5%AD%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckw1zrowy003e08268g0v7ziw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,20 +335,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="http://erlang-rfc4627" target="_blank" rel="noopener">erlang-rfc4627库GitHub链接</a><br>构建环境： windows7 x64 msys2 64bit已预先在msys2中使用pacman装好GNU</p>
+        <p><a target="_blank" rel="noopener" href="http://erlang-rfc4627/">erlang-rfc4627库GitHub链接</a><br>构建环境： windows7 x64 msys2 64bit已预先在msys2中使用pacman装好GNU</p>
 <p>AutoMake msys2启动脚本如下</p>
 <figure class="highlight shell"><figcaption><span>script</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SET PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\bin;d:\\Code\\Erlang\\erl6.4\\bin;D:\\Code\\Perl64\\site\\bin;D:\\Code\\Perl64\\bin</span><br><span class="line">@SET CPLUS\_INCLUDE\_PATH=d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt;d:\\Code\\C++\\x86\_64-4.9.2-release-posix-seh-rt\_v4-rev2\\mingw64\\opt\\include</span><br><span class="line">cd /d d:\</span><br><span class="line">cd d:\\Code\\msys64\</span><br><span class="line">msys2_shell.bat</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 
 <p>启动脚本中已配置好环境变量<br>包含常用的mingw-w64、shell脚本用perl、添加的erlang执行文件bin路径、mingw相关头文件搜索路径<br>设置好了msys2初始目录后<br>启动原生的msys2_shell启动脚本</p>
 <p>附msys2中切换到D盘方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;D&#x2F;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /D/</span><br></pre></td></tr></table></figure>
 
 <p>其余操作与linux下一致<br>切换到rfc4627项目所在目录后<br>执行make指令<br>自动根据Makefile文件构建项目<br>使用<code>make dist</code>可构建文档<br>在erlang控制台（werl）使用<code>cd(&quot;路径&quot;).</code>切换工作路径到项目ebin文件夹<br>执行指令<code>application:start(rfc4627_jsonrpc).</code>启动jsonrpc应用程序<br>执行<code>l(rfc4627).</code>指令单独加载rfc4627解析模块</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckdzqa0vo0023mo26bukh65ln" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/24/%E2%80%9Cerlang-rfc4627%E2%80%9DErlangJson%E5%BA%93windows7x64+msys2%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%9E%84%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" data-id="ckw1zrowl002108267lk6871j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -340,7 +384,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>参考： <a href="http://www.cnblogs.com/mad/p/3280041.html" target="_blank" rel="noopener">http://www.cnblogs.com/mad/p/3280041.html</a> <a href="https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a href="https://wiki.archlinux.org/index.php/Installation_guide" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Installation_guide</a> <em>Note；使用iso引导进入系统后，当前目录下可用ls命令看到一个名叫install.txt的文件，可使用nano install.txt查看，其中有所使用iso镜像对应的官方的安装向导信息</em> 1、分区</p>
+        <p>参考： <a target="_blank" rel="noopener" href="http://www.cnblogs.com/mad/p/3280041.html">http://www.cnblogs.com/mad/p/3280041.html</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation/_guide/_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Installation\_guide\_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Installation_guide">https://wiki.archlinux.org/index.php/Installation_guide</a> <em>Note；使用iso引导进入系统后，当前目录下可用ls命令看到一个名叫install.txt的文件，可使用nano install.txt查看，其中有所使用iso镜像对应的官方的安装向导信息</em> 1、分区</p>
 <blockquote>
 <p><strong>cfdisk</strong></p>
 </blockquote>
@@ -348,7 +392,7 @@
 <blockquote>
 <p><em>Note: For GRUB to boot from a GPT partitioned disk on a BIOS based system, one has to create a BIOS boot partition. Please note this partition is unrelated to the /boot mountpoint, and will be used by GRUB directly. Do not create a filesystem on it, and do not mount it.</em></p>
 </blockquote>
-<p>参见：<a href="https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR</a> ·注意【Bootable】，/ 分区一定要Bootable，如果你单独划分了/boot，那这个bootable。 2、格式化</p>
+<p>参见：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR">https://wiki.archlinux.org/index.php/Partitioning#Choosing\_between\_GPT\_and\_MBR</a> ·注意【Bootable】，/ 分区一定要Bootable，如果你单独划分了/boot，那这个bootable。 2、格式化</p>
 <blockquote>
 <p><strong>fdisk /dev/sda</strong></p>
 </blockquote>
@@ -378,7 +422,7 @@
 </blockquote>
 <p>第一条是生成，第二条是查看生成的内容，没问题就Ctrl+x退出即可。 7、配置系统 先要chroot切换到新系统，命令如下：</p>
 <blockquote>
-<p>*<em>arch-chroot /mnt *</em></p>
+<p>**arch-chroot /mnt **</p>
 </blockquote>
 <p>a、配置locale，语言 编辑/etc/locale.gen，这个文件所有的内容都是注释的，所以在最上面添加en_US.UTF-8 UTF-8即可。 <em>Note：我一般是直接解除下面的所需的注释即可</em></p>
 <blockquote>
@@ -421,7 +465,7 @@
 <blockquote>
 <p><strong>reboot</strong></p>
 </blockquote>
-<p>9、安装桌面环境 <em>Note：这里说一下pacman基本用法</em> <em>第一个参数最常用的是-Ss（查询远程数据库），-S（安装指定名称的包），-Syu（同步远程数据库在本地的元信息）</em> <em>参见：<a href="https://wiki.archlinux.org/index.php/Pacman\_tips\" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Pacman\_tips\</a></em>(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)_ <em>一般我的步骤是先-Ss查询软件包，找到全名，再-S全名 安装</em> a、安装xorg-server</p>
+<p>9、安装桌面环境 <em>Note：这里说一下pacman基本用法</em> <em>第一个参数最常用的是-Ss（查询远程数据库），-S（安装指定名称的包），-Syu（同步远程数据库在本地的元信息）</em> <em>参见：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Pacman/_tips/_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/Pacman\_tips\_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</a></em> <em>一般我的步骤是先-Ss查询软件包，找到全名，再-S全名 安装</em> a、安装xorg-server</p>
 <blockquote>
 <p><strong>pacman -S xorg-server xorg-server-utils xorg-xinit</strong></p>
 </blockquote>
@@ -465,7 +509,7 @@
 <blockquote>
 <p><strong>gpasswd -a yourname wheel</strong></p>
 </blockquote>
-<p>我是添加了power storage network wheel systemd-journal 因为虚拟机，基本只是用terminal学习一些其他的语言，其他不干。（嗯.这里需要一个个添加） 给予这个新用户sudo权限 参照：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> 启动编辑sudoers文件专用的编辑器</p>
+<p>我是添加了power storage network wheel systemd-journal 因为虚拟机，基本只是用terminal学习一些其他的语言，其他不干。（嗯.这里需要一个个添加） 给予这个新用户sudo权限 参照：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> 启动编辑sudoers文件专用的编辑器</p>
 <blockquote>
 <p>sudo的配置文件是<code>/etc/sudoers</code>。<code>visudo</code>会锁住<code>sudoers</code>文件，保存修改到临时文件，然后检查文件格式，确保正确后才会覆盖<code>sudoers</code>文件。必须保证<code>sudoers</code>格式正确，否则sudo将无法运行。</p>
 <p><strong>警告:</strong> <code>/etc/sudoers</code>格式错误会导致sudo不可用。<strong>必须</strong>使用<code>visudo</code>编辑该文件防止出错。</p>
@@ -477,7 +521,7 @@
 </blockquote>
 <p>比如说</p>
 <blockquote>
-<p><strong>yourname   ALL=(ALL) ALL</strong></p>
+<p><strong>yourname   ALL=(ALL) ALL</strong></p>
 </blockquote>
 <p>:x保存并退出 10、设置xfce4自启动 安装搞vim，方便编辑文件。</p>
 <blockquote>
@@ -491,12 +535,12 @@
 <blockquote>
 <p><strong>systemctl enable slim.service</strong></p>
 </blockquote>
-<p>这样下次启动，就自动启动xfce4了。       Other Note： 可以安装sudo简化root权限使用 增强安全性 参见：<a href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
+<p>这样下次启动，就自动启动xfce4了。       Other Note： 可以安装sudo简化root权限使用 增强安全性 参见：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Sudo_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckdzqa0w9002umo26276kf1ai" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/19/%E5%AE%89%E8%A3%85ArchLinux/" data-id="ckw1zrows002o082690gi7s14" class="article-share-link">Share</a>
       
       
     </footer>
@@ -538,7 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckdzqa0wx004dmo2640tlapq7" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9Fhanaukyo/" data-id="ckw1zrox400410826e5p1hm52" class="article-share-link">Share</a>
       
       
     </footer>
@@ -580,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ckdzqa0we0038mo2636l304cl" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/%E6%88%91Jeremie%E5%8F%88%E5%9B%9E%E6%9D%A5%E5%95%A6/" data-id="ckw1zrowt002v0826acmr5r0f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -621,47 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ckdzqa0vf0018mo264vjt2r6q" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-花右京メイド队 La Verite OST下载链接" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" class="article-date">
-  <time datetime="2014-05-04T11:38:36.000Z" itemprop="datePublished">2014-05-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/">花佑京女仆队</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/">花右京メイド队 La Verite OST下载链接</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="mega网"><a href="#mega网" class="headerlink" title="mega网"></a><a href="https://mega.co.nz/#!mYFHmZoB!rCCp2-xS-mBpiwzUbeJRl16B_ycmJfKoIp-r21V0W5I" target="_blank" rel="noopener" title="Mega网">mega网</a></h1>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2014/05/04/%E8%8A%B1%E5%8F%B3%E4%BA%AC%E3%83%A1%E3%82%A4%E3%83%89%E9%98%9F%20La%20Verite%20OST%E4%B8%8B%E8%BD%BD%E9%93%BE%E6%8E%A5/" data-id="ckdzqa0wv004amo260a1a5cqp" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/06/14/hello-world-1/" data-id="ckw1zrowd001908261ujb683m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -715,7 +719,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -726,6 +730,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -743,10 +751,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -759,7 +763,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

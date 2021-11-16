@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -98,18 +98,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>树莓派2B 旧希捷500G移动硬盘 archlinux（2015-10-25） sambantfs-3g 参考资料： <a href="https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a href="https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)</a> <a href="https://wiki.archlinux.org/index.php/NTFS-3G" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/NTFS-3G</a> ntfs-3g库实现了ntfs分区的读写 samba实现windows版的smb局域网共享 关键： 需要写权限的目录必须要设置目录权限1770身份权限root:sambashare</p>
+        <p>树莓派2B 旧希捷500G移动硬盘 archlinux（2015-10-25） sambantfs-3g 参考资料： <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Samba_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/NTFS-3G_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)">https://wiki.archlinux.org/index.php/NTFS-3G_(简体中文)</a> <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/NTFS-3G">https://wiki.archlinux.org/index.php/NTFS-3G</a> ntfs-3g库实现了ntfs分区的读写 samba实现windows版的smb局域网共享 关键： 需要写权限的目录必须要设置目录权限1770身份权限root:sambashare</p>
 <p>groupadd sambashare<br>chown root:sambashare &lt;共享目录&gt;<br>chmod 1770 &lt;共享目录&gt;</p>
 <p>如此才能够让sambashare用户组中的用户获得对此目录的读取执行写入权限 添加用户的方法： 先添加一个系统用户 再设置其的samba密码即可</p>
 <p>useradd <user><br>pdbedit -a -u <user></p>
 <p>每次修改samba配置文件之后不要忘记用命令testparm检查配置文件正确性 设置自动挂载分区只要在/etc/fstab中添加条目即可 例如：</p>
 <p>/dev/设备 /mnt/载点 ntfs-3g gid=users,dmask=022,fmask=133 0 0</p>
-<p>  另： 树莓派USB口供电不足，所以挂载移动硬盘需要独立供电或者使用三口USB线从外部取电或者使用自带供电的USBHub 并且，树莓派的网卡口和USB口都是从一个USB口扩展出来的，所以性能不会有多快，测试读写大概稳定在10MB/s</p>
+<p>  另： 树莓派USB口供电不足，所以挂载移动硬盘需要独立供电或者使用三口USB线从外部取电或者使用自带供电的USBHub 并且，树莓派的网卡口和USB口都是从一个USB口扩展出来的，所以性能不会有多快，测试读写大概稳定在10MB/s</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckdzqa0wp0040mo2695dxbrpt" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/10/26/%E6%A0%91%E8%8E%93%E6%B4%BEarchlinux%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%90%AD%E5%BB%BA%E7%BD%91%E7%BB%9C%E5%AD%98%E5%82%A8/" data-id="ckw1zrox0003l08269btp1t0r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +175,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -186,6 +186,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -203,10 +207,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -219,7 +219,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

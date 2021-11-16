@@ -7,12 +7,12 @@
   
   <title>Archlinux 磁盘空间清理 free disk space | Jeremie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567891011121314151617181920212223242526# Archlinux 磁盘空间清理 free disk space# show all disk spacedf -h# list dir space size# https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224du -m">
+  <meta name="description" content="123456789101112131415161718192021222324252627# Archlinux 磁盘空间清理 free disk space# show all disk spacedf -h# list dir space size# https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224du -md1 &#x2F; | sort -n# cl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Archlinux 磁盘空间清理 free disk space">
 <meta property="og:url" content="http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/index.html">
 <meta property="og:site_name" content="Jeremie&#39;s Blog">
-<meta property="og:description" content="1234567891011121314151617181920212223242526# Archlinux 磁盘空间清理 free disk space# show all disk spacedf -h# list dir space size# https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224du -m">
+<meta property="og:description" content="123456789101112131415161718192021222324252627# Archlinux 磁盘空间清理 free disk space# show all disk spacedf -h# list dir space size# https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224du -md1 &#x2F; | sort -n# cl">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-16T16:37:53.000Z">
 <meta property="article:modified_time" content="2020-07-16T16:38:49.161Z">
@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -94,7 +94,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Archlinux 磁盘空间清理 free disk space</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># show all disk space</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># list dir space size</span><br><span class="line"># https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id&#x3D;123224</span><br><span class="line">du -md1 &#x2F; | sort -n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean pacman cache</span><br><span class="line"># &#x2F;var&#x2F;cache&#x2F;pacman</span><br><span class="line">pacman -Scc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean journal cache</span><br><span class="line"># &#x2F;var&#x2F;cache&#x2F;journal</span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)&#x2F;Journal_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</span><br><span class="line">journalctl --disk-usage</span><br><span class="line">journalctl --verify</span><br><span class="line"></span><br><span class="line">journalctl --vacuum-time&#x3D;2weeks</span><br><span class="line">journalctl --vacuum-time&#x3D;2d</span><br><span class="line">journalctl --vacuum-size&#x3D;100M</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># Archlinux 磁盘空间清理 free disk space</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># show all disk space</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># list dir space size</span><br><span class="line"># https://bbs.archlinux.org/viewtopic.php?id=123224</span><br><span class="line">du -md1 / | sort -n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean pacman cache</span><br><span class="line"># /var/cache/pacman</span><br><span class="line">pacman -Scc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean journal cache</span><br><span class="line"># /var/cache/journal</span><br><span class="line"># https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Journal_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</span><br><span class="line">journalctl --disk-usage</span><br><span class="line">journalctl --verify</span><br><span class="line"></span><br><span class="line">journalctl --vacuum-time=2weeks</span><br><span class="line">journalctl --vacuum-time=2d</span><br><span class="line">journalctl --vacuum-size=100M</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -104,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/" data-id="ckdzqa0y10067mo264uqqg4l2" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/" data-id="ckw1zroxp00610826a7r77dfw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +170,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -181,6 +181,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -198,10 +202,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -214,7 +214,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

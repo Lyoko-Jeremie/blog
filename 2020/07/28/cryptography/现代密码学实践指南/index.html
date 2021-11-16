@@ -32,7 +32,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -101,7 +101,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="现代密码学实践指南-2015年"><a href="#现代密码学实践指南-2015年" class="headerlink" title="现代密码学实践指南[2015年]"></a>现代密码学实践指南[2015年]</h1><hr>
-<p>本文介绍目前现代密码学的最先进技术，<br>前半部分主要翻译自  <a href="https://gist.github.com/tqbf/be58d2d39690c3b366ad" target="_blank" rel="noopener">《Cryptographic Right Answers》</a> ，附上收集的资料，和byron个人的理解。</p>
+<p>本文介绍目前现代密码学的最先进技术，<br>前半部分主要翻译自  <a target="_blank" rel="noopener" href="https://gist.github.com/tqbf/be58d2d39690c3b366ad">《Cryptographic Right Answers》</a> ，附上收集的资料，和byron个人的理解。</p>
 <p>密码学理论艰深，概念繁多，本人知识水平有限，错误难免，如果您发现错误，请务必指出，非常感谢!  </p>
 <hr>
 <h3 id="下文分类介绍在各种适用场景下，你应该使用的现代密码学算法"><a href="#下文分类介绍在各种适用场景下，你应该使用的现代密码学算法" class="headerlink" title="下文分类介绍在各种适用场景下，你应该使用的现代密码学算法"></a>下文分类介绍在各种适用场景下，你应该使用的现代密码学算法</h3><h3 id="1-加密数据"><a href="#1-加密数据" class="headerlink" title="1.  加密数据 :"></a>1.  <strong>加密数据</strong> :</h3><p>按照优先级，应该选择:<br>(1)   首选 NaCl库，或者libsodium库，使用里面的<code>crypto_secretbox()</code>/<code>crypto_secretbox_open()</code> 函数<br>(2)   Chacha20-Poly1305 算法<br>(3)   AES-GCM 算法 </p>
@@ -155,64 +155,64 @@
 </tbody></table>
 <p>此外，应该</p>
 <ul>
-<li>避免使用巨大key的算法(使用远大于256的key，只能说明使用者没有安全概念)</li>
-<li>避免把多个加密算法串联叠加起来使用，这并没有什么卵用</li>
-<li>避免128bit以下的key长度(比如，哥们求你别再提DES这种56bit密钥的古董了)</li>
+<li> 避免使用巨大key的算法(使用远大于256的key，只能说明使用者没有安全概念)</li>
+<li> 避免把多个加密算法串联叠加起来使用，这并没有什么卵用</li>
+<li> 避免128bit以下的key长度(比如，哥们求你别再提DES这种56bit密钥的古董了)</li>
 </ul>
 <h3 id="3-对称签名"><a href="#3-对称签名" class="headerlink" title="3.  对称签名:"></a>3.  <strong>对称签名</strong>:</h3><p>应该选择 HMAC 类的算法</p>
 <p>适用场景：安全加固一个API，如各种开放API的调用方认证</p>
-<p>如果对一个API，你需要做认证(authenticating)，但是不需要做加密(encrypting)，记得千万不要自己发明算法，你自己发明的MAC算法基本都有安全漏洞，如果不信，请Google一下 “长度扩展攻击”<br><a href="http://en.wikipedia.org/wiki/Length_extension_attack" target="_blank" rel="noopener">长度扩展攻击</a><br><a href="http://netifera.com/research/flickr_api_signature_forgery.pdf" target="_blank" rel="noopener">Flickr的漏洞案例</a></p>
+<p>如果对一个API，你需要做认证(authenticating)，但是不需要做加密(encrypting)，记得千万不要自己发明算法，你自己发明的MAC算法基本都有安全漏洞，如果不信，请Google一下 “长度扩展攻击”<br><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Length_extension_attack">长度扩展攻击</a><br><a target="_blank" rel="noopener" href="http://netifera.com/research/flickr_api_signature_forgery.pdf">Flickr的漏洞案例</a></p>
 <p>同时，必须要注意的是，要使用一个<strong>常数时间字符串对比算法</strong>（这个地方和码农的常识完全相反，请务必留意）</p>
 <p>此外，应该</p>
 <ul>
-<li>避免自行设计的“带密码的hash”结构，你的设计基本都是有安全漏洞的</li>
-<li>避免HMAC-MD5，避免HMAC-SHA1，使用HMAC-SHA256, HMAC-SHA512等</li>
-<li>避免复杂的多项式MAC</li>
-<li>避免加密hash值的结构</li>
-<li>避免CRC</li>
+<li> 避免自行设计的“带密码的hash”结构，你的设计基本都是有安全漏洞的</li>
+<li> 避免HMAC-MD5，避免HMAC-SHA1，使用HMAC-SHA256, HMAC-SHA512等</li>
+<li> 避免复杂的多项式MAC</li>
+<li> 避免加密hash值的结构</li>
+<li> 避免CRC</li>
 </ul>
-<h3 id="4-Hashing-HMAC-算法"><a href="#4-Hashing-HMAC-算法" class="headerlink" title="4.  Hashing/HMAC 算法"></a>4.  <strong>Hashing/HMAC 算法</strong></h3><p>应该选择 <a href="http://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener">SHA2</a> 类的算法:: SHA-256, SHA-384, SHA-512, SHA-512/256</p>
+<h3 id="4-Hashing-HMAC-算法"><a href="#4-Hashing-HMAC-算法" class="headerlink" title="4.  Hashing/HMAC 算法"></a>4.  <strong>Hashing/HMAC 算法</strong></h3><p>应该选择 <a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/SHA-2">SHA2</a> 类的算法:: SHA-256, SHA-384, SHA-512, SHA-512/256</p>
 <p>优先使用 SHA-512/256，SHA-512/256这个算法把 SHA-512 的512bit输出截短到256bit，避开了length extension 攻击。<br>同时，目前SHA-2是很安全可靠的，你不需要升级到SHA-3. </p>
 <p>此外，应该</p>
 <ul>
-<li>避免SHA-1</li>
-<li>避免MD5</li>
-<li>避免MD6</li>
+<li> 避免SHA-1</li>
+<li> 避免MD5</li>
+<li> 避免MD6</li>
 </ul>
 <h3 id="5-随机ID"><a href="#5-随机ID" class="headerlink" title="5.  随机ID"></a>5.  <strong>随机ID</strong></h3><p>应该使用256 bit的随机值</p>
 <p>一定要使用 /dev/urandom，请认准这个</p>
 <p>此外，应该 </p>
 <ul>
-<li>避免用户空间的随机数生成器如:havaged,prngs,egd,等</li>
-<li>避免/dev/random</li>
+<li> 避免用户空间的随机数生成器如:havaged,prngs,egd,等</li>
+<li> 避免/dev/random</li>
 </ul>
 <h3 id="6-密码处理"><a href="#6-密码处理" class="headerlink" title="6.  密码处理"></a>6.  <strong>密码处理</strong></h3><p>按照优先级顺序,选择： </p>
 <ul>
-<li>scrypt</li>
-<li>bcrypt</li>
-<li>如果以上2个都没有，那就用PBKDF2</li>
+<li> scrypt</li>
+<li> bcrypt</li>
+<li> 如果以上2个都没有，那就用PBKDF2</li>
 </ul>
 <p>此外，应该 </p>
 <ul>
-<li>避免直接SHA-2</li>
-<li>避免直接SHA-1</li>
-<li>避免直接MD5</li>
+<li> 避免直接SHA-2</li>
+<li> 避免直接SHA-1</li>
+<li> 避免直接MD5</li>
 </ul>
 <h3 id="7-非对称加密"><a href="#7-非对称加密" class="headerlink" title="7.  非对称加密"></a>7.  <strong>非对称加密</strong></h3><p>应该使用NaCl库</p>
-<p>适用场景：当你需要加密消息，发给陌生人，并且对方异步接收消息，做离线解密时。这是一个很窄的应用案例，这种用法有个名字叫<em>电子信封(digital envelope)</em>，典型比如gpg加密文件后发送。</p>
+<p>适用场景：当你需要加密消息，发给陌生人，并且对方异步接收消息，做离线解密时。这是一个很窄的应用案例，这种用法有个名字叫*电子信封(digital envelope)*，典型比如gpg加密文件后发送。</p>
 <p>这条是几条之中最难做正确的，不要使用底层的密码学库，比如OpenSSL或者BouncyCastle。</p>
 <p>你应该停止使用RSA，并且切换到椭圆曲线类体制，原因是：</p>
 <ul>
 <li>对RSA的攻击能力的进步 — 定义在传统质数域上的乘法运算(应用包括DH,DSA,ElGamal等)，要比椭圆曲线域上的乘法运算快得多。这是由于质数域上数域筛法（number field sieve,NFS）的进展，而在椭圆曲线域上，没有NFS这类算法。</li>
 <li>RSA (和DH) 或迫使你考虑“向后兼容性”，而椭圆曲线体制没有这种兼容性包袱。TLS最近的几个安全漏洞，部分原因也是由于这种向后兼容性，导致已经被破解的陈旧算法存在</li>
-<li>RSA在一般场景中，都是直接用公钥做非对称加密，这种用法丧失了<strong>前向安全性(Perfect Forward Secrecy)</strong>。而椭圆曲线就不提倡，也很难这样使用，这样你就不会害死自己了。</li>
+<li>RSA在一般场景中，都是直接用公钥做非对称加密，这种用法丧失了**前向安全性(Perfect Forward Secrecy)**。而椭圆曲线就不提倡，也很难这样使用，这样你就不会害死自己了。</li>
 <li>在椭圆曲线体制下，保证正确性和安全性的重任，主要由密码学家承担，密码学家会提供一组曲线参数，在某一性能水平下，针对安全性和性能做优化。这样程序员不容易误用而害死自己。在RSA体制下，正好相反，程序员必须提供参数来保证正确性和安全性，就算是RSA-OAEP这种很好的设计，程序员也必须知道怎么提供参数，这样程序员很容易搞错。</li>
 </ul>
 <p>如果你必须使用RSA，一定要使用RSA-OAEP with SHA256，指数使用 65537</p>
 <ul>
-<li>避免 RSA-PKCS1v15</li>
-<li>避免 ElGamal</li>
-<li>避免 RSA</li>
+<li> 避免 RSA-PKCS1v15</li>
+<li> 避免 ElGamal</li>
+<li> 避免 RSA</li>
 </ul>
 <h3 id="8-非对称签名"><a href="#8-非对称签名" class="headerlink" title="8.  非对称签名"></a>8.  <strong>非对称签名</strong></h3><p>应该使用NaCl，Ed25519，或者RFC6979</p>
 <p>应用场景：如果你在设计一种新的比特币，或者一个给Ruby Gems或者Vagrant imges文件签名的系统，或者数字版权保护系统(DRM)，其中一系列的文件需要离线做认证；<br>或者你在设计一个加密消息传输层 </p>
@@ -221,8 +221,8 @@
 <p>过去10年，非对称签名最主要的应用场景是比特币，和前向安全的密钥协商（TLS协议里面的ECDHE）。<br>其中最主要的算法全都是基于椭圆曲线体制的。务必警惕新出现的使用RSA签名的系统，很有可能有问题。 </p>
 <p>在过去几年中，业界有一种趋势：放弃传统DSA签名，改为难以误用的<strong>确定性签名体制</strong>，其中的EdDSA(不要和ECDSA搞混了喂！)和RFC6979是最好的例子。<br>这种趋势的主要是受到2010年索尼PlayStation 3的 ECDSA私钥被破解事件的影响，在这个案例中，索尼公司的码农错误地把一个随机数重复使用来做ECDSA签名，形成了漏洞，使得破解者据此直接把私钥算出来了。<br><strong>确定性签名体制</strong>在设计中不再依赖随机数生成器，因此彻底避开此类误用。所以你应该优先使用确定性签名体制。</p>
 <ul>
-<li>避免RSA-PKCS1v15，避免RSA，避免ECDSA，避免DSA</li>
-<li>特别要避免常规的DSA和ECDSA</li>
+<li> 避免RSA-PKCS1v15，避免RSA，避免ECDSA，避免DSA</li>
+<li> 特别要避免常规的DSA和ECDSA</li>
 </ul>
 <h3 id="9-Diffie-Hellman-密钥交换"><a href="#9-Diffie-Hellman-密钥交换" class="headerlink" title="9.  Diffie-Hellman 密钥交换"></a>9.  <strong>Diffie-Hellman 密钥交换</strong></h3><p>应该使用NaCl，Curve25519，或者DH-2048</p>
 <p>适用场景:<em>如果你在设计加密消息传输系统，并且无法使用固定对称密码</em></p>
@@ -240,13 +240,13 @@
 </ul>
 <p>DH（密钥协商）算法确实很难用，但是它很重要。</p>
 <ul>
-<li>避免，传统常规的 DH, SRP, J-PAKE 握手和协商</li>
-<li>避开任何只使用了块加密算法和<code>srand(time())</code>的密钥协商模式（肯定有漏洞）</li>
+<li> 避免，传统常规的 DH, SRP, J-PAKE 握手和协商</li>
+<li> 避开任何只使用了块加密算法和<code>srand(time())</code>的密钥协商模式（肯定有漏洞）</li>
 </ul>
 <h3 id="10-网站安全"><a href="#10-网站安全" class="headerlink" title="10.  网站安全"></a>10.  <strong>网站安全</strong></h3><p>应该使用OpenSSL，或者Google的BoringSSL，或者直接使用 AWS的 ELB</p>
 <p>此处网站安全，指的是让网站支持HTTPS协议。<br>如果你不能把这个任务交给Amazon的云服务去做，把难题留给Amazon去解决，那么OpenSSL目前仍然是正确选择。</p>
 <ul>
-<li>避免不常见的TLS库，例如polarssl，GnuTLS，MatrixSSL等</li>
+<li> 避免不常见的TLS库，例如polarssl，GnuTLS，MatrixSSL等</li>
 </ul>
 <h3 id="11-客户端-服务器结构的应用程序的安全："><a href="#11-客户端-服务器结构的应用程序的安全：" class="headerlink" title="11.  客户端-服务器结构的应用程序的安全："></a>11.  <strong>客户端-服务器结构的应用程序的安全</strong>：</h3><p>应该使用TLS</p>
 <p>适用场景：如果你以为自己理解了前面关于公钥加密的介绍。。。</p>
@@ -272,15 +272,15 @@
 <li>在一个自定义的传输协议的场景中，你并不需要依赖CA，你可以用一个自签名证书，嵌入到你的客户端里面。</li>
 </ul>
 <ul>
-<li>不要自己设计加密传输协议，这是<strong>极其困难而易错的工程难题</strong></li>
-<li>使用TLS，但是不要使用默认配置</li>
+<li> 不要自己设计加密传输协议，这是<strong>极其困难而易错的工程难题</strong></li>
+<li> 使用TLS，但是不要使用默认配置</li>
 </ul>
 <h3 id="12-在线备份"><a href="#12-在线备份" class="headerlink" title="12.  在线备份"></a>12.  <strong>在线备份</strong></h3><p>应该使用Tarsnap</p>
 <hr>
 <h1 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h1><p>本文的内容比较新，相关中文资料极少，因此文中的名词对读者可能有点陌生，故byron这里介绍一下文中提到的一些名词：</p>
-<h5 id="1-NaCl库"><a href="#1-NaCl库" class="headerlink" title="1. NaCl库:"></a>1. NaCl库:</h5><p><a href="http://nacl.cr.yp.to/" target="_blank" rel="noopener">http://nacl.cr.yp.to/</a><br>是密码学学术权威 Daniel J. Bernstein教授 设计的一个密码学算法库，2008年发开始公布。<br>NaCl的特点是：api简洁而易用，高性能，高安全性，主要用于网络通信，加密，解密，签名等，NaCl提供了构建高层密码学工具的核心功能。  </p>
-<h5 id="2-libsodium库"><a href="#2-libsodium库" class="headerlink" title="2. libsodium库:"></a>2. libsodium库:</h5><p><a href="https://download.libsodium.org/doc/" target="_blank" rel="noopener">https://download.libsodium.org/doc/</a><br>libsodium是对NaCl库的一个分支，进一步改进接口易用性，和可移植性。  </p>
-<h5 id="3-AEAD"><a href="#3-AEAD" class="headerlink" title="3. AEAD:"></a>3. AEAD:</h5><p><a href="https://www.imperialviolet.org/2014/02/27/tlssymmetriccrypto.html" target="_blank" rel="noopener">https://www.imperialviolet.org/2014/02/27/tlssymmetriccrypto.html</a><br>AEAD的概念: 在通常的密码学应用中，Confidentiality (保密) 用加密实现，Message authentication (消息认证) 用MAC实现。<br>这两种算法的配合方式，引发了很多安全漏洞，过去曾经有3种方法：1. Encrypt-and-MAC 2.MAC-then-Encrypt 3.Encrypt-then-MAC ，后来发现，1和2都是有安全问题的，所以，2008年起， 逐渐提出了“用一个算法在内部同时实现cipher+MAC”的idea，称为AEAD(Authenticated encryption with additional data)。<br>在AEAD这种概念里，cipher+MAC 被 一个AEAD算法替换。<br><a href="http://en.wikipedia.org/wiki/Authenticated_encryption" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Authenticated_encryption</a>  </p>
+<h5 id="1-NaCl库"><a href="#1-NaCl库" class="headerlink" title="1. NaCl库:"></a>1. NaCl库:</h5><p><a target="_blank" rel="noopener" href="http://nacl.cr.yp.to/">http://nacl.cr.yp.to/</a><br>是密码学学术权威 Daniel J. Bernstein教授 设计的一个密码学算法库，2008年发开始公布。<br>NaCl的特点是：api简洁而易用，高性能，高安全性，主要用于网络通信，加密，解密，签名等，NaCl提供了构建高层密码学工具的核心功能。  </p>
+<h5 id="2-libsodium库"><a href="#2-libsodium库" class="headerlink" title="2. libsodium库:"></a>2. libsodium库:</h5><p><a target="_blank" rel="noopener" href="https://download.libsodium.org/doc/">https://download.libsodium.org/doc/</a><br>libsodium是对NaCl库的一个分支，进一步改进接口易用性，和可移植性。  </p>
+<h5 id="3-AEAD"><a href="#3-AEAD" class="headerlink" title="3. AEAD:"></a>3. AEAD:</h5><p><a target="_blank" rel="noopener" href="https://www.imperialviolet.org/2014/02/27/tlssymmetriccrypto.html">https://www.imperialviolet.org/2014/02/27/tlssymmetriccrypto.html</a><br>AEAD的概念: 在通常的密码学应用中，Confidentiality (保密) 用加密实现，Message authentication (消息认证) 用MAC实现。<br>这两种算法的配合方式，引发了很多安全漏洞，过去曾经有3种方法：1. Encrypt-and-MAC 2.MAC-then-Encrypt 3.Encrypt-then-MAC ，后来发现，1和2都是有安全问题的，所以，2008年起， 逐渐提出了“用一个算法在内部同时实现cipher+MAC”的idea，称为AEAD(Authenticated encryption with additional data)。<br>在AEAD这种概念里，cipher+MAC 被 一个AEAD算法替换。<br><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Authenticated_encryption">http://en.wikipedia.org/wiki/Authenticated_encryption</a>  </p>
 <h5 id="4-ChaCha20-poly1305"><a href="#4-ChaCha20-poly1305" class="headerlink" title="4. ChaCha20-poly1305"></a>4. ChaCha20-poly1305</h5><p>ChaCha20-poly1305是一种AEAD，提出者是Daniel J. Bernstein教授，针对移动互联网优化，目前Google对移动客户端的所有流量都使用ChaCha20-Poly1305</p>
 <h5 id="5-AES-GCM"><a href="#5-AES-GCM" class="headerlink" title="5. AES-GCM"></a>5. AES-GCM</h5><p>AES-GCM是一种AEAD，是目前TLS的主力算法，互联网上https流量的大部分依赖使用AES-GCM。</p>
 <h5 id="6-AES-GCM和ChaCha20-Poly1305的性能对比测试结果"><a href="#6-AES-GCM和ChaCha20-Poly1305的性能对比测试结果" class="headerlink" title="6. AES-GCM和ChaCha20-Poly1305的性能对比测试结果:"></a>6. AES-GCM和ChaCha20-Poly1305的性能对比测试结果:</h5><table>
@@ -309,35 +309,35 @@
 </tbody></table>
 <h5 id="7-AES-CBC"><a href="#7-AES-CBC" class="headerlink" title="7. AES-CBC"></a>7. AES-CBC</h5><p>关于AES-CBC，在AES-GCM流行之前，TLS主要依赖AES-CBC，而由于历史原因，TLS在设计之初固定选择了MAC-then-Encrypt结构，AES-CBC和MAC-then-encrypt结合，为选择密文攻击(CCA)创造了便利条件，TLS历史上有多个漏洞都和CBC模式有关：</p>
 <ul>
-<li>The POODLE CBC oracle attack:参考: <a href="http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/" target="_blank" rel="noopener">1.POODLE的一个分析</a> <a href="https://www.openssl.org/~bodo/tls-cbc.txt" target="_blank" rel="noopener">2.openssl的分析</a> <a href="http://drops.wooyun.org/papers/3194" target="_blank" rel="noopener">3.乌云的文章</a></li>
+<li>The POODLE CBC oracle attack:参考: <a target="_blank" rel="noopener" href="http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/">1.POODLE的一个分析</a> <a target="_blank" rel="noopener" href="https://www.openssl.org/~bodo/tls-cbc.txt">2.openssl的分析</a> <a target="_blank" rel="noopener" href="http://drops.wooyun.org/papers/3194">3.乌云的文章</a></li>
 <li>The CRIME compression attack:</li>
 <li>The Lucky13 CBC padding oracle timing attack:</li>
 <li>The BEAST CBC chained IV attack:</li>
 </ul>
-<h5 id="8-SHA2"><a href="#8-SHA2" class="headerlink" title="8. SHA2"></a>8. SHA2</h5><p><a href="http://en.wikipedia.org/wiki/SHA-2" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/SHA-2</a></p>
-<h5 id="9-Curve25519"><a href="#9-Curve25519" class="headerlink" title="9. Curve25519"></a>9. Curve25519</h5><p><a href="http://cr.yp.to/ecdh.html" target="_blank" rel="noopener">http://cr.yp.to/ecdh.html</a><br>Curve25519 是目前最高水平的 Diffie-Hellman函数，适用于广泛的场景，由Daniel J. Bernstein教授设计。<br>由于NIST P-256的设计过程不透明，有来历不明的参数，被广泛怀疑有后门，所以设计了Curve25519，Curve25519的设计过程完全公开，没有任何来历不明的参数。<br>部署情况：<a href="http://ianix.com/pub/curve25519-deployment.html" target="_blank" rel="noopener">http://ianix.com/pub/curve25519-deployment.html</a>  </p>
-<h5 id="10-Ed25519"><a href="#10-Ed25519" class="headerlink" title="10. Ed25519"></a>10. Ed25519</h5><p><a href="http://ed25519.cr.yp.to/" target="_blank" rel="noopener">http://ed25519.cr.yp.to/</a><br>Ed25519是一个数字签名算法，  </p>
+<h5 id="8-SHA2"><a href="#8-SHA2" class="headerlink" title="8. SHA2"></a>8. SHA2</h5><p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/SHA-2">http://en.wikipedia.org/wiki/SHA-2</a></p>
+<h5 id="9-Curve25519"><a href="#9-Curve25519" class="headerlink" title="9. Curve25519"></a>9. Curve25519</h5><p><a target="_blank" rel="noopener" href="http://cr.yp.to/ecdh.html">http://cr.yp.to/ecdh.html</a><br>Curve25519 是目前最高水平的 Diffie-Hellman函数，适用于广泛的场景，由Daniel J. Bernstein教授设计。<br>由于NIST P-256的设计过程不透明，有来历不明的参数，被广泛怀疑有后门，所以设计了Curve25519，Curve25519的设计过程完全公开，没有任何来历不明的参数。<br>部署情况：<a target="_blank" rel="noopener" href="http://ianix.com/pub/curve25519-deployment.html">http://ianix.com/pub/curve25519-deployment.html</a>  </p>
+<h5 id="10-Ed25519"><a href="#10-Ed25519" class="headerlink" title="10. Ed25519"></a>10. Ed25519</h5><p><a target="_blank" rel="noopener" href="http://ed25519.cr.yp.to/">http://ed25519.cr.yp.to/</a><br>Ed25519是一个数字签名算法，  </p>
 <ul>
 <li>签名和验证的性能都极高， 一个4核2.4GHz 的 Westmere cpu，每秒可以验证 71000 个签名</li>
 <li>安全性极高，等价于RSA约3000-bit</li>
 <li>签名过程不依赖随机数生成器，不依赖hash函数的防碰撞性，没有时间通道攻击的问题</li>
-<li>并且签名很小，只有64字节，公钥也很小，只有32字节。 部署情况：<a href="http://ianix.com/pub/ed25519-deployment.html" target="_blank" rel="noopener">http://ianix.com/pub/ed25519-deployment.html</a></li>
+<li>并且签名很小，只有64字节，公钥也很小，只有32字节。 部署情况：<a target="_blank" rel="noopener" href="http://ianix.com/pub/ed25519-deployment.html">http://ianix.com/pub/ed25519-deployment.html</a></li>
 </ul>
-<h5 id="11-前向安全性"><a href="#11-前向安全性" class="headerlink" title="11. 前向安全性"></a>11. 前向安全性</h5><p>前向安全性( Perfect Forward Secrecy ) <a href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html" target="_blank" rel="noopener">http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html</a><br>前向安全性指的是，如果攻击者抓取并保存流量，那么将来私钥泄露后，攻击者也无法利用泄露的私钥解密这些流量。  </p>
-<h5 id="12-Diffie-Hellman-密钥交换"><a href="#12-Diffie-Hellman-密钥交换" class="headerlink" title="12. Diffie-Hellman 密钥交换"></a>12. Diffie-Hellman 密钥交换</h5><p><a href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange</a><br>在任何一本密码学教材里面都会重点介绍的</p>
-<h5 id="13-constant-time-compare"><a href="#13-constant-time-compare" class="headerlink" title="13. constant time compare"></a>13. constant time compare</h5><p>针对Timing attack，<a href="http://en.wikipedia.org/wiki/Timing_attack" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/Timing_attack</a> （这种攻击真是脑洞大开！）<br>当一个算法的运行时间和输入数据有关的时候，可以根据运行时间这一信息，破解出密钥等。<br>典型的，比如要验证一个对称签名，如果你用了C库里面的<code>memcmp()</code>，那你就会被timing attack方式攻击。<br>因此，涉及到密码学数据的memcmp，必须要用运行时间和输入无关的函数，比如OpenSSL库里面的<code>CRYPTO_memcmp()</code>   </p>
+<h5 id="11-前向安全性"><a href="#11-前向安全性" class="headerlink" title="11. 前向安全性"></a>11. 前向安全性</h5><p>前向安全性( Perfect Forward Secrecy ) <a target="_blank" rel="noopener" href="http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html">http://vincent.bernat.im/en/blog/2011-ssl-perfect-forward-secrecy.html</a><br>前向安全性指的是，如果攻击者抓取并保存流量，那么将来私钥泄露后，攻击者也无法利用泄露的私钥解密这些流量。  </p>
+<h5 id="12-Diffie-Hellman-密钥交换"><a href="#12-Diffie-Hellman-密钥交换" class="headerlink" title="12. Diffie-Hellman 密钥交换"></a>12. Diffie-Hellman 密钥交换</h5><p><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">http://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange</a><br>在任何一本密码学教材里面都会重点介绍的</p>
+<h5 id="13-constant-time-compare"><a href="#13-constant-time-compare" class="headerlink" title="13. constant time compare"></a>13. constant time compare</h5><p>针对Timing attack，<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Timing_attack">http://en.wikipedia.org/wiki/Timing_attack</a> （这种攻击真是脑洞大开！）<br>当一个算法的运行时间和输入数据有关的时候，可以根据运行时间这一信息，破解出密钥等。<br>典型的，比如要验证一个对称签名，如果你用了C库里面的<code>memcmp()</code>，那你就会被timing attack方式攻击。<br>因此，涉及到密码学数据的memcmp，必须要用运行时间和输入无关的函数，比如OpenSSL库里面的<code>CRYPTO_memcmp()</code>   </p>
 <p>from: </p>
 <ul>
-<li><a href="https://blog.helong.info/blog/2015/06/05/modern-crypto/" target="_blank" rel="noopener">https://blog.helong.info/blog/2015/06/05/modern-crypto/</a></li>
-<li><a href="https://gist.github.com/byronhe/232d22f1d3dcaa0a20cb" target="_blank" rel="noopener">https://gist.github.com/byronhe/232d22f1d3dcaa0a20cb</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.helong.info/blog/2015/06/05/modern-crypto/">https://blog.helong.info/blog/2015/06/05/modern-crypto/</a></li>
+<li><a target="_blank" rel="noopener" href="https://gist.github.com/byronhe/232d22f1d3dcaa0a20cb">https://gist.github.com/byronhe/232d22f1d3dcaa0a20cb</a></li>
 </ul>
 <hr>
-<h2 id="加密解密算法选择"><a href="#加密解密算法选择" class="headerlink" title="加密解密算法选择"></a>加密解密算法选择</h2><p><img src="/images/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.png" alt="密码学-加密解密"><br>from <a href="https://bitcoin-on-nodejs.ebookchain.org/4-%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/0-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86/3-%E4%B8%89%E5%BC%A0%E5%9B%BE%E8%AE%A9%E4%BD%A0%E5%85%A8%E9%9D%A2%E6%8E%8C%E6%8F%A1%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%8A%80%E6%9C%AF.html" target="_blank" rel="noopener">bitcoin-on-nodejs 4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术 </a></p>
+<h2 id="加密解密算法选择"><a href="#加密解密算法选择" class="headerlink" title="加密解密算法选择"></a>加密解密算法选择</h2><p><img src="/images/%E5%AF%86%E7%A0%81%E5%AD%A6-%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86.png" alt="密码学-加密解密"><br>from <a target="_blank" rel="noopener" href="https://bitcoin-on-nodejs.ebookchain.org/4-%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/0-%E5%8A%A0%E5%AF%86%E4%B8%8E%E8%A7%A3%E5%AF%86/3-%E4%B8%89%E5%BC%A0%E5%9B%BE%E8%AE%A9%E4%BD%A0%E5%85%A8%E9%9D%A2%E6%8E%8C%E6%8F%A1%E5%8A%A0%E5%AF%86%E8%A7%A3%E5%AF%86%E6%8A%80%E6%9C%AF.html">bitcoin-on-nodejs 4-开发实践/0-加密与解密/3-三张图让你全面掌握加密解密技术 </a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" data-id="ckdzqa0ya007amo26fqps21hi" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/07/28/cryptography/%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/" data-id="ckw1zroyn00a108260xty0b2m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +403,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -414,6 +414,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -431,10 +435,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -447,7 +447,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

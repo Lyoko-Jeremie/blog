@@ -30,7 +30,7 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body>
   <div id="container">
@@ -98,40 +98,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>完全参照：<a href="https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
+        <p>完全参照：<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Virtual/_Network/_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">https://wiki.archlinux.org/index.php/Virtual\_Network\_Computing_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29</a></p>
 <h4 id="安装tigervnc"><a href="#安装tigervnc" class="headerlink" title="安装tigervnc"></a>安装tigervnc</h4><p>这是一个TightVNC的linux实现<br>以你需要的用户身份执行vncserver第一次启动、设置密码并测试服务器<br>默认的是第一个桌面:1<br>实际端口是5900+1</p>
 <p>如下指令可以关闭某个桌面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -kill :1</span><br></pre></td></tr></table></figure>
 
-<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29" target="_blank" rel="noopener">xinitrc</a>来编辑</p>
+<p>可以编辑<code>~/.vnc/xstartup</code>文件来设置vnc使用的桌面环境<br>此文件功能类似于<code>.xinitrc</code><br>可参照<a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Xinitrc_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29">xinitrc</a>来编辑</p>
 <blockquote>
 <p>hit： 简单的编辑方法是<br>  注掉所有exec开头的行<br>  并且注掉末尾最后一个exec行前面的连续几行（这几行末尾有&amp;，是和exec同时执行的内容）<br>  可添加如下指令在文件末尾启动桌面环境<br>  exec startxfce4</p>
 </blockquote>
 <p>windows下使用TightVNC连接即可</p>
 <p>设置开关机行为<br>示例文件在 <code>/usr/lib/systemd/system/vncserver.service</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;vncserver.service &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:1.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/lib/systemd/system/vncserver.service /etc/systemd/system/vncserver@:1.service</span><br></pre></td></tr></table></figure>
 
 <p>然后编辑<code>/etc/systemd/system/vncserver@:1.service</code><br>可以看到其中有使用说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x&#x3D;2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User&#x3D; </span><br><span class="line"># (&quot;User&#x3D;foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;&#x2F;usr&#x2F;bin&#x2F;vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \&#96;systemctl --system daemon-reload\&#96; </span><br><span class="line"># 5. Run \&#96;systemctl enable vncserver@:&lt;display&gt;.service\&#96; </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https:&#x2F;&#x2F;wiki.archlinux.org&#x2F;index.php&#x2F;Vncserver</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># The vncserver service unit file </span><br><span class="line"># </span><br><span class="line"># 1. Copy this file to /etc/systemd/system/vncserver@:x.service </span><br><span class="line"># Note that x is the port number on which the vncserver will run. The default is 1 which </span><br><span class="line"># corresponds to port 5901. For a 2nd instance, use x=2 which corresponds to port 5902. </span><br><span class="line"># 2. Edit User= </span><br><span class="line"># (&quot;User=foo&quot;) </span><br><span class="line"># 3. Edit and vncserver parameters appropriately </span><br><span class="line"># (&quot;/usr/bin/vncserver %i -arg1 -arg2 -argn&quot;) </span><br><span class="line"># 4. Run \`systemctl --system daemon-reload\` </span><br><span class="line"># 5. Run \`systemctl enable vncserver@:&lt;display&gt;.service\` </span><br><span class="line"># </span><br><span class="line"># DO NOT RUN THIS SERVICE if your local area network is untrusted! </span><br><span class="line"># </span><br><span class="line"># See the wiki page for more on security </span><br><span class="line"># https://wiki.archlinux.org/index.php/Vncserver</span><br></pre></td></tr></table></figure>
 
 <p>其实我们只需要在User=后面添加我们的用户名即可<br>如果有需要的话可以修改ExecStart这一项添加启动参数的方式改变行为<br>之后重载systemctl</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl --system daemon-reload</span><br></pre></td></tr></table></figure>
 
 <p>再启动服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable vncserver@:&lt;display&gt;.service</span><br></pre></td></tr></table></figure>
 <p>即可使用</p>
 <p>在使用时可以发现VNC不会自动根据客户机改变桌面分辨率<br>所以我们可以在启动参数中设置一个分辨率</p>
 <p>比如wiki上的示例</p>
 <blockquote>
-<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
+<p>Vncserver 通过开关（命令行参数）来提供灵活性。下面的例子启动具有特定分辨率、允许多用户同时观看/控制且设置 dpi 为 96 的 VNC 服务。<br>$ vncserver -geometry 1440x900 -alwaysshared -dpi 96 :1</p>
 </blockquote>
 <p>如需要完整的选项表，向 vncserver 传递 -help 开关。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vncserver -help</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckdzqa0y4006mmo266jwyh3p4" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="ckw1zroxw006j0826dzwb1gui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +197,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -208,6 +208,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/">【转】性别战争三十年</a>
+          </li>
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
@@ -225,10 +229,6 @@
             <a href="/2020/08/07/%E5%85%A8%E7%90%83%E5%8D%AB%E6%98%9F%E5%AF%BC%E8%88%AA%E7%B3%BB%E7%BB%9F-GNSS-%E7%AE%80%E4%BB%8B/">全球卫星导航系统 (GNSS) 简介</a>
           </li>
         
-          <li>
-            <a href="/2020/07/28/cryptography/%E5%AF%86%E7%A0%81%E5%AD%A6%E4%B8%80%E5%B0%8F%E6%97%B6%E5%BF%85%E7%9F%A5/">密码学一小时必知[2010]</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -241,7 +241,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 Jeremie<br>
+      &copy; 2021 Jeremie<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
