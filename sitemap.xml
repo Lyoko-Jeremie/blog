@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://hexo.jeremie.moe/2021/11/27/%E4%B8%9A%E4%BD%99%E6%97%A0%E7%BA%BF%E7%94%B5%EF%BC%88HAM%EF%BC%89A%E7%B1%BB%E6%93%8D%E4%BD%9C%E8%AF%81%E8%80%83%E8%AF%95%E6%95%99%E7%A8%8B/</loc>
+    
+    <lastmod>2021-11-26</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://hexo.jeremie.moe/2021/11/16/%E6%80%A7%E5%88%AB%E6%88%98%E4%BA%89%E4%B8%89%E5%8D%81%E5%B9%B4/</loc>
     
     <lastmod>2021-11-16</lastmod>
@@ -1005,7 +1012,7 @@
 
   <url>
     <loc>http://hexo.jeremie.moe/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1013,7 +1020,7 @@
   
   <url>
     <loc>http://hexo.jeremie.moe/tags/ePost/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1022,189 +1029,189 @@
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E6%9C%AA%E5%88%86%E7%B1%BB/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/Code/</loc>
-    <lastmod>2021-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hexo.jeremie.moe/categories/Erlang/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/OpenWRT/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hexo.jeremie.moe/categories/Erlang/</loc>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E8%8A%B1%E4%BD%91%E4%BA%AC%E5%A5%B3%E4%BB%86%E9%98%9F/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/ArchLinux/</loc>
-    <lastmod>2021-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hexo.jeremie.moe/categories/notes/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/firefox/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hexo.jeremie.moe/categories/notes/</loc>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/C/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/WinSDK/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E9%A3%9E%E8%A1%8C/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E6%9D%82%E7%89%A9/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E5%85%B3%E4%BA%8EBlog/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/git/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/GalGame/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/Windows/</loc>
-    <lastmod>2021-11-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://hexo.jeremie.moe/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E6%A8%B1%E8%8A%B1%E5%BA%84%E7%9A%84%E5%AE%A0%E7%89%A9%E5%A5%B3%E5%AD%A9/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://hexo.jeremie.moe/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/</loc>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/AHK/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E5%A4%87%E5%BF%98/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E7%81%B5/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/memo/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E5%A4%87%E5%BF%98/%E6%9D%82%E7%89%A9/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E6%9D%82%E7%89%A9/Notes/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E5%A4%87%E5%BF%98/Notes/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://hexo.jeremie.moe/categories/%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C/Notes/</loc>
-    <lastmod>2021-11-16</lastmod>
+    <lastmod>2021-11-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
