@@ -6,7 +6,7 @@
   <link href="http://hexo.jeremie.moe/atom.xml" rel="self"/>
   
   <link href="http://hexo.jeremie.moe/"/>
-  <updated>2021-11-26T17:20:45.755Z</updated>
+  <updated>2022-06-06T06:17:19.541Z</updated>
   <id>http://hexo.jeremie.moe/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>archlinux设置多用户共享文件夹</title>
+    <link href="http://hexo.jeremie.moe/2022/06/06/archlinux%E8%AE%BE%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>http://hexo.jeremie.moe/2022/06/06/archlinux%E8%AE%BE%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/</id>
+    <published>2022-06-06T06:06:37.000Z</published>
+    <updated>2022-06-06T06:17:19.541Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于某个待共享的文件夹 <code>/ftp/Shared</code> 可以按照以下方法设置多个用户访问</p><p>此方法同时适用于ftp、samba、qB等需多用户访问读写的文件夹情况</p><p>添加新共享专用用户组 <code>sudo groupadd ftp</code></p><p>设置待共享文件夹用户组为此用户组 <code>sudo chown :ftp /ftp/Shared</code></p><p>添加用户到此用户组 <code>sudo usermod -a -G ftp jeremie</code> ，此处进行多次，将所有需共享的用户都添加到此用户组中<br>【注意：用户的用户组更新后，如果当前用户已经处在登陆状态，则需要退出并重新登陆，用户的用户组信息才会更新[1]】</p><p>设置待共享文件夹的属性为 <code>sudo chmod 2770 /ftp/Shared</code></p><p>在此处参数有以下释义[2]</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Now you have some decisions to make about what you want those users to be able to do:</span><br><span class="line"></span><br><span class="line">    [a] All group users can add to and delete from the folder and can read and but not write to each others files:</span><br><span class="line"></span><br><span class="line">    sudo chmod 0770 /ftp/Shared</span><br><span class="line"></span><br><span class="line">    [b] Same as above but only the owner of the file can delete it:</span><br><span class="line"></span><br><span class="line">    sudo chmod 1770 /ftp/Shared</span><br><span class="line"></span><br><span class="line">    [c] All group users can add to and delete from the folder and can read and write to each other&#x27;s files:</span><br><span class="line"></span><br><span class="line">    sudo chmod 2770 /ftp/Shared</span><br><span class="line"></span><br><span class="line">    [d] Same as [c] except only the owner of the file can delete it:</span><br><span class="line"></span><br><span class="line">    sudo chmod 3770 /ftp/Shared</span><br><span class="line"></span><br><span class="line">A 1 in the first position of the chmod command is the sticky bit which prevents deletion of a file to anyone other than the owner.</span><br><span class="line"></span><br><span class="line">A 2 in the first position of the chmod command is the setgid bit which forces all new or copied files to have the group of that folder.</span><br><span class="line"></span><br><span class="line">A 3 in the first position of the chmod command is the combination of the sticky (1) &amp; setgid (+2) bits.</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>参见：<br>[1]: <a href="https://askubuntu.com/questions/313089/how-can-i-share-a-directory-with-an-another-user">https://askubuntu.com/questions/313089/how-can-i-share-a-directory-with-an-another-user</a><br>[2]: <a href="https://wiki.archlinux.org/title/users_and_groups">https://wiki.archlinux.org/title/users_and_groups</a>  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;对于某个待共享的文件夹 &lt;code&gt;/ftp/Shared&lt;/code&gt; 可以按照以下方法设置多个用户访问&lt;/p&gt;
+&lt;p&gt;此方法同时适用于ftp、samba、qB等需多用户访问读写的文件夹情况&lt;/p&gt;
+&lt;p&gt;添加新共享专用用户组 &lt;code&gt;sudo groupadd ft</summary>
+      
+    
+    
+    
+    <category term="archlinux" scheme="http://hexo.jeremie.moe/categories/archlinux/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>业余无线电（HAM）A类操作证考试教程</title>
