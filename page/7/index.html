@@ -70,6 +70,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SSR快速搭建手册" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" class="article-date">
+  <time datetime="2015-09-19T14:24:32.000Z" itemprop="datePublished">2015-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/">SSR快速搭建手册</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>系统：centos、archlinux 平台：搬瓦工、conoha User：root 搬瓦工 centos C-P 流程（copy-past+回车即可）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">yum install epel-release</span><br><span class="line">yum install python-setuptools &amp;&amp; easy_install pip</span><br><span class="line">yum install m2crypto git libsodium nano </span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line">git clone -b manyuser https://github.com/shadowsocksr/shadowsocksr</span><br><span class="line"></span><br><span class="line">nano /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;port_password&quot;:&#123;</span><br><span class="line">         &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line">         &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/init.d/shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!/bin/sh</span><br><span class="line">#chkconfig: 2345 85 15</span><br><span class="line">#description: some desc here</span><br><span class="line">#processname: the_process_name </span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">        start)</span><br><span class="line">                nohup python /root/shadowsocks/shadowsocks/server.py -c /etc/shadowsocks.json;;</span><br><span class="line">        stop)</span><br><span class="line">                ;;</span><br><span class="line">        restart)</span><br><span class="line">                ;;</span><br><span class="line">        *)  </span><br><span class="line">                echo &quot;Usage: #0 &#123;start|stop|restart&#125;&quot;;;</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chmod +x /etc/init.d/shadowsocks</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chkconfig --add shadowsocks</span><br><span class="line"></span><br><span class="line">chkconfig shadowsocks on</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>conoha archlinux C-P 流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pacman -S python-setuptools python-pip python2-m2crypto git libsodium</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pip install cymysql</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git clone -b akkariiin/master https://github.com/shadowsocksrr/shadowsocksr</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"> &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line"> &quot;server_ipv6&quot;: &quot;::&quot;,</span><br><span class="line"> &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line"> &quot;local_port&quot;:1080,</span><br><span class="line"> &quot;port_password&quot;:&#123;</span><br><span class="line"> &quot;1234&quot;:&quot;password1&quot;,</span><br><span class="line"> &quot;5678&quot;:&quot;password2&quot;</span><br><span class="line"> &#125;,</span><br><span class="line"> &quot;timeout&quot;:300,</span><br><span class="line"> &quot;method&quot;:&quot;aes-256-cfb&quot;,</span><br><span class="line"> &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mv shadowsocksr/ /usr/bin/shadowsocksr/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nano /etc/systemd/system/shadowsocksR.service</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[Unit]</span><br><span class="line">Description=ShadowsocksR Server Service</span><br><span class="line">Requires=network.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=nobody</span><br><span class="line">Restart=always</span><br><span class="line"># way 1</span><br><span class="line">AmbientCapabilities=CAP_NET_BIND_SERVICE</span><br><span class="line"># way 2</span><br><span class="line">#PermissionsStartOnly=true</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">#ExecStartPre=-/bin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">#ExecStartPre=-/usr/sbin/setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line">ExecStart=/usr/bin/python /usr/bin/shadowsocksr/shadowsocks/server.py -c /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">systemctl start shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl status shadowsocksR.service</span><br><span class="line"></span><br><span class="line">systemctl enable shadowsocksR.service</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>archlinux修改服务配置文件后需要重载并重启服务才能有效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>P： <del>archlinux默认的python是python3，SSR的开发是针对python2的，所以在作者收到bug反馈并修复之前会有各种奇怪bug，所以需要指定archlinux使用python2</del><br>P2: 上述的systemd配置文件中ExecStartPre部分和PermissionsStartOnly=true配合，完成在服务启动前以root权限赋予监听特权端口（0~1024）的能力，且在/bin/setcap前添加-号忽略执行失败，以完成无需服务本身使用root即可监听80及443端口的能力。 详见： <a target="_blank" rel="noopener" href="https://bugzilla.redhat.com/show_bug.cgi?id=651797">https://bugzilla.redhat.com/show_bug.cgi?id=651797</a> <a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre">https://unix.stackexchange.com/questions/207469/systemd-permission-issue-with-mkdir-execstartpre</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl -xeu shadowsocksR</span><br></pre></td></tr></table></figure>
+
+<p>可以查看系统服务日志 授权可执行文件绑定特权端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br></pre></td></tr></table></figure>
+
+<p>系统更新后使用的脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">nano after-update.sh</span><br><span class="line"></span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python2.7</span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.6</span><br><span class="line">setcap &#x27;cap_net_bind_service=+eip&#x27; /bin/python3.7</span><br><span class="line"></span><br><span class="line">chmod +x after-update.sh</span><br><span class="line">./after-update.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/SSR%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA%E6%89%8B%E5%86%8C/" data-id="cl6g4ay3i000v28269bwvd8uq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-archlinux/centos手动创建服务" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" class="article-date">
@@ -117,7 +174,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="cl42cwfgf006u3o265fmmg4d3" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/19/archlinux/centos%E6%89%8B%E5%8A%A8%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1/" data-id="cl6g4ay5j006w2826gxvf7fmx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -158,7 +215,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="cl42cwfet001l3o267n7d0sqn" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/09/07/linux%E4%BD%BF%E6%8C%87%E5%AE%9A%E7%A8%8B%E5%BA%8F%E5%9C%A8%E4%BB%BB%E6%84%8F%E7%94%A8%E6%88%B7%E6%89%A7%E8%A1%8C%E6%97%B6%E5%9D%87%E6%8B%A5%E6%9C%89root%E6%9D%83%E9%99%90/" data-id="cl6g4ay3s001i28268o6gh4bg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +279,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="cl42cwfg800643o26h7p68gzz" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/31/archlinux/Archlinux%E6%9B%B4%E6%96%B0%E6%97%B6%E5%AF%BC%E5%85%A5Key%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="cl6g4ay5800662826gmr16kaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +325,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="cl42cwfeo00163o2602wa3g7c" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/21/erlang%E5%9C%A8OTP%E6%A1%86%E6%9E%B6%E4%B8%8B%E7%9A%84%E4%BB%A3%E7%A0%81%E7%83%AD%E6%9B%B4%E6%96%B0/" data-id="cl6g4ay3m00142826aapcar08" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +373,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="cl42cwffh003i3o26c6e5hsh0" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/%E6%A0%91%E8%8E%93%E6%B4%BEArchlinux%E5%AE%89%E8%A3%85X11%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" data-id="cl6g4ay4e003q28261sfgfjb9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -385,7 +442,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cl42cwfgc006i3o26a9t0gwo2" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/03/archlinux/archlinux%E5%AE%89%E8%A3%85VNC%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cl6g4ay5e006m2826cay317mi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -440,7 +497,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="cl42cwfgb006e3o26cv8fag6f" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/08/02/archlinux/archlinux-arm-%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E4%B8%8E%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5/" data-id="cl6g4ay5b006e2826al83bwzm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -520,7 +577,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="cl42cwfe900093o2618uzctvh" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/Erlang%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%B3%A8%E5%86%8C%E5%90%8D%E4%B8%8E%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95/" data-id="cl6g4ay3a00092826eyhshqej" class="article-share-link">Share</a>
       
       
     </footer>
@@ -565,66 +622,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="cl42cwfeg000r3o264bg62yiv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-archlinux/archlinux安装bftpd服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="article-date">
-  <time datetime="2015-07-24T10:13:20.000Z" itemprop="datePublished">2015-07-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ArchLinux/">ArchLinux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/">archlinux 安装bftpd服务器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>惯例的参考：<a target="_blank" rel="noopener" href="http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html">http://bftpd.sourceforge.net/doc/en/bftpd-tutorial.html</a></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S bftpd</span><br></pre></td></tr></table></figure>
-
-<p>安装后<code>bftpd.conf</code>配置文件在/etc目录下 几乎不用修改即可使用 独立模式启动服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/sbin/bftpd -d</span><br></pre></td></tr></table></figure>
-
-<p>直接以IP默认端口连接  以非root账户登录 终止则直接杀死进程即可</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">killall bftpd</span><br></pre></td></tr></table></figure>
-
-<p>需要以后台服务方式运行则最方便的方法是使用xinetd超级服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xinetd</span><br></pre></td></tr></table></figure>
-
-<p>安装 启动并设置自启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start xinetd</span><br><span class="line">systemctl enable xinetd</span><br></pre></td></tr></table></figure>
-
-<p>在<code>/etc/xinetd.conf</code>文件中添加以下内容让xintetd托管bftpd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">service ftp</span><br><span class="line">&#123;</span><br><span class="line"> disable = no</span><br><span class="line"> socket_type = stream</span><br><span class="line"> wait = no</span><br><span class="line"> user = root</span><br><span class="line"> server = /usr/sbin/bftpd</span><br><span class="line"> log\_on\_success += HOST PID</span><br><span class="line"> log\_on\_failure += HOST</span><br><span class="line"> nice = 10</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
-
-<p>完成</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2015/07/24/archlinux/archlinux%E5%AE%89%E8%A3%85bftpd%E6%9C%8D%E5%8A%A1%E5%99%A8/" data-id="cl42cwfgd006m3o262zqf0pl0" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2015/07/31/SS%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%94%AF%E6%8C%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BC%98%E9%80%89/" data-id="cl6g4ay3f000m2826hdls3zx5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -678,7 +676,7 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -689,6 +687,10 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/08/05/notes/note-20220805/">note-20220805</a>
+          </li>
         
           <li>
             <a href="/2022/06/06/archlinux%E8%AE%BE%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">archlinux设置多用户共享文件夹</a>
@@ -704,10 +706,6 @@ Your pacman cache contains copy of unsigned packages from previous attempts.
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/10/memo/2020-08-10/">2020-08-10</a>
           </li>
         
       </ul>

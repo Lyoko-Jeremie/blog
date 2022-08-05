@@ -70,6 +70,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-archlinux/Archlinux-磁盘空间清理-free-disk-space" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/" class="article-date">
+  <time datetime="2020-07-16T16:37:53.000Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/">Archlinux 磁盘空间清理 free disk space</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># Archlinux 磁盘空间清理 free disk space</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># show all disk space</span><br><span class="line">df -h</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># list dir space size</span><br><span class="line"># https://bbs.archlinux.org/viewtopic.php?id=123224</span><br><span class="line">du -md1 / | sort -n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean pacman cache</span><br><span class="line"># /var/cache/pacman</span><br><span class="line">pacman -Scc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># clean journal cache</span><br><span class="line"># /var/cache/journal</span><br><span class="line"># https://wiki.archlinux.org/index.php/Systemd_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Journal_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)</span><br><span class="line">journalctl --disk-usage</span><br><span class="line">journalctl --verify</span><br><span class="line"></span><br><span class="line">journalctl --vacuum-time=2weeks</span><br><span class="line">journalctl --vacuum-time=2d</span><br><span class="line">journalctl --vacuum-size=100M</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hexo.jeremie.moe/2020/07/17/archlinux/Archlinux-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86-free-disk-space/" data-id="cl6g4ay5e006k28266s6w0ocp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-长寿个人网站构建思路" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/" class="article-date">
@@ -105,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/" data-id="cl42cwffs004g3o2692zlf0dn" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/06/26/%E9%95%BF%E5%AF%BF%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E6%9E%84%E5%BB%BA%E6%80%9D%E8%B7%AF/" data-id="cl6g4ay4m004i28266xmc5v4f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/" data-id="cl42cwfgg006w3o260orq28eq" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/05/16/archlinux/netdata%E6%B1%87%E8%81%9A%E5%A4%9A%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E7%9B%91%E6%B5%8B%E6%95%B0%E6%8D%AE%E5%88%B0%E4%B8%80%E4%B8%AA%E4%B8%AD%E5%BF%83%E8%8A%82%E7%82%B9/" data-id="cl6g4ay5m007a2826492ba762" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/05/11/memo/2020-05-11/" data-id="cl42cwfgj007b3o267w5r64y7" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/05/11/memo/2020-05-11/" data-id="cl6g4ay5o007f28262xtl0hxf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" data-id="cl42cwfha00aa3o26cf4je38y" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/05/11/DOS%E6%89%B9%E5%A4%84%E7%90%86%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8B/" data-id="cl6g4ay6d00ac28268leh30wx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/04/12/archlinux/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/" data-id="cl42cwfgf006s3o26fhqr1zgi" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/04/12/archlinux/archlinux%E7%BB%99%E8%BD%AF%E4%BB%B6%E5%8C%85systemd%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%89%93%E8%A1%A5%E4%B8%81/" data-id="cl6g4ay5l00742826h9myfulp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -375,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/" data-id="cl42cwfed000j3o268ti923sj" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/04/03/Linux-OpenCV%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%BF%AB%E9%80%9F%E5%88%9D%E5%A7%8B%E5%8C%96%E6%AD%A5%E9%AA%A4/" data-id="cl6g4ay3e000j2826dbp20usy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/" data-id="cl42cwffp004a3o2638881g5z" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/28/%E9%83%A8%E7%BD%B2Hexo%E5%8D%9A%E5%AE%A2%E5%88%B0GithubPages/" data-id="cl6g4ay4j004928262o87hxku" class="article-share-link">Share</a>
       
       
     </footer>
@@ -477,7 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/24/error-means-for-programmer/" data-id="cl42cwfel00153o26d90g0l4h" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/24/error-means-for-programmer/" data-id="cl6g4ay3u001q2826e27f3xny" class="article-share-link">Share</a>
       
       
     </footer>
@@ -520,60 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/15/OpenWRT%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E5%99%A8opkg%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/" data-id="cl42cwfee000n3o264i3ubyx9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" class="article-date">
-  <time datetime="2020-03-14T19:19:06.000Z" itemprop="datePublished">2020-03-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/OpenWRT/">OpenWRT</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">ESXi软路由OpenWRT使用MWAN3配合网管交换机使用VLAN实现3路宽带负载均衡</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ESXi-部署-OpenWRT"><a href="#ESXi-部署-OpenWRT" class="headerlink" title="ESXi 部署 OpenWRT"></a>ESXi 部署 OpenWRT</h2><p>在ESXi上部署OpenWRT需要注意的地方在于<br>选用X86/X86-64版本OpenWRT（据测试x86版本比64版本性能更好，原因暂未知<br>ESXi中虚拟网卡选用 E1000 / E1000e / AMD PCNet32 / Intel VNet 时，记得在OpenWRT内安装对应版本的内核模块以提高网络性能<br>内核模块名称以<code>kmod-*</code>开头，通常直接搜索网卡型号关键字即可</p>
-<h2 id="ESXi-部署-端口组-Vlan-设置"><a href="#ESXi-部署-端口组-Vlan-设置" class="headerlink" title="ESXi 部署 端口组 Vlan 设置"></a>ESXi 部署 端口组 Vlan 设置</h2><p>在ESXi上的端口组可以配置Vlan ID，其中<code>1~4094</code>为普通VLan编号，<code>4095</code>设置此端口为Trunk模式，<code>0</code>禁用此端口的Vlan<br>此处设置默认为<code>0</code>，如需使用Vlan时需要修改此VLan ID为对应的正确配置，否则ESXi会直接抛弃不匹配的数据包（像一个标准的交换机那样</p>
-<p><a target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/1004074">https://kb.vmware.com/s/article/1004074</a></p>
-<h2 id="水星-网管交换机-上的VLan配置"><a href="#水星-网管交换机-上的VLan配置" class="headerlink" title="水星 网管交换机 上的VLan配置"></a>水星 网管交换机 上的VLan配置</h2><p>由于使用一个水星网管交换机作为核心交换机，在此次网络架构设计中，其需要在承载普通交换机流量的同时，<br>使用VLan隔离出一个独立的子交换部分，此部分网络架构形如三叉戟般，使用三个不同端口对应三个不同VLan分别连接三个宽带的光猫，同时汇聚到一个端口去连接ESXi中的OpenWRT</p>
-<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">-----------------------------------------------------------------------------------------------------------------------</span><br><span class="line">                        PPPoE MWAN Part</span><br><span class="line">                      *******************</span><br><span class="line"></span><br><span class="line">             Vlan 10   [Untaged 10, PVID 10]</span><br><span class="line">A ISP Moden ---------------+</span><br><span class="line">                           |                                                              [software vlan 10]</span><br><span class="line">             Vlan 11       v    [Taged 10+11+12, PVID 1 (no one care it)]              +-----&gt; eth0.10 &lt;== PPPoE A ISP ------+</span><br><span class="line">B ISP Moden ------------&gt;Switch-------Trun------+                                      |                                     |</span><br><span class="line">          [Untaged 11]     ^     Vlan 10+11+12  |         (Trunk Mode)                 |  [software vlan 11]                 v</span><br><span class="line">           [PVID 11]       |                    +--&gt; ESXi -------------&gt; OpenWRT ----&gt;eth0---&gt; eth0.11 &lt;== PPPoE B ISP --&gt; MWAN3 LoadBalance</span><br><span class="line">                           |                                Vlan4095                   |                                     ^       |</span><br><span class="line">C ISP Moden ---------------+                                                           |  [software vlan 12]                 |       v</span><br><span class="line">             Vlan 12   [Untaged 12, PVID 12]                                           +-----&gt; eth0.12 &lt;== PPPoE C ISP ------+       | [LAN Area]</span><br><span class="line">                                                                                                                                     |</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------             ESXi</span><br><span class="line">                        Normal Part                                                                                                  |</span><br><span class="line">                    *******************                                                   [Link Aggregation]                         v</span><br><span class="line">            All Port as [VLan 1, PVID 1, Untaged 1] Phisical Switch  &lt;=========================================================== vSwitch ---&gt; Other ESXi VM</span><br><span class="line">            |           |           |            |                                        (Multi RJ45 Cable)</span><br><span class="line">            v           |           |            |</span><br><span class="line">        (WiFi AP*)      v           |            v</span><br><span class="line">        /   |   \    DeviceD        |         DeviceF</span><br><span class="line">       /    |    \                  v</span><br><span class="line">      v     |     v              DeviceE</span><br><span class="line">DeviceA     |   DeviceC</span><br><span class="line">            v</span><br><span class="line">         DeviceB</span><br><span class="line"></span><br><span class="line">* WiFi AP is a old router run on lan only mode, its DHCP function are disabled.</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
-
-<h2 id="802-1Q-VLan-资料"><a href="#802-1Q-VLan-资料" class="headerlink" title="802.1Q VLan 资料"></a>802.1Q VLan 资料</h2><p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/IEEE_802.1Q">https://zh.wikipedia.org/wiki/IEEE_802.1Q</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaohaijiejie/article/details/70208549">https://blog.csdn.net/xiaohaijiejie/article/details/70208549</a></p>
-<h2 id="OpenWRT-上的-MWAN3-设置"><a href="#OpenWRT-上的-MWAN3-设置" class="headerlink" title="OpenWRT 上的 MWAN3 设置"></a>OpenWRT 上的 MWAN3 设置</h2><p>在OpenWRT上实现负载均衡需使用 MWan3 这个模块<br>【TODO】</p>
-<p>可用的参考资料<br><a target="_blank" rel="noopener" href="https://www.sgtfz.cn/2018/02/229.html">https://www.sgtfz.cn/2018/02/229.html</a><br><a target="_blank" rel="noopener" href="https://www.sgtfz.cn/2019/08/1855.html">https://www.sgtfz.cn/2019/08/1855.html</a></p>
-<h2 id="OpenWRT-上的-IPv6-设置"><a href="#OpenWRT-上的-IPv6-设置" class="headerlink" title="OpenWRT 上的 IPv6 设置"></a>OpenWRT 上的 IPv6 设置</h2><p>默认情况下，如果ISP提供IPv6，使用OpenWRT的默认拨号配置即可获得IPv6网段并正确分发子IP到内网设备上。（只要拨号的接口勾选了<code>使用内置的IPv6管理</code>选项，正常情况即可正确工作<br>可以在<code>接口</code>页面上查看是否具有一个设备名与拨号接口一致且接口名自带<code>*_6</code>后缀的接口来确定ISP是否随PPPoE自动分发了IPv6</p>
-<p>如有需要针对特定ISP进行配置，可在<code>LAN</code>的<code>DHCP服务器</code>页面中的<code>IPv6</code>子页面下配置详细的IPv6分发/中继模式<br>如需要在两次重启之间继承IPv6，或需要获得最好的兼容性，可直接选择三个都为<code>混合模式</code>，且选择<code>无状态+有状态</code></p>
-<p>注意：在开启了MWAN后，很多人都以为IPv6也需要进行负载均衡。<br>但是真实情况是，最新的IPv6都不再是NAT模式工作，而是每个设备分配到一个全球IP。<br>这也就意味着在这种情况下的IPv6无法在路由上使用MWAN进行负载均衡，<br>其原因在于，不同的ISP分配的IPv6自然属于不同的IPv6块，而不同IPv6分块下的IPv6 IP对应的网络出口也就自然需要一一对应，<br>这也就决定了想要在配置了MWAN后让IPv6仍然有效，需要在MWAN的<code>策略</code>页面中将所有策略的<code>备用成员</code>（也就是fail back）设置为<code>默认（使用主路由表）</code>，<br>这样IPv6数据包在MWAN进行判断时遇到选路失败后才会正确被导向到对应的IPv6块，去往正确的ISP。<br>同样这样也就意味着如果想要使用原生IPv6（也就是内网的每台机器都获得全球唯一的公网IPv6 IP），就无法让IPv6流量在多个ISP之间自动负载均衡（除非在流量发出之时就已经针对不同运营商选择了不同的IPv6源地址<br>如果想要让IPv6流量在多个ISP之间自动负载均衡，唯一的方法就是使用IPv6 NAT，那这样的话使用IPv6不久没有什么意义了不是吗？IPv6存在的意义不就是在IPv4地址不足不得不使用NAT时仍然可以获得一个公网IP么。</p>
-<h2 id="ESXi-上-与-网管交换机-配置-链路聚合方法（Link-Aggregation）"><a href="#ESXi-上-与-网管交换机-配置-链路聚合方法（Link-Aggregation）" class="headerlink" title="ESXi 上 与 网管交换机 配置 链路聚合方法（Link Aggregation）"></a>ESXi 上 与 网管交换机 配置 链路聚合方法（Link Aggregation）</h2><p><a target="_blank" rel="noopener" href="https://koolshare.cn/thread-146539-1-1.html">https://koolshare.cn/thread-146539-1-1.html</a><br><a target="_blank" rel="noopener" href="https://www.51zot.com/blog/201903vmwareesxizlljhlacpck/">https://www.51zot.com/blog/201903vmwareesxizlljhlacpck/</a><br><a target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/1001938?lang=zh_CN">https://kb.vmware.com/s/article/1001938?lang=zh_CN</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hexo.jeremie.moe/2020/03/15/ESXi%E8%BD%AF%E8%B7%AF%E7%94%B1OpenWRT%E4%BD%BF%E7%94%A8MWAN3%E9%85%8D%E5%90%88%E7%BD%91%E7%AE%A1%E4%BA%A4%E6%8D%A2%E6%9C%BA%E4%BD%BF%E7%94%A8VLAN%E5%AE%9E%E7%8E%B03%E8%B7%AF%E5%AE%BD%E5%B8%A6%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" data-id="cl42cwfea000c3o26houxarb1" class="article-share-link">Share</a>
+      <a data-url="http://hexo.jeremie.moe/2020/03/15/OpenWRT%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%AE%89%E8%A3%85%E5%99%A8opkg%E9%85%8D%E7%BD%AE%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86/" data-id="cl6g4ay3h000s28269hfz1ofj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -627,7 +616,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">八月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/04/">四月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/06/">六月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/04/">四月 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a></li></ul>
     </div>
   </div>
 
@@ -638,6 +627,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/08/05/notes/note-20220805/">note-20220805</a>
+          </li>
         
           <li>
             <a href="/2022/06/06/archlinux%E8%AE%BE%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9/">archlinux设置多用户共享文件夹</a>
@@ -653,10 +646,6 @@
         
           <li>
             <a href="/2020/08/18/%E2%80%9C%E9%A3%9E%E8%A1%8C%E9%94%99%E8%A7%89%E2%80%9D%EF%BC%9A%E7%88%86%E5%8F%91%E9%A3%9E%E8%A1%8C%E4%BA%8B%E6%95%85%E6%9C%80%E5%8D%B1%E9%99%A9%E7%9A%84%E5%9B%A0%E7%B4%A0/">“飞行错觉”：爆发飞行事故最危险的因素</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/10/memo/2020-08-10/">2020-08-10</a>
           </li>
         
       </ul>

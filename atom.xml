@@ -6,7 +6,7 @@
   <link href="http://hexo.jeremie.moe/atom.xml" rel="self"/>
   
   <link href="http://hexo.jeremie.moe/"/>
-  <updated>2022-06-06T06:17:19.541Z</updated>
+  <updated>2022-08-05T06:30:10.869Z</updated>
   <id>http://hexo.jeremie.moe/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>note-20220805</title>
+    <link href="http://hexo.jeremie.moe/2022/08/05/notes/note-20220805/"/>
+    <id>http://hexo.jeremie.moe/2022/08/05/notes/note-20220805/</id>
+    <published>2022-08-05T06:09:30.000Z</published>
+    <updated>2022-08-05T06:30:10.869Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一、</span><br><span class="line">看山是山，看水是水</span><br><span class="line"></span><br><span class="line">二、</span><br><span class="line">看山不是山，看水不是水</span><br><span class="line"></span><br><span class="line">三、</span><br><span class="line">看山还是山，看水还是水</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">一、</span><br><span class="line">两耳不闻窗外事，一心只读圣贤书</span><br><span class="line"></span><br><span class="line">二、</span><br><span class="line">《键盘侠》</span><br><span class="line">秀才不出门，尽知天下事</span><br><span class="line">指点江山，飞扬文字，粪土当年万户侯</span><br><span class="line">眼高手低，无能狂怒，自不量力</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">三、</span><br><span class="line">知天下变化</span><br><span class="line">识自身长短</span><br><span class="line"></span><br><span class="line">随世界变化而更新自我</span><br><span class="line">知能力边界而进退有序</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span c</summary>
+      
+    
+    
+    
+    <category term="备忘" scheme="http://hexo.jeremie.moe/categories/%E5%A4%87%E5%BF%98/"/>
+    
+    <category term="Notes" scheme="http://hexo.jeremie.moe/categories/%E5%A4%87%E5%BF%98/Notes/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>archlinux设置多用户共享文件夹</title>
